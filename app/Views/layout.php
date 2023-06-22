@@ -6,16 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- header templates-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="header/fonts/icomoon/style.css">
-    <link rel="stylesheet" href="header/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="header/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="header/css/style.css">
 
     <!-- footer templates-->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="footer/fonts/icomoon/style.css">
     <link rel="stylesheet" href="footer/css/bootstrap.min.css">
     <link rel="stylesheet" href="footer/css/style.css">
@@ -27,53 +23,31 @@
 <body>
     <!-- header -->
 
-    <header class="site-navbar" role="banner">
-
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <div class="row align-items-center">
+            <a class="navbar-brand" href="index.html">skillsmart</a>
 
-                <div class="col-11 col-xl-2">
-                    <h1 class="mb-0 site-logo"><a href="index.php" class="text-white mb-0">Brand</a></h1>
-                </div>
-                <div class="col-12 col-md-10 d-none d-xl-block">
-                    <nav class="site-navigation position-relative text-right" role="navigation">
-
-                        <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                            <li class="active"><a href="index.php"><span>Home</span></a></li>
-                            <li class="has-children">
-                                <a href="about.html"><span>Dropdown</span></a>
-                                <ul class="dropdown arrow-top">
-                                    <li><a href="#">Menu One</a></li>
-                                    <li><a href="#">Menu Two</a></li>
-                                    <li><a href="#">Menu Three</a></li>
-                                    <li class="has-children">
-                                        <a href="#">Dropdown</a>
-                                        <ul class="dropdown">
-                                            <li><a href="#">Menu One</a></li>
-                                            <li><a href="#">Menu Two</a></li>
-                                            <li><a href="#">Menu Three</a></li>
-                                            <li><a href="#">Menu Four</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="listings.html"><span>Listings</span></a></li>
-                            <li><a href="about.html"><span>About</span></a></li>
-                            <li><a href="blog.html"><span>Blog</span></a></li>
-                            <li><a href="contact.html"><span>Contact</span></a></li>
-                        </ul>
-                    </nav>
-                </div>
-
-
-                <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
-
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="#" class="nav-link">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Page</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <a class="dropdown-item" href="#">Page 1</a>
+                            <a class="dropdown-item" href="#">Page 2</a>
+                            <a class="dropdown-item" href="#">Page 3</a>
+                            <a class="dropdown-item" href="#">Page 4</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Menu</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+                    <li class="nav-item cta"><a href="#" class="nav-link">Login</a></li>
+                </ul>
             </div>
-
         </div>
-        </div>
-
-    </header>
+    </nav>
 
 
     <!-- dynamic part of page -->
@@ -162,11 +136,9 @@
 
 </body>
 
-
-<script src="header/js/jquery-3.3.1.min.js"></script>
-<script src="header/js/popper.min.js"></script>
+<script src="header/js/jquery.min.js"></script>
+<script src="header/js/popper.js"></script>
 <script src="header/js/bootstrap.min.js"></script>
-<script src="header/js/jquery.sticky.js"></script>
 <script src="header/js/main.js"></script>
 
 <script src="footer/js/jquery-3.3.1.min.js"></script>

@@ -20,7 +20,7 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="registerlogin/images/signin-image.jpg" alt="sign up image"></figure>
-                        <a href="#" class="signup-image-link">Create an account</a>
+                        <a href="<?= site_url('auth/register') ?>" class="signup-image-link">Create an account</a>
                     </div>
 
                     <div class="signin-form">
@@ -51,8 +51,8 @@
     </div>
 
     <!-- JS -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="registerlogin/vendor/jquery/jquery.min.js"></script>
+    <script src="registerlogin/js/main.js"></script>
 </body>
 
 </html>
