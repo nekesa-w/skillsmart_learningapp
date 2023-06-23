@@ -44,7 +44,7 @@ $routes->get('register', 'AuthController::register', ['as' => 'register']);
 $routes->post('save', 'AuthController::save', ['as' => 'save']);
 $routes->post('login', 'Login::post', ['as' => 'post']);
 $routes->get('forgotpassword', 'Login::forgotpassword', ['as' => 'forgotpassword']);
-$routes->post('forgotpassword', 'Login::postforgot', ['as' => 'post']);
+$routes->post('forgotpassword', 'Login::postforgot', ['as' => 'postforgot']);
 
 /*
  * --------------------------------------------------------------------

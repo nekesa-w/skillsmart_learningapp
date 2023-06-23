@@ -22,6 +22,6 @@ class Login extends BaseController
 
     public function postforgot()
     {
-        return view('forgotpassword');
+        return view('newpassword');
     }
 }

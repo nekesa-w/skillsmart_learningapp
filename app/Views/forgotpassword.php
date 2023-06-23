@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-md-4 form">
-                <form action="forgotpassword.php" method="POST" autocomplete="">
+                <form method="POST" autocomplete="">
                     <h2 class="text-center">Forgot Password</h2>
                     <p class="text-center">Enter your email address</p>
                     <?php
