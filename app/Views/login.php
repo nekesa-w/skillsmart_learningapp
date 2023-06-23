@@ -20,7 +20,7 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="registerlogin/images/signin-image.jpg" alt="sign up image"></figure>
-                        <a href="<?= site_url('auth/register') ?>" class="signup-image-link">Create an account</a>
+                        <a href="<?= route_to('register'); ?>" class="signup-image-link">Create an account</a>
                     </div>
 
                     <div class="signin-form">
@@ -30,39 +30,32 @@
                                 <label for="email"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="email" id="email" placeholder="Your Email" />
                             </div>
-                    <div class="form-group">
 
-                         <input class="form-control" type="email" name="email" placeholder="Email Address" required value="<?php echo $email ?>">
+                            <div class="form-group">
+                                <input class="form-control" type="password" name="password" placeholder="Password" required>
 
-                    </div>
+                            </div>
 
-                    <div class="form-group">
-                        <input class="form-control" type="password" name="password" placeholder="Password" required>
+                            <div class="link forget-pass text-left"><a href="forgot-password.php">Forgot password?</a></div>
 
-                    </div>
-
-                    <div class="link forget-pass text-left"><a href="forgot-password.php">Forgot password?</a></div>
-
-                    <div class="form-group">
-                        <input class="form-control button" type="submit" name="login" value="Login">
-                    </div>
-                    
-                    <div class="link login-link text-center">Not yet a member? <a href="signup-user.php">Signup now</a></div>
-                </form>
-            </div>
-        </div>
-    </div>
+                            <div class="form-group">
+                                <input class="form-control button" type="submit" name="login" value="Login">
+                            </div>
                         </form>
-
                     </div>
                 </div>
             </div>
-        </section>
+            </form>
+
+    </div>
+    </div>
+    </div>
+    </section>
 
     </div>
 
     <!-- JS -->
-    <script src="registerlogin/vendor/jquery/jquery.min.js"></script>
+    <script src=" registerlogin/vendor/jquery/jquery.min.js"></script>
     <script src="registerlogin/js/main.js"></script>
 </body>
 

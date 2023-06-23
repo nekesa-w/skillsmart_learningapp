@@ -13,11 +13,6 @@ class AuthController extends BaseController
         helper(['url', 'form']);
     }
 
-    public function login()
-    {
-        return view('auth/login');
-    }
-
 
     public function register()
     {

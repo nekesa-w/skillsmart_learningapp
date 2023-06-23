@@ -39,7 +39,7 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
-$routes->get('login', 'AuthController::login', ['as' => 'login']);
+$routes->get('login', 'Login::index');
 $routes->get('register', 'AuthController::register', ['as' => 'register']);
 $routes->post('save', 'AuthController::save', ['as' => 'save']);
 

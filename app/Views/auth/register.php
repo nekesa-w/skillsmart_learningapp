@@ -47,7 +47,7 @@
 
 							<div class="form-group">
 								<label for="last_name"><i class="zmdi zmdi-male-female"></i></label>
-								<input type="text" name="gender" id="gender" placeholder="male/Female" value="<?= set_value('gender') ?>" />
+								<input type="text" name="gender" id="gender" placeholder="male/female" value="<?= set_value('gender') ?>" />
 							</div>
 							<span class="text-danger"><?= isset($validation) ? display_error($validation, 'gender') : '' ?></span>
 
@@ -87,7 +87,7 @@
 
 					<div class="signup-image">
 						<figure><img src="registerlogin/images/signup-image.jpg" alt="register image"></figure>
-						<a href="<?= route_to('login') ?>" class="signup-image-link">I already have an account</a>
+						<a href="<?= base_url('login') ?>" class="signup-image-link">I already have an account</a>
 					</div>
 
 				</div>
