@@ -79,7 +79,7 @@ if (isset($_POST['check'])) {
 if (isset($_POST['login'])) {
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
-    $check_email = "SELECT * FROM usertable WHERE email = '$email'";
+    $check_email = "SELECT * FROM tbl_users WHERE email = '$email'";
     $res = mysqli_query($con, $check_email);
     if (mysqli_num_rows($res) > 0) {
         $fetch = mysqli_fetch_assoc($res);

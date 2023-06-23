@@ -36,7 +36,7 @@
 
                             </div>
 
-                            <div class="link forget-pass text-left"><a href="forgot-password.php">Forgot password?</a></div>
+                            <div class="link forget-pass text-left"><a href="<?= base_url('forgotpassword') ?>">Forgot password?</a></div>
 
                             <div class="form-group">
                                 <input class="form-submit" type="submit" name="login" value="Login">

@@ -13,4 +13,15 @@ class Login extends BaseController
     {
         return view('controllerUserData');
     }
+
+
+    public function forgotpassword()
+    {
+        return view('forgotpassword');
+    }
+
+    public function postforgot()
+    {
+        return view('forgotpassword');
+    }
 }
