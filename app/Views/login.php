@@ -39,7 +39,7 @@
                             <div class="link forget-pass text-left"><a href="forgot-password.php">Forgot password?</a></div>
 
                             <div class="form-group">
-                                <input class="form-control button" type="submit" name="login" value="Login">
+                                <input class="form-submit" type="submit" name="login" value="Login">
                             </div>
                         </form>
                     </div>
