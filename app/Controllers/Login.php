@@ -24,4 +24,9 @@ class Login extends BaseController
     {
         return view('newpassword');
     }
+
+    public function postchange()
+    {
+        return view('passwordchanged');
+    }
 }

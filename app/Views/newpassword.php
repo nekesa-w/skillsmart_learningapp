@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-md-4 form">
-                <form action="newpassword.php" method="POST" autocomplete="off">
+                <form method="POST" autocomplete="off">
                     <h2 class="text-center">New Password</h2>
                     <?php
                     if (isset($_SESSION['info'])) {
