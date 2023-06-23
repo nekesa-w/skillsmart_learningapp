@@ -2,12 +2,23 @@
 
 font-family: 'Varela Round', sans-serif;
 
-purple #5946B2
+green
+#5fa55a
 
-orange #FA5B3D
+purple
+#5946B2
 
-green #66FF66
+blue
+#01b4bc
 
+yellow
+#f6d51f
+
+orange
+#fa8925
+
+red
+#fa5457
 
 <div class="form-group">
 

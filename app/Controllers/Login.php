@@ -6,27 +6,27 @@ class Login extends BaseController
 {
     public function index()
     {
-        return view('login');
+        return view('auth/login');
     }
 
     public function post()
     {
-        return view('controllerUserData');
+        return view('auth/controllerUserData');
     }
 
 
     public function forgotpassword()
     {
-        return view('forgotpassword');
+        return view('auth/forgotpassword');
     }
 
     public function postforgot()
     {
-        return view('newpassword');
+        return view('auth/newpassword');
     }
 
     public function postchange()
     {
-        return view('passwordchanged');
+        return view('auth/passwordchanged');
     }
 }
