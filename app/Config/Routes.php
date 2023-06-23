@@ -42,7 +42,7 @@ $routes->get('/', 'Home::index');
 $routes->get('login', 'Login::index');
 $routes->get('register', 'AuthController::register', ['as' => 'register']);
 $routes->post('save', 'AuthController::save', ['as' => 'save']);
-
+$routes->post('login', 'Login::post', ['as' => 'post']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing

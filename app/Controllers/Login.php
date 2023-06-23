@@ -8,4 +8,9 @@ class Login extends BaseController
     {
         return view('login');
     }
+
+    public function post()
+    {
+        return view('controllerUserData');
+    }
 }
