@@ -35,13 +35,13 @@
 							<label for="first_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
 							<input type="text" name="first_name" id="first_name" placeholder="First Name" value="<?= set_value('first_name') ?>" />
 						</div>
-						<span class="text-danger"><?= isset($validation) ? display_error($validation, 'first_name') : '' ?></span>
+						<small class="text-danger"><?= isset($validation) ? display_error($validation, 'first_name') : '' ?></small>
 
 						<div class="form-group">
 							<label for="last_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
 							<input type="text" name="last_name" id="last_name" placeholder="Last Name" value="<?= set_value('last_name') ?>" />
 						</div>
-						<span class="text-danger"><?= isset($validation) ? display_error($validation, 'last_name') : '' ?></span>
+						<small class="text-danger"><?= isset($validation) ? display_error($validation, 'last_name') : '' ?></small>
 
 						<div class="form-group">
 
@@ -56,28 +56,28 @@
 						<div class="form-group">
 							<input type="date" name="dob" id="dob" placeholder="Date of Birth" value="<?= set_value('dob') ?>" />
 						</div>
-						<span class="text-danger"><?= isset($validation) ? display_error($validation, 'dob') : '' ?></span>
+						<small class="text-danger"><?= isset($validation) ? display_error($validation, 'dob') : '' ?></small>
 
 
 						<div class="form-group">
 							<label for="email"><i class="zmdi zmdi-email"></i></label>
 							<input type="email" name="email" id="email" placeholder="Email" value="<?= set_value('email') ?>" />
 						</div>
-						<span class="text-danger"><?= isset($validation) ? display_error($validation, 'email') : '' ?></span>
+						<small class="text-danger"><?= isset($validation) ? display_error($validation, 'email') : '' ?></small>
 
 
 						<div class="form-group">
 							<label for="pass"><i class="zmdi zmdi-lock"></i></label>
 							<input type="password" name="password" id="password" placeholder="Password" value="<?= set_value('password') ?>" />
 						</div>
-						<span class="text-danger"><?= isset($validation) ? display_error($validation, 'password') : '' ?></span>
+						<small class="text-danger"><?= isset($validation) ? display_error($validation, 'password') : '' ?></small>
 
 
 						<div class="form-group">
 							<label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
 							<input type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" value="<?= set_value('confirmpassword') ?>" />
 						</div>
-						<span class="text-danger"><?= isset($validation) ? display_error($validation, 'confirmpassword') : '' ?></span>
+						<small class="text-danger"><?= isset($validation) ? display_error($validation, 'confirmpassword') : '' ?></small>
 
 
 						<div class="form-group form-button">

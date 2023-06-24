@@ -27,19 +27,19 @@ class AuthController extends BaseController
             'first_name' => [
                 'rules'  => 'required',
                 'errors' => [
-                    'required' => 'Your first name is required',
+                    'required' => 'First name is required',
                 ],
             ],
             'last_name' => [
                 'rules'  => 'required',
                 'errors' => [
-                    'required' => 'Your last name is required',
+                    'required' => 'Last name is required',
                 ],
             ],
             'dob' => [
                 'rules'  => 'required|validate_age',
                 'errors' => [
-                    'required' => 'Your date of birth is required',
+                    'required' => 'Date of birth is required',
                     'validate_age' => 'You must be at least 13 years to make an account',
                 ],
             ],
@@ -68,7 +68,6 @@ class AuthController extends BaseController
             ],
         ]);
 
-        /*
         if (!$validation) {
             return view('auth/register', ['validation' => $this->validator]);
         } else {
@@ -93,7 +92,7 @@ class AuthController extends BaseController
                 'role' => $role
             ];
 
-            
+            /*
             $message = "Please activate your account. " . anchor('user/activate/' . $code, 'Activate Now', '');
 
             $email = \Config\Services::email();
@@ -107,7 +106,7 @@ class AuthController extends BaseController
             $email->send();
 
             $email->printDebugger(['headers']);
-            
+            */
 
             $userModel = new UserModel();
             $query = $userModel->insert($values);
@@ -117,6 +116,5 @@ class AuthController extends BaseController
                 return  redirect()->to('register')->with('success', 'Account created successfully. Please verify email.');
             }
         }
-        */
     }
 }

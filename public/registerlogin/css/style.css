@@ -313,6 +313,10 @@ label {
   margin-top: 10px;
 }
 
+.text-danger {
+  color: #fa5457;
+}
+
 .alert-danger {
   background-color: #fa5457;
   padding: 5px;
