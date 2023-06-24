@@ -4,8 +4,7 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 use App\Libraries\Hash;
-use CodeIgniter\I18n\Time;
-use DateTime;
+
 
 class AuthController extends BaseController
 {
@@ -21,14 +20,9 @@ class AuthController extends BaseController
         return view('auth/register');
     }
 
+
     public function save()
     {
-        $dob = $this->request->getPost('dob');
-        $dobobject = (object)$dob;
-        echo $dobobject->getAge();
-        //$over10 = ($dobobject->diff($now)->y > 18) ? false : true;
-
-        /*
         $validation = $this->validate([
             'first_name' => [
                 'rules'  => 'required',
@@ -43,10 +37,10 @@ class AuthController extends BaseController
                 ],
             ],
             'dob' => [
-                'rules'  => 'required||callback_validate_age',
+                'rules'  => 'required|validate_age',
                 'errors' => [
                     'required' => 'Your date of birth is required',
-                    'validate_age' => 'You must be 10 years and above to make an account',
+                    'validate_age' => 'You must be at least 13 years to make an account',
                 ],
             ],
             'email' => [
@@ -74,6 +68,7 @@ class AuthController extends BaseController
             ],
         ]);
 
+        /*
         if (!$validation) {
             return view('auth/register', ['validation' => $this->validator]);
         } else {
@@ -112,7 +107,7 @@ class AuthController extends BaseController
             $email->send();
 
             $email->printDebugger(['headers']);
-
+            
 
             $userModel = new UserModel();
             $query = $userModel->insert($values);
@@ -121,7 +116,6 @@ class AuthController extends BaseController
             } else {
                 return  redirect()->to('register')->with('success', 'Account created successfully. Please verify email.');
             }
-            
         }
         */
     }
