@@ -113,7 +113,7 @@ class AuthController extends BaseController
             if (!$query) {
                 return  redirect()->to('register')->with('fail', 'Something went wrong. Please try again.');
             } else {
-                return  redirect()->to('register')->with('success', 'Account created successfully. Please verify email.');
+                return  redirect()->to('register')->with('success', 'Account created successfully. Please verify account.');
             }
         }
     }

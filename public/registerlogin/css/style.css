@@ -181,10 +181,6 @@ a:active {
   margin-bottom: 33px;
 }
 
-.signup-image {
-  margin-top: 45px;
-}
-
 figure {
   margin-bottom: 50px;
   text-align: center;
@@ -319,13 +315,17 @@ label {
 
 .alert-danger {
   background-color: #fa5457;
+  color: #fff;
   padding: 5px;
+  margin-bottom: 20px;
   border-radius: 10x;
 }
 
 .alert-success {
   background-color: #5fa55a;
+  color: #fff;
   padding: 5px;
+  margin-bottom: 20px;
   border-radius: 10px;
 }
 
