@@ -19,14 +19,3 @@ orange
 
 red
 #fa5457
-
-<div class="form-group">
-
-								<input class="form-gender" type="radio" name="gender" id="male" value="<?= set_value('male') ?>">
-								<label class=" label-gender" for="male">Male</label>
-
-								<input class="form-gender" type="radio" name="gender" id="female" value="<?= set_value('female') ?>">
-								<label class="label-gender" for="female">Female</label>
-
-							</div>
-							<span class="text-danger"><?= isset($validation) ? display_error($validation, 'gender') : '' ?></span>

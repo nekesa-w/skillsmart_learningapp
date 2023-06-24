@@ -45,17 +45,13 @@
 
 						<div class="form-group">
 
-							<input class="form-gender" type="radio" name="gender" id="male" value="<?= set_value('male') ?>">
+							<input class="form-gender" type="radio" name="gender" id="male" value="male" required>
 							<label class=" label-gender" for="male">Male</label>
 
-							<input class="form-gender" type="radio" name="gender" id="female" value="<?= set_value('female') ?>">
+							<input class="form-gender" type="radio" name="gender" id="female" value="female" required>
 							<label class="label-gender" for="female">Female</label>
 
 						</div>
-						<span class="text-danger"><?= isset($validation) ? display_error($validation, 'gender') : '' ?></span>
-
-						<span class="text-danger"><?= isset($validation) ? display_error($validation, 'gender') : '' ?></span>
-
 
 						<div class="form-group">
 							<input type="date" name="dob" id="dob" placeholder="Date of Birth" value="<?= set_value('dob') ?>" />

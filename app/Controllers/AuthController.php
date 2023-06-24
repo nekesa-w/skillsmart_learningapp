@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 use App\Libraries\Hash;
+use CodeIgniter\I18n\Time;
+use DateTime;
 
 class AuthController extends BaseController
 {
@@ -21,29 +23,30 @@ class AuthController extends BaseController
 
     public function save()
     {
+        $dob = $this->request->getPost('dob');
+        $dobobject = (object)$dob;
+        echo $dobobject->getAge();
+        //$over10 = ($dobobject->diff($now)->y > 18) ? false : true;
+
+        /*
         $validation = $this->validate([
             'first_name' => [
                 'rules'  => 'required',
                 'errors' => [
-                    'required' => 'First name is required',
+                    'required' => 'Your first name is required',
                 ],
             ],
             'last_name' => [
                 'rules'  => 'required',
                 'errors' => [
-                    'required' => 'Last name is required',
-                ],
-            ],
-            'gender' => [
-                'rules'  => 'required',
-                'errors' => [
-                    'required' => 'Gender is required',
+                    'required' => 'Your last name is required',
                 ],
             ],
             'dob' => [
-                'rules'  => 'required',
+                'rules'  => 'required||callback_validate_age',
                 'errors' => [
-                    'required' => 'Date of birth is required',
+                    'required' => 'Your date of birth is required',
+                    'validate_age' => 'You must be 10 years and above to make an account',
                 ],
             ],
             'email' => [
@@ -82,8 +85,8 @@ class AuthController extends BaseController
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
             $role = 'user';
-            $code = uniqid();
-            $user_email = $email;
+            //$code = uniqid();
+            //$user_email = $email;
 
             $values = [
                 'first_name' => $first_name,
@@ -95,7 +98,7 @@ class AuthController extends BaseController
                 'role' => $role
             ];
 
-
+            
             $message = "Please activate your account. " . anchor('user/activate/' . $code, 'Activate Now', '');
 
             $email = \Config\Services::email();
@@ -118,6 +121,8 @@ class AuthController extends BaseController
             } else {
                 return  redirect()->to('register')->with('success', 'Account created successfully. Please verify email.');
             }
+            
         }
+        */
     }
 }
