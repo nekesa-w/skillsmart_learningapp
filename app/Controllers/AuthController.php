@@ -76,28 +76,28 @@ class AuthController extends BaseController
             $last_name = $this->request->getPost('last_name');
             $gender = $this->request->getPost('gender');
             $dob = $this->request->getPost('dob');
-            $email = $this->request->getPost('email');
+            $user_email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
             $role = 'user';
             //$code = uniqid();
-            //$user_email = $email;
 
             $values = [
                 'first_name' => $first_name,
                 'last_name' => $last_name,
                 'gender' => $gender,
                 'dob' => $dob,
-                'email' => $email,
+                'email' => $user_email,
                 'password' => Hash::make($password),
                 'role' => $role
             ];
 
-            /*
-            $message = "Please activate your account. " . anchor('user/activate/' . $code, 'Activate Now', '');
+
+            $message = "Please activate your account.";
+            //. anchor('user/activate/' . $code, 'Activate Now', '');
 
             $email = \Config\Services::email();
 
-            $email->setFrom('activate@skillsmart.com', 'Activate Account');
+            $email->setFrom('skillssmart5@gmail.com', 'Activate Account');
             $email->setTo($user_email);
 
             $email->setSubject('Activate Account | Skillsmart');
@@ -106,7 +106,6 @@ class AuthController extends BaseController
             $email->send();
 
             $email->printDebugger(['headers']);
-            */
 
             $userModel = new UserModel();
             $query = $userModel->insert($values);
