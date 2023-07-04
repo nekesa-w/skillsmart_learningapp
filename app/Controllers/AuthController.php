@@ -20,6 +20,23 @@ class AuthController extends BaseController
         return view('auth/register');
     }
 
+    public function activate($link_here)
+    {
+        $user = new UserModel();
+        $check_user_link = $user->where('link', $link_here)->findAll();
+
+        if (count($check_user_link) > 0) {
+            $temp_data['status'] = 1;
+            $activate_user = $user->update($check_user_link[0]['user_id'], $temp_data);
+
+            if ($activate_user) {
+                echo 'activated';
+            } else {
+                echo 'not activated';
+            }
+        } else {
+        }
+    }
 
     public function save()
     {
@@ -76,43 +93,39 @@ class AuthController extends BaseController
             $last_name = $this->request->getPost('last_name');
             $gender = $this->request->getPost('gender');
             $dob = $this->request->getPost('dob');
-            $email = $this->request->getPost('email');
+            $user_email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
-            $role = 'user';
-            //$code = uniqid();
-            //$user_email = $email;
+            $link = uniqid();
 
             $values = [
                 'first_name' => $first_name,
                 'last_name' => $last_name,
                 'gender' => $gender,
                 'dob' => $dob,
-                'email' => $email,
+                'email' => $user_email,
                 'password' => Hash::make($password),
-                'role' => $role
+                'link' => $link
             ];
 
-            /*
-            $message = "Please activate your account. " . anchor('user/activate/' . $code, 'Activate Now', '');
-
-            $email = \Config\Services::email();
-
-            $email->setFrom('activate@skillsmart.com', 'Activate Account');
-            $email->setTo($user_email);
-
-            $email->setSubject('Activate Account | Skillsmart');
-            $email->setMessage($message);
-
-            $email->send();
-
-            $email->printDebugger(['headers']);
-            */
+            $message = "Please activate your account. " . anchor('activate/' . $values['link'], 'Activate Now', '');
 
             $userModel = new UserModel();
             $query = $userModel->insert($values);
             if (!$query) {
                 return  redirect()->to('register')->with('fail', 'Something went wrong. Please try again.');
             } else {
+                $email = \Config\Services::email();
+
+                $email->setFrom('skillssmart5@gmail.com', 'Skill Smart');
+                $email->setTo($user_email);
+
+                $email->setSubject('Activate your account | Skillsmart');
+                $email->setMessage($message);
+
+                $email->send();
+
+                $email->printDebugger(['headers']);
+
                 return  redirect()->to('register')->with('success', 'Account created successfully. Please verify account.');
             }
         }

@@ -42,11 +42,15 @@ $routes->get('/', 'AuthController::register');
 $routes->get('dashboard', 'Admin::index');
 $routes->get('login', 'Login::index');
 $routes->get('register', 'AuthController::register', ['as' => 'register']);
+
+$routes->get('activate/(:any)', 'AuthController::activate/$1');
+
 $routes->post('save', 'AuthController::save', ['as' => 'save']);
 $routes->post('login', 'Login::post', ['as' => 'post']);
 $routes->get('forgotpassword', 'Login::forgotpassword', ['as' => 'forgotpassword']);
 $routes->post('forgotpassword', 'Login::postforgot', ['as' => 'postforgot']);
 $routes->post('newpassword', 'Login::postchange', ['as' => 'postchange']);
+
 
 /*
  * --------------------------------------------------------------------

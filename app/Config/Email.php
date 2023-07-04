@@ -28,27 +28,27 @@ class Email extends BaseConfig
     /**
      * SMTP Server Address
      */
-    public string $SMTPHost = 'sandbox.smtp.mailtrap.io';
+    public string $SMTPHost = 'smtp.googlemail.com';
 
     /**
      * SMTP Username
      */
-    public string $SMTPUser = 'b957b22d304786';
+    public string $SMTPUser = 'skillssmart5@gmail.com';
 
     /**
      * SMTP Password
      */
-    public string $SMTPPass = '37551781bc09bc';
+    public string $SMTPPass = 'smpszaozcrmtjrcq';
 
     /**
      * SMTP Port
      */
-    public int $SMTPPort = 2525;
+    public int $SMTPPort = 465;
 
     /**
      * SMTP Timeout (in seconds)
      */
-    public int $SMTPTimeout = 15;
+    public int $SMTPTimeout = 60;
 
     /**
      * Enable persistent SMTP connections
@@ -58,7 +58,7 @@ class Email extends BaseConfig
     /**
      * SMTP Encryption. Either tls or ssl
      */
-    public string $SMTPCrypto = 'tls';
+    public string $SMTPCrypto = 'ssl';
 
     /**
      * Enable word-wrap
