@@ -19,3 +19,6 @@ orange
 
 red
 #fa5457
+
+pink
+#9F2B68

@@ -113,25 +113,25 @@ body {
 }
 
 a:link {
-  color: #5fa55a;
-  background-color: transparent;
-  text-decoration: none;
-}
-
-a:visited {
-  color: #5fa55a;
-  background-color: transparent;
-  text-decoration: none;
-}
-
-a:hover {
   color: #01b4bc;
   background-color: transparent;
   text-decoration: none;
 }
 
+a:visited {
+  color: #01b4bc;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #5946B2;
+  background-color: transparent;
+  text-decoration: none;
+}
+
 a:active {
-  color: #5fa55a;
+  color: #01b4bc;
   background-color: transparent;
   text-decoration: none;
 }
@@ -327,6 +327,25 @@ label {
   padding: 5px;
   margin-bottom: 20px;
   border-radius: 10px;
+}
+
+.back-to-home{
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 50px;
+  width: 150px;
+  text-align: center;
+  border: 2px solid #01b4bc;
+  box-shadow: 15px 15px #01b4bc;
+  -moz-box-shadow: 15px 15px #01b4bc;
+  -webkit-box-shadow: 15px 15px #01b4bc;
+  -o-box-shadow: 15px 15px #01b4bc;
+  -ms-box-shadow: 15px 15px #01b4bc;
+  border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
 }
 
 @media screen and (max-width: 1200px) {

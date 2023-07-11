@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="https://kit.fontawesome.com/0e4ad45b15.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="registerlogin/fonts/material-icon/css/material-design-iconic-font.min.css">
 	<link rel="stylesheet" href="registerlogin/css/style.css">
 	<title>Register</title>
@@ -87,6 +88,10 @@
 				</div>
 
 				<div class="signup-image">
+					<div class="back-to-home">
+						<a href="<?= base_url('index') ?>">Back to Home</a>
+					</div>
+
 					<figure><img src="registerlogin/images/signup-image.jpg" alt="register image"></figure>
 					<a href="<?= base_url('login') ?>" class="signup-image-link">I already have an account</a>
 				</div>
