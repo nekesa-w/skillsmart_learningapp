@@ -54,6 +54,8 @@
         </nav>
         <!-- /.navbar -->
 
+
+
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
@@ -238,7 +240,12 @@
             <!-- /.sidebar -->
         </aside>
 
+
+
         <?= $this->renderSection('content') ?>
+
+
+
 
         <footer class="main-footer">
             <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE</a>.</strong>
