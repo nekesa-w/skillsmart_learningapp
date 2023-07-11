@@ -1,3 +1,57 @@
+
+<?php
+    session_start();
+    if (isset($_SESSION['SESSION_EMAIL'])) {
+        header("Location: welcome.php");
+        die();
+    }
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+   
+    /*require 'vendor/autoload.php';*/
+    
+
+    include 'Config.php';
+    $msg = "";
+
+    if (isset($_GET['verification'])) {
+        if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tbl_users WHERE code='{$_GET['verification']}'")) > 0) {
+            $query = mysqli_query($conn, "UPDATE tbl_users SET code='' WHERE code='{$_GET['verification']}'");
+            
+            if ($query) {
+                $msg = "<div class='alert alert-success'>Account verification has been successfully completed.</div>";
+            }
+        } else {
+            header("Location: index.php");
+        }
+    }
+
+    if (isset($_POST['submit'])) {
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $password = mysqli_real_escape_string($conn, md5($_POST['password']));
+
+        $sql = "SELECT * FROM tbl_users WHERE email='{$email}' AND password='{$password}'";
+        $result = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($result) === 1) {
+            $row = mysqli_fetch_assoc($result);
+ 
+            if (empty($row['code'])) {
+                $_SESSION['SESSION_EMAIL'] = $email;
+                header("Location: welcome.php");
+            } else {
+                $msg = "<div class='alert alert-info'>First verify your account and try again.</div>";
+            }
+        } else {
+            $msg = "<div class='alert alert-danger'>Email or password do not match.</div>";
+        }
+    }
+?>   
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
