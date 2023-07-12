@@ -35,13 +35,19 @@ class LoginController extends BaseController
                     'first_name' => $data['first_name'],
                     'last_name' => $data['last_name'],
                     'gender' => $data['gender'],
+                    'role' => $data['role'],
                     'dob' => $data['dob'],
                     'email' => $data['email'],
                     'isLoggedIn' => TRUE
                 ];
 
                 $session->set($ses_data);
-                return redirect()->to('index');
+
+                if ($ses_data['role'] == 'admin') {
+                    return redirect()->to('dashboard');
+                } elseif ($ses_data['role'] == 'user') {
+                    return redirect()->to('index');
+                }
             } else {
                 return  redirect()->to('login')->with('fail', 'Incorrect password.');
             }
