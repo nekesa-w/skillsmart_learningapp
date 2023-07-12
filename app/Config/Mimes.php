@@ -1,3 +1,5 @@
+mimes.php
+
 <?php
 
 namespace Config;
