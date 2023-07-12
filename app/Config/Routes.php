@@ -3,6 +3,7 @@ namespace Config;
 
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
+$routes->setAutoRoute(true);
 
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
@@ -19,6 +20,8 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
 $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
+$routes->setDefaultController('Dashboard');
+$routes->setDefaultController('CreateAccount');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 
@@ -58,6 +61,7 @@ $routes->post('getcontent', 'LevelController::getcontent');
 $routes->get('level_content/(:num)', 'LevelController::level_content/$1', ['as' => 'level_content']);
 
 $routes->get('dashboard', 'Admin\Dashboard::index', ['as' => 'dashboard']);
+$routes->get('create_account', 'Admin\CreateAccount::create_account', ['as' => 'create_account']);
 
 /*
  * --------------------------------------------------------------------

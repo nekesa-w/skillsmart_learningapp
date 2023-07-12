@@ -7,7 +7,7 @@
     <title>Dashboard</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?php echo base_url('admin/plugins/fontawesome-free/css/all.min.css'); ?>">
     <!-- Ionicons -->
@@ -29,6 +29,7 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+
     <div class="wrapper">
 
         <!-- Navbar -->
@@ -68,6 +69,206 @@
             <div class="sidebar">
 
                 <!-- Sidebar Menu -->
+
+
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    Users
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                
+                                    <a href="<?= base_url( ); ?>/create_account" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Create New Account</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                  <a href="<?= base_url('view_account'); ?>" class="nav-link"> 
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View Account</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="update_account.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Update Account</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="delete_account.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Delete Account</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    Courses
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="create_course.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Create New Course</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="view_course.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View Course</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="update_course.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Update Course</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="delete_course.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Delete Course</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    Quizzes
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="create_quizz.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Create New Quizz</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="view_quizz.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View Quizz</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="update_quizz.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Update Quizz</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="delete_quizz.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Delete Quizz</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    Levels
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="create_level.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Create New Level</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="view_level.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View Level</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="update_level.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Update Level</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="delete_level.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Delete Level</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+
+                        <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    Reports
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="student_engangement.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Student engagement reports</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="progress_report.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Progress reports</p>
+                                    </a>
+                                </li>
+                              
+                           
+                            </ul>
+                        </li>
+
+
+
+
+
+
+
+
+
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
