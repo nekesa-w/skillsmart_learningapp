@@ -22,6 +22,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Home');
+$routes->setDefaultController('Admin');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -40,6 +41,8 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+$route['admin'] = 'admin/dashboard';
+
 $routes->get('/', 'AuthController::register');
 
 $routes->get('dashboard', 'Admin::index');

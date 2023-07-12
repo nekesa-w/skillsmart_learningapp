@@ -8,4 +8,9 @@ class Admin extends BaseController
     {
         return view('admin/dashboard');
     }
+
+    public function index2()
+    {
+        return view('admin/dashboard2');
+    }
 }
