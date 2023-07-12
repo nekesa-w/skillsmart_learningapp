@@ -19,7 +19,7 @@
     <!-- JQVMap -->
     <link rel="stylesheet" href="<?php echo base_url('admin/plugins/jqvmap/jqvmap.min.css'); ?>">
     <!-- Theme style -->
-    <link rel="stylesheet" href="<?php echo base_url('admin/plugins/dist/css/adminlte.min.css'); ?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="<?php echo base_url('admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css'); ?>">
     <!-- Daterange picker -->
@@ -293,8 +293,8 @@
     <script src="<?php echo base_url('admin/plugins/summernote/summernote-bs4.min.js'); ?>"></script>
     <!-- overlayScrollbars -->
     <script src="<?php echo base_url('admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js'); ?>"></script>
-    <!-- AdminLTE App -->
-    <script src="<?php echo base_url('admin/plugins/dist/js/adminlte.js'); ?>"></script>
+    <!-- AdminLTE App 
+    <script src="'admin/plugins/dist/js/adminlte.js'"></script>-->
 </body>
 
 </html>
