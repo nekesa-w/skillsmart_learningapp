@@ -41,19 +41,24 @@ $routes->get('/', 'MainController::index');
 
 $routes->get('index', 'MainController::index', ['as' => 'index']);
 $routes->get('about_us', 'MainController::about_us', ['as' => 'about_us']);
-$routes->get('courses', 'MainController::courses', ['as' => 'courses']);
-$routes->get('profile', 'MainController::profile', ['as' => 'profile']);
-
-$routes->get('dashboard', 'Admin::index');
 
 $routes->get('register', 'AuthController::register', ['as' => 'register']);
 $routes->get('activate/(:any)', 'AuthController::activate/$1');
-
 $routes->post('save', 'AuthController::save', ['as' => 'save']);
 
 $routes->match(['get', 'post'], 'LoginController/loginAuth', 'LoginController::loginAuth');
 $routes->get('login', 'LoginController::index');
 $routes->get('logout', 'LoginController::logout');
+
+$routes->get('profile', 'MainController::profile', ['as' => 'profile']);
+
+$routes->get('courses', 'MainController::courses', ['as' => 'courses']);
+$routes->post('getlevels', 'LevelController::getlevels');
+$routes->get('levels/(:num)', 'LevelController::levels/$1', ['as' => 'levels']);
+$routes->post('getcontent', 'LevelController::getcontent');
+$routes->get('level_content/(:num)', 'LevelController::level_content/$1', ['as' => 'level_content']);
+
+$routes->get('dashboard', 'Admin\Dashboard::index', ['as' => 'dashboard']);
 
 /*
  * --------------------------------------------------------------------

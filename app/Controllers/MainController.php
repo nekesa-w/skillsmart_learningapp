@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\CourseModel;
+use App\Models\CourseProgressModel;
+use App\Models\LevelModel;
 use App\Models\ProfileModel;
 
 class MainController extends BaseController
@@ -39,7 +41,8 @@ class MainController extends BaseController
             return redirect()->to('login');
         } else {
             $profile = new ProfileModel();
-            $user_id = 36;
+
+            $user_id = session()->get('user_id');
             $data['details'] = $profile->ProfileDetails($user_id);
 
             return view('main/profile', $data);
