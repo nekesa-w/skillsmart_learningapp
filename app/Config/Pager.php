@@ -1,8 +1,5 @@
-
 <?php
-
 namespace Config;
-
 use CodeIgniter\Config\BaseConfig;
 
 class Pager extends BaseConfig

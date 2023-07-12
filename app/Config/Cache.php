@@ -1,7 +1,4 @@
-
-
 <?php
-
 namespace Config;
 
 use CodeIgniter\Cache\Handlers\DummyHandler;
