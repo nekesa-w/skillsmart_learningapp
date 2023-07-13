@@ -1,70 +1,60 @@
 <?= $this->extend('layouts/adminlayout') ?>
+
 <?= $this->section('content') ?>
 
+<!-- Begin Page Content -->
+<div class="container-fluid">
 
-<div class="container">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Create Course</h1>
+  </div>
 
+  <!-- Content Row -->
+  <div class="row">
 
-  <?php
-  //flash messages
-  if (isset($flash_message)) {
-    if ($flash_message == TRUE) {
-      echo '<div class="alert alert-success">';
-      echo '<a class="close" data-dismiss="alert">×</a>';
-      echo '<strong>Well done!</strong> New course created with success.';
-      echo '</div>';
-    } else {
-      echo '<div class="alert alert-error">';
-      echo '<a class="close" data-dismiss="alert">×</a>';
-      echo '<strong>Oh snap!</strong> New courses could not be created.';
-      echo '</div>';
-    }
-  }
+    <div class="signup-form">
 
-  ?>
+      <form action="<?= route_to('admin_create_course'); ?>" method="POST" class="register-form" id="register-form">
 
-  <?php
-  //form data
-  //form validation
-  echo validation_errors();
+        <?= csrf_field(); ?>
+        <?php if (!empty(session()->getFlashdata('fail'))) : ?>
+          <div class="alert alert-danger"><?= session()->getFlashdata('fail'); ?></div>
+        <?php endif ?>
 
-  // echo form_open('admin/create_course', $attributes);
-  ?>
+        <?php if (!empty(session()->getFlashdata('success'))) : ?>
+          <div class="alert alert-success"><?= session()->getFlashdata('success'); ?></div>
+        <?php endif ?>
 
-  <fieldset>
+        <div class="form-group">
+          <label for="course_title"></label>
+          <input type="text" name="course_title" id="course_title" placeholder="Course Title" value="<?= set_value('course_title') ?>" />
+        </div>
+        <small class="text-danger"><?= isset($validation) ? display_error($validation, 'course_title') : '' ?></small>
 
-    <div class="right _box">
-      <div class="account _box">
-        <h3> Add Course </h3>
-        <form class="login_form">
-          <select class="login_formele">
-            <option value="skillone"> 1 </option>
-            <option value="skilltwo"> 2 </option>
-            <option value="skillthree">3 </option>
-            <option value="skillfour"> 4 </option>
-            <option value="skillfive"> 5</option>
-            <option value="skillsix"> 6 </option>
-            <option value="skillseven">7 </option>
-            <option value="skilleight">8 </option>
-            <option value="skillnine"> 9 </option>
-            <option value="skillten"> 10 </option>
-          </select>
+        <div class="form-group">
+          <label for="dimension"></label>
+          <input type="text" name="dimension" id="dimension" placeholder="Course Dimension" value="<?= set_value('dimension') ?>" />
+        </div>
+        <small class="text-danger"><?= isset($validation) ? display_error($validation, 'dimension') : '' ?></small>
 
-          <button class="login_btn"> Submit </button>
-          <button class="btn" type="reset">Cancel</button>
-      </div>
+        <div class="form-group">
+          <label for="desc"></label>
+          <input type="text" name="desc" id="desc" placeholder="Course Description" value="<?= set_value('desc') ?>" />
+        </div>
+        <small class="text-danger"><?= isset($validation) ? display_error($validation, 'desc') : '' ?></small>
+
+        <div class="form-group form-button">
+          <input type="submit" name="signup" id="signup" class="form-submit" value="Create" />
+        </div>
 
       </form>
+
     </div>
-  </fieldset>
 
-  <?php
-  // echo form_close(); 
-  ?>
+  </div>
+
 </div>
-
-
-
-
+<!-- /.container-fluid -->
 
 <?= $this->endSection() ?>

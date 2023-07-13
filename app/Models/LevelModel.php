@@ -7,6 +7,22 @@ use CodeIgniter\Database\BaseBuilder;
 
 class LevelModel extends Model
 {
+    protected $table = 'tbl_levels';
+    protected $primaryKey = 'level_id';
+    protected $allowedFields = ['course_id', 'level_title', 'xp_requirement', 'content'];
+
+    function AllLevelDetails()
+    {
+        $db      = \Config\Database::connect();
+
+        $builder = $db->table('tbl_levels');
+        $builder->select('*');
+        $query = $builder->get()->getResultArray();
+
+        return $query;
+    }
+
+
     function LevelContent($level_id)
     {
         $db      = \Config\Database::connect();
