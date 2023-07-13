@@ -2,6 +2,15 @@
 
 <?= $this->section('content') ?>
 
+
+<?php if (!empty(session()->getFlashdata('fail'))) : ?>
+    <div class="alert alert-danger"><?= session()->getFlashdata('fail'); ?></div>
+<?php endif ?>
+
+<?php if (!empty(session()->getFlashdata('success'))) : ?>
+    <div class="alert alert-success"><?= session()->getFlashdata('success'); ?></div>
+<?php endif ?>
+
 <!-- Courses Start -->
 <?php foreach ($courses as $course) { ?>
 
@@ -31,10 +40,11 @@
 
             </div>
         </div>
+    </div>
 
-    <?php } ?>
+<?php } ?>
 
-    <!-- Courses End -->
+<!-- Courses End -->
 
 
-    <?= $this->endSection() ?>
+<?= $this->endSection() ?>

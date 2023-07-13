@@ -10,18 +10,4 @@ class Dashboard extends BaseController
     {
         return view('admin/dashboard');
     }
-
-
-    public function create_account()
-    {
-       
-            return view('admin/create_account');
-        
-    }
-
-
-
-
-
-
 }

@@ -26,8 +26,15 @@
                     <div class="d-flex">
                         <i class="fa-solid fa-user"></i>
                         <div class="pl-3">
-                            <h5>Name</h5>
-                            <p><?= $detail['first_name'] ?> <?= $detail['last_name']  ?></p>
+                            <h5>First Name</h5>
+                            <p><?= $detail['first_name'] ?> </p>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <i class="fa-solid fa-user"></i>
+                        <div class="pl-3">
+                            <h5>Last Name</h5>
+                            <p><?= $detail['last_name']  ?></p>
                         </div>
                     </div>
                     <div class="d-flex">
@@ -54,61 +61,31 @@
                     <div class="d-flex">
                         <i class="fa-solid fa-calendar-days"></i>
                         <div class="pl-3">
-                            <h5>Account Created</h5>
-                            <p><?= $detail['enrollment_date'] ?></p>
+                            <h5>Account Activated</h5>
+                            <p><?= $detail['activation_date'] ?></p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 mb-5">
-                    <h2 class="mb-4">Your Level</h2>
-                    <div class="d-flex">
-                        <i class="fa-solid fa-ranking-star"></i>
-                        <div class="pl-3">
-                            <h5>Level</h5>
-                            <p><?= $detail['level'] ?></p>
-                        </div>
-                    </div>
+                    <h2 class="mb-4">Your Points</h2>
                     <div class="d-flex">
                         <i class="fa-solid fa-star"></i>
                         <div class="pl-3">
-                            <h5>Points</h5>
-                            <p><?= $detail['xp_points'] ?></p>
+                            <h5>Experience Points</h5>
+                            <p><?= $detail['xp_points'] ?> XP</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 mb-5">
                     <h2 class="mb-4">Your Earned Badges</h2>
-                    <div class="d-flex">
-                        <i class="fa fa-map-marker-alt d-inline-flex align-items-center justify-content-center bg-primary text-secondary rounded-circle" style="width: 45px; height: 45px"></i>
-                        <div class="pl-3">
-                            <h5>Address</h5>
-                            <p>123 Street, New York, USA</p>
-                        </div>
-                    </div>
-                    <div class="d-flex">
-                        <i class="fa fa-envelope d-inline-flex align-items-center justify-content-center bg-primary text-secondary rounded-circle" style="width: 45px; height: 45px"></i>
-                        <div class="pl-3">
-                            <h5>Email</h5>
-                            <p>info@example.com</p>
-                        </div>
-                    </div>
-                    <div class="d-flex">
-                        <i class="fa fa-phone-alt d-inline-flex align-items-center justify-content-center bg-primary text-secondary rounded-circle" style="width: 45px; height: 45px"></i>
-                        <div class="pl-3">
-                            <h5>Phone</h5>
-                            <p>+012 345 67890</p>
-                        </div>
-                    </div>
-                    <div class="d-flex">
-                        <i class="far fa-clock d-inline-flex align-items-center justify-content-center bg-primary text-secondary rounded-circle" style="width: 45px; height: 45px"></i>
-                        <div class="pl-3">
-                            <h5>Opening Hours</h5>
-                            <strong>Sunday - Friday:</strong>
-                            <p class="m-0">08:00 AM - 05:00 PM</p>
-                        </div>
 
+                    <div class="medal-container">
+                        <div class="medal">
+                            <div class="medal-icon" data-medal="Gold"><span>Self-Awareness</span></div>
+                        </div>
                     </div>
+
                 </div>
             <?php } ?>
         </div>

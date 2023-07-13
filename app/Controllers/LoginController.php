@@ -38,6 +38,8 @@ class LoginController extends BaseController
                     'role' => $data['role'],
                     'dob' => $data['dob'],
                     'email' => $data['email'],
+                    'activation_date' => $data['activation_date'],
+                    'xp_points' => $data['xp_points'],
                     'isLoggedIn' => TRUE
                 ];
 
