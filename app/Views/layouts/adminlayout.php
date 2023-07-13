@@ -7,7 +7,7 @@
     <title>Dashboard</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?php echo base_url('admin/plugins/fontawesome-free/css/all.min.css'); ?>">
     <!-- Ionicons -->
@@ -84,26 +84,25 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                
-                                    <a href="<?= base_url('create_account'); ?>" >
+                                    <a href="<?= base_url('create_account'); ?>">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Create New Account</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a href="<?= base_url('view_account'); ?>" class="nav-link"> 
+                                    <a href="<?= base_url('view_account'); ?>">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>View Account</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="update_account.php" class="nav-link">
+                                    <a href="<?= base_url('update_account'); ?>">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Update Account</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="delete_account.php" class="nav-link">
+                                    <a href="<?= base_url('delete_account'); ?>">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Delete Account</p>
                                     </a>
@@ -113,155 +112,153 @@
 
 
                         <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>
-                                    Courses
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="create_course.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Create New Course</p>
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-chart-pie"></i>
+                                        <p>
+                                            Courses
+                                            <i class="right fas fa-angle-left"></i>
+                                        </p>
                                     </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="<?= base_url('create_course'); ?>">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Create New Course</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="<?= base_url('view_course'); ?>">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>View Course</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="<?= base_url('update_course'); ?>">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Update Course</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="<?= base_url('delete_course'); ?>">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Delete Course</p>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="view_course.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>View Course</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="update_course.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Update Course</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="delete_course.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Delete Course</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-
-                        <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>
-                                    Quizzes
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="create_quizz.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Create New Quizz</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="view_quizz.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>View Quizz</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="update_quizz.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Update Quizz</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="delete_quizz.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Delete Quizz</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>
-                                    Levels
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="create_level.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Create New Level</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="view_level.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>View Level</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="update_level.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Update Level</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="delete_level.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Delete Level</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
 
 
+                                <nav class="mt-2">
+                                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                        <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="nav-icon fas fa-chart-pie"></i>
+                                                <p>
+                                                    Quizzes
+                                                    <i class="right fas fa-angle-left"></i>
+                                                </p>
+                                            </a>
+                                            <ul class="nav nav-treeview">
+                                                <li class="nav-item">
+                                                    <a href="<?= base_url('create_quizz'); ?>">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Create New Quizz</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="<?= base_url('view_quizz'); ?>">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>View Quizz</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="<?= base_url('update_quizz'); ?>">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Update Quizz</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="<?= base_url('delete_quizz'); ?>">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Delete Quizz</p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>
-                                    Reports
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="student_engangement.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Student engagement reports</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="progress_report.php" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Progress reports</p>
-                                    </a>
-                                </li>
-                              
-                           
-                            </ul>
-                        </li>
+                                        <nav class="mt-2">
+                                            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link">
+                                                        <i class="nav-icon fas fa-chart-pie"></i>
+                                                        <p>
+                                                            Levels
+                                                            <i class="right fas fa-angle-left"></i>
+                                                        </p>
+                                                    </a>
+                                                    <ul class="nav nav-treeview">
+                                                        <li class="nav-item">
+                                                            <a href="create_level.php" class="nav-link">
+                                                                <i class="far fa-circle nav-icon"></i>
+                                                                <p>Create New Level</p>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a href="<?= base_url('create_level'); ?>">
+                                                                <i class="far fa-circle nav-icon"></i>
+                                                                <p>View Level</p>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <<a href="<?= base_url('update_level'); ?>">
+                                                                <i class="far fa-circle nav-icon"></i>
+                                                                <p>Update Level</p>
+                                                                </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a href="<?= base_url('delete_level'); ?>">
+                                                                <i class="far fa-circle nav-icon"></i>
+                                                                <p>Delete Level</p>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
 
 
+
+                                                <nav class="mt-2">
+                                                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                                                        <li class="nav-item">
+                                                            <a href="#" class="nav-link">
+                                                                <i class="nav-icon fas fa-chart-pie"></i>
+                                                                <p>
+                                                                    Reports
+                                                                    <i class="right fas fa-angle-left"></i>
+                                                                </p>
+                                                            </a>
+                                                            <ul class="nav nav-treeview">
+                                                                <li class="nav-item">
+                                                                    <a href="student_engangement.php" class="nav-link">
+                                                                        <i class="far fa-circle nav-icon"></i>
+                                                                        <p>Student engagement reports</p>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a href="progress_report.php" class="nav-link">
+                                                                        <i class="far fa-circle nav-icon"></i>
+                                                                        <p>Progress reports</p>
+                                                                    </a>
+                                                                </li>
+
+
+                                                            </ul>
+                                                        </li>
 
 
 
@@ -269,174 +266,176 @@
 
 
 
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>
-                                    Charts
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="pages/charts/chartjs.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>ChartJS</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/flot.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Flot</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/inline.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Inline</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/uplot.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>uPlot</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-tree"></i>
-                                <p>
-                                    UI Elements
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="pages/UI/general.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>General</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/UI/icons.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Icons</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/UI/buttons.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Buttons</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/UI/sliders.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Sliders</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/UI/modals.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Modals & Alerts</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/UI/navbar.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Navbar & Tabs</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/UI/timeline.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Timeline</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/UI/ribbons.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Ribbons</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                                                        <nav class="mt-2">
+                                                            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>
-                                    Forms
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="pages/forms/general.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>General Elements</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/forms/advanced.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Advanced Elements</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/forms/editors.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Editors</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/forms/validation.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Validation</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                                                                <li class="nav-item">
+                                                                    <a href="#" class="nav-link">
+                                                                        <i class="nav-icon fas fa-chart-pie"></i>
+                                                                        <p>
+                                                                            Charts
+                                                                            <i class="right fas fa-angle-left"></i>
+                                                                        </p>
+                                                                    </a>
+                                                                    <ul class="nav nav-treeview">
+                                                                        <li class="nav-item">
+                                                                            <a href="pages/charts/chartjs.html" class="nav-link">
+                                                                                <i class="far fa-circle nav-icon"></i>
+                                                                                <p>ChartJS</p>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a href="pages/charts/flot.html" class="nav-link">
+                                                                                <i class="far fa-circle nav-icon"></i>
+                                                                                <p>Flot</p>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a href="pages/charts/inline.html" class="nav-link">
+                                                                                <i class="far fa-circle nav-icon"></i>
+                                                                                <p>Inline</p>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a href="pages/charts/uplot.html" class="nav-link">
+                                                                                <i class="far fa-circle nav-icon"></i>
+                                                                                <p>uPlot</p>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-table"></i>
-                                <p>
-                                    Tables
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="pages/tables/simple.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Simple Tables</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/tables/data.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>DataTables</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/tables/jsgrid.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>jsGrid</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                                                                <li class="nav-item">
+                                                                    <a href="#" class="nav-link">
+                                                                        <i class="nav-icon fas fa-tree"></i>
+                                                                        <p>
+                                                                            UI Elements
+                                                                            <i class="fas fa-angle-left right"></i>
+                                                                        </p>
+                                                                    </a>
+                                                                    <ul class="nav nav-treeview">
+                                                                        <li class="nav-item">
+                                                                            <a href="pages/UI/general.html" class="nav-link">
+                                                                                <i class="far fa-circle nav-icon"></i>
+                                                                                <p>General</p>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a href="pages/UI/icons.html" class="nav-link">
+                                                                                <i class="far fa-circle nav-icon"></i>
+                                                                                <p>Icons</p>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a href="pages/UI/buttons.html" class="nav-link">
+                                                                                <i class="far fa-circle nav-icon"></i>
+                                                                                <p>Buttons</p>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a href="pages/UI/sliders.html" class="nav-link">
+                                                                                <i class="far fa-circle nav-icon"></i>
+                                                                                <p>Sliders</p>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a href="pages/UI/modals.html" class="nav-link">
+                                                                                <i class="far fa-circle nav-icon"></i>
+                                                                                <p>Modals & Alerts</p>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a href="pages/UI/navbar.html" class="nav-link">
+                                                                                <i class="far fa-circle nav-icon"></i>
+                                                                                <p>Navbar & Tabs</p>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a href="pages/UI/timeline.html" class="nav-link">
+                                                                                <i class="far fa-circle nav-icon"></i>
+                                                                                <p>Timeline</p>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a href="pages/UI/ribbons.html" class="nav-link">
+                                                                                <i class="far fa-circle nav-icon"></i>
+                                                                                <p>Ribbons</p>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
 
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
+                                                                <li class="nav-item">
+                                                                    <a href="#" class="nav-link">
+                                                                        <i class="nav-icon fas fa-edit"></i>
+                                                                        <p>
+                                                                            Forms
+                                                                            <i class="fas fa-angle-left right"></i>
+                                                                        </p>
+                                                                    </a>
+                                                                    <ul class="nav nav-treeview">
+                                                                        <li class="nav-item">
+                                                                            <a href="pages/forms/general.html" class="nav-link">
+                                                                                <i class="far fa-circle nav-icon"></i>
+                                                                                <p>General Elements</p>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a href="pages/forms/advanced.html" class="nav-link">
+                                                                                <i class="far fa-circle nav-icon"></i>
+                                                                                <p>Advanced Elements</p>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a href="pages/forms/editors.html" class="nav-link">
+                                                                                <i class="far fa-circle nav-icon"></i>
+                                                                                <p>Editors</p>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a href="pages/forms/validation.html" class="nav-link">
+                                                                                <i class="far fa-circle nav-icon"></i>
+                                                                                <p>Validation</p>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+
+                                                                <li class="nav-item">
+                                                                    <a href="#" class="nav-link">
+                                                                        <i class="nav-icon fas fa-table"></i>
+                                                                        <p>
+                                                                            Tables
+                                                                            <i class="fas fa-angle-left right"></i>
+                                                                        </p>
+                                                                    </a>
+                                                                    <ul class="nav nav-treeview">
+                                                                        <li class="nav-item">
+                                                                            <a href="pages/tables/simple.html" class="nav-link">
+                                                                                <i class="far fa-circle nav-icon"></i>
+                                                                                <p>Simple Tables</p>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a href="pages/tables/data.html" class="nav-link">
+                                                                                <i class="far fa-circle nav-icon"></i>
+                                                                                <p>DataTables</p>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a href="pages/tables/jsgrid.html" class="nav-link">
+                                                                                <i class="far fa-circle nav-icon"></i>
+                                                                                <p>jsGrid</p>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+
+                                                            </ul>
+                                                        </nav>
+                                                        <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
         </aside>

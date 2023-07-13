@@ -6,7 +6,7 @@ namespace Config;
 $routes = Services::routes();
 $routes->setAutoRoute(true);
 $route['default_controller'] = "welcome";
-$route['404_override'] = ''; 
+$route['404_override'] = '';
 
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
@@ -74,9 +74,25 @@ $routes->get('dashboard', 'Admin\Dashboard::index', ['as' => 'dashboard']);
  */
 
 $routes->match(['get', 'post'], 'create_account', 'Admin\CreateAccount::create_account');
+$routes->match(['get', 'post'], 'create_course', 'Admin\CreateCourse::create_course');
+$routes->match(['get', 'post'], 'create_level', 'Admin\CreateLevel::create_level');
+$routes->match(['get', 'post'], 'create_quizz', 'Admin\CreateQuizz::create_quizz');
+$routes->match(['get', 'post'], 'delete_account', 'Admin\DeleteAccount::delete_account');
+$routes->match(['get', 'post'], 'delete_course', 'Admin\DeleteCourse::delete_course');
+$routes->match(['get', 'post'], 'delete_level', 'Admin\DeleteLevel::delete_level');
+$routes->match(['get', 'post'], 'delete_quizz', 'Admin\DeleteQuizz::delete_quizz');
+$routes->match(['get', 'post'], 'update_account', 'Admin\UpdateAccount::update_account');
+$routes->match(['get', 'post'], 'update_course', 'Admin\UpdateCourse::update_level');
+$routes->match(['get', 'post'], 'update_level', 'Admin\UpdateLevel::update_level');
+$routes->match(['get', 'post'], 'update_quizz', 'Admin\UpdateQuizz::update_quizz');
+$routes->match(['get', 'post'], 'view_account', 'Admin\ViewAccount::view_account');
+$routes->match(['get', 'post'], 'view_course', 'Admin\ViewCourse::view_course');
+$routes->match(['get', 'post'], 'view_level', 'Admin\ViewLevel::view_level');
+$routes->match(['get', 'post'], 'view_quizz', 'Admin\ViewQuizz::view_quizz');
+
 $routes->get('/admin/view_account', 'Home::viewaccount');
 $routes->match(['get', 'post'], 'forgotpassword', 'ForgotPassword::ForgotPassword');
-        
+
 
 
 /*
