@@ -85,7 +85,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                 
-                                    <a href="<?php base_url('create_account'); ?>" >
+                                    <a href="<?= base_url('create_account'); ?>" >
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Create New Account</p>
                                     </a>
