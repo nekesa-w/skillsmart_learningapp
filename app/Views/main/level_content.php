@@ -2,67 +2,46 @@
 
 <?= $this->section('content') ?>
 
-<!-- Levels Start -->
-<div class="container-fluid pt-5">
-    <div class="container">
+<?php foreach ($details as $detail) { ?>
 
-        <div class="row" id="course-row">
-            <?php foreach ($courses as $course) { ?>
+    <!-- Level Content Start -->
+    <div class="container-fluid pt-5">
+        <div class="container">
 
-                <div class="col m-3">
-                    <h1 class=><?= $course['course_title'] ?></h1>
-                </div>
+            <div class="row my-5" id="course-row">
 
                 <div class="col m-3">
-                    <div class="progress-bar">
-                        <div class="progress"></div>
-                    </div>
-
-                    <h3 id="progress-text"></h3>
+                    <h1 class=><?= $detail['level_title'] ?></h1>
                 </div>
 
-            <?php } ?>
-        </div>
+            </div>
 
-        <div class="row my-3">
+            <div class="row my-2">
 
-            <?php foreach ($levels as $level) { ?>
-                <form action="<?= route_to('getcontent'); ?>" method="POST">
-                    <button class="btn btn-primary m-3 p-5" name="get_content" value="<?= $level['level_id'] ?>">
-                        Level: <?= $level['level_title'] ?>
+                <p>
+                    <?php foreach ($sentences as $sentence) {
+                        echo $sentence . "<br>";
+                    } ?>
+                </p>
+
+            </div>
+
+
+            <form action="<?= route_to('markcomplete'); ?>" method="POST">
+
+                <div class="text-center">
+                    <button class="btn btn-primary m-3 p-5" name="mark_complete" value="<?= $detail["level_id"] ?>">
+                        Mark Complete
                     </button>
-                </form>
-            <?php } ?>
+                </div>
+
+            </form>
+
 
         </div>
-
     </div>
-</div>
-<!-- Levels End -->
+    <!-- Level Content End -->
 
-
-<script>
-    // Variable to hold the progress value
-    var complete_lvl = <?= $progress ?>;
-
-    <?php foreach ($courses as $course) { ?>
-        var total_lvl = <?= $course['number_of_levels']  ?>;
-    <?php } ?>
-
-    var progressValue = (complete_lvl / total_lvl) * 100;
-
-    // Get the progress bar element
-    var progressBar = document.querySelector('.progress');
-
-    // Function to update the progress bar
-    function updateProgressBar(value) {
-        progressBar.style.width = value + '%';
-        var progressText = document.getElementById("progress-text").innerHTML = value + '% complete';
-    }
-
-    // Example usage: Update the progress bar with a value of 50%
-    updateProgressBar(progressValue);
-</script>
-
+<?php } ?>
 
 <?= $this->endSection() ?>

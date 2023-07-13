@@ -37,16 +37,20 @@
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="collapse navbar-collapse justify-content-around" id="navbarCollapse">
                 <?php $session = session(); ?>
                 <?php if ($session->isLoggedIn == TRUE) : ?>
 
-                    <div class="navbar-nav font-weight-bold mx-5 py-0">
+                    <div class="navbar-nav font-weight-bold py-0">
                         <a href="<?= base_url('courses'); ?>" class="nav-item nav-link"> <i class="fa-solid fa-book"></i> COURSES </a>
+                    </div>
+
+                    <div class="navbar-nav font-weight-bold py-0">
+                        <h3 class="mt-4"><?= $session->get('xp_points') ?> XP </h3>
                         <a href="<?= base_url('profile'); ?>" class="nav-item nav-link"> <i class="fa-solid fa-user"></i> PROFILE </a>
                     </div>
-                    <a href="<?= base_url('logout'); ?>" class="btn btn-primary px-4">Logout</a>
 
+                    <a href="<?= base_url('logout'); ?>" class="btn btn-primary px-4">Logout</a>
                 <?php else : ?>
 
                     <div class="navbar-nav font-weight-bold mx-auto py-0">
@@ -64,7 +68,6 @@
 
     <?= $this->renderSection('content') ?>
 
-
     <!-- Footer Start -->
     <div class="container-fluid bg-secondary text-white mt-5 py-5 px-sm-3 px-md-5">
         <div class="row pt-5">
@@ -79,8 +82,7 @@
                 <div class="d-flex justify-content-start mt-4">
                     <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-primary rounded-circle text-ctn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 mb-5">
@@ -96,7 +98,7 @@
                     <h4 class="fa fa-envelope text-primary"></h4>
                     <div class="pl-3">
                         <h5 class="text-footer">Email</h5>
-                        <p class="text-footer">skillsmart@gmail.com</p>
+                        <p class="text-footer">skillsmart5@gmail.com</p>
                     </div>
                 </div>
                 <div class="d-flex">

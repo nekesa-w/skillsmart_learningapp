@@ -20,6 +20,7 @@ class AuthController extends BaseController
         return view('auth/register');
     }
 
+
     public function activate($link_here)
     {
         $user = new UserModel();
@@ -27,24 +28,10 @@ class AuthController extends BaseController
 
         if (count($check_user_link) > 0) {
             $temp_data['status'] = 1;
+            $temp_data['activation_date'] = date('Y-m-d');
             $activate_user = $user->update($check_user_link[0]['user_id'], $temp_data);
 
-            if ($activate_user) {
-                $user_id = $check_user_link[0]['user_id'];
-                $enrollment_date = date('Y-m-d');
-
-                $student_values = [
-                    'user_id' => $user_id,
-                    'enrollment_date' => $enrollment_date,
-                ];
-
-                $studentModel = new StudentModel();
-                $query = $studentModel->insert($student_values);
-
-                return  redirect()->to('login')->with('success', 'Account activated successfully. Please login.');
-            } else {
-                return  redirect()->to('login')->with('fail', 'Account not activated. Please activate account.');
-            }
+            return  redirect()->to('login')->with('success', 'Account activated successfully. Please login.');
         } else {
             return  redirect()->to('login')->with('fail', 'Account not activated. Please activate account.');
         }

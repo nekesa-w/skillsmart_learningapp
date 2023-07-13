@@ -57,6 +57,7 @@ $routes->post('getlevels', 'LevelController::getlevels');
 $routes->get('levels/(:num)', 'LevelController::levels/$1', ['as' => 'levels']);
 $routes->post('getcontent', 'LevelController::getcontent');
 $routes->get('level_content/(:num)', 'LevelController::level_content/$1', ['as' => 'level_content']);
+$routes->post('markcomplete', 'LevelController::markcomplete');
 
 $routes->get('dashboard', 'Admin\Dashboard::index', ['as' => 'dashboard']);
 

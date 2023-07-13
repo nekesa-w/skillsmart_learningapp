@@ -2,9 +2,10 @@
 
 namespace App\Controllers;
 
-use App\Models\CourseModel;
+use App\Models\CompletedLevelModel;
+use App\Models\CourseXPModel;
 use App\Models\LevelModel;
-use App\Models\ProfileModel;
+use App\Models\UserModel;
 
 class LevelController extends BaseController
 {
@@ -21,20 +22,27 @@ class LevelController extends BaseController
             return redirect()->to('login');
         } else {
 
+            $courseprogress = $this->request->getPost('courseprogress');
+
             $uri = current_url(true);
             $course_id = $uri->getSegment(2);
 
-            $profile = new ProfileModel();
             $user_id = session()->get('user_id');
             $getlevels = new LevelModel();
 
             $data['levels'] = $getlevels->LevelDetails($course_id);
             $data['courses'] = $getlevels->CourseDetails($course_id);
             $data['progress'] = $getlevels->CompletedLevelsCount($course_id, $user_id);
-            $data['completed'] = $getlevels->CompletedLevels($course_id);
-            $data['ongoing'] = $getlevels->OngoingLevels($course_id);
+            $data['completed'] = $getlevels->CompletedLevels($course_id, $user_id);
+            $data['ongoing'] = $getlevels->OngoingLevels($course_id, $user_id);
+            $data['current'] = $getlevels->CurrentLevel($course_id, $user_id);
 
-            return view('main/levels', $data);
+            if ($data['courses'][0]['number_of_levels'] != 0) {
+                $data['percent'] =   ($data['progress'] / $data['courses'][0]['number_of_levels']) * 100;
+                return view('main/levels', $data);
+            } else {
+                return view('main/levels', $data);
+            }
         }
     }
 
@@ -55,9 +63,57 @@ class LevelController extends BaseController
             $level_id = $uri->getSegment(2);
 
             $getlevelcontent = new LevelModel();
-            $data['levels'] = $getlevelcontent->LevelDetails($level_id);
+            $data['details'] = $getlevelcontent->LevelContent($level_id);
+
+            $level_content = $data['details'][0]['content'];
+            $data['sentences'] = explode(PHP_EOL, $level_content);
 
             return view('main/level_content', $data);
+        }
+    }
+
+    function markcomplete()
+    {
+        $level_id = $this->request->getPost('mark_complete');
+        $user_id = session()->get('user_id');
+
+        $getlevel = new LevelModel();
+        $data = $getlevel->MarkComplete($level_id, $user_id);
+
+        $course_id = ($data['0']['course_id']);
+        $xp_points = '10';
+
+        $userxp = new UserModel();
+        $find_user_xp = $userxp->where('user_id', $user_id)->findAll();
+
+        if (count($find_user_xp) > 0) {
+            $old_xp_point = $find_user_xp[0]['xp_points'];
+
+            $addcoursexp = new CourseXPModel();
+            $find_course_xp = $addcoursexp->where('course_id', $course_id)->findAll();
+            $old_course_xp_point = $find_course_xp[0]['xp_points'];
+            $new_xp_points = $old_course_xp_point + $xp_points;
+
+            $temp_data['xp_points'] = $old_xp_point + $new_xp_points;
+            $updatecoursexp = $addcoursexp->update($find_course_xp[0]['course_id'], $temp_data);
+
+            /*
+            $temp_data['xp_points'] = $old_xp_point + $xp_points;
+            $updatecoursexp = $userxp->update($find_user_xp[0]['user_id'], $temp_data);
+
+            $values = [
+                'user_id' => $user_id,
+                'course_id' => $course_id,
+                'level_id' => $level_id,
+                'xp_points' => $new_xp_points
+            ];
+
+            $marklevelcomplete = new CompletedLevelModel();
+            $query = $marklevelcomplete->insert($values);
+*/
+            //return redirect()->to('courses')->with('success', 'Success! Level marked complete!');
+        } else {
+            return  redirect()->to('courses')->with('fail', 'Something went wrong. Level not marked complete.');
         }
     }
 }

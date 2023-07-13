@@ -9909,3 +9909,95 @@ a.text-dark:hover, a.text-dark:focus {
   line-height: 1.2;
   color: #666666;
 }
+
+.btn-completed {
+  color: #fff;
+  background-color: #9F2B68;
+  border-color: #9F2B68;
+}
+
+.btn-completed:hover {
+  color: #9F2B68;
+  background-color: #fff;
+  border-color: #9F2B68;
+}
+
+.btn-completed:focus, .btn-completed.focus {
+  color: #9F2B68;
+  background-color: #fff;
+  border-color: #9F2B68;
+  box-shadow: 0 0 0 0.2rem rgba(58, 176, 195, 0.5);
+}
+
+.btn-completed.disabled, .btn-completed:disabled {
+  color: #fff;
+  background-color: #9F2B68;
+  border-color: #9F2B68;
+}
+
+.btn-completed:not(:disabled):not(.disabled):active, .btn-completed:not(:disabled):not(.disabled).active,
+.show > .btn-completed.dropdown-toggle {
+  color: #fff;
+  background-color: #117a8b;
+  border-color: #10707f;
+}
+
+.btn-completed:not(:disabled):not(.disabled):active:focus, .btn-completed:not(:disabled):not(.disabled).active:focus,
+.show > .btn-completed.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(58, 176, 195, 0.5);
+}
+
+.medal-container{
+  display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.medal{
+	margin:10px;
+	padding-left:10px;
+	display: flex;
+}
+
+.medal-icon{
+	position:relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height:100px;
+	width:100px;
+	border-radius:100%;
+	border:2px solid transparent;
+	border-color:currentColor;
+	text-align: center;
+	font-size:15px;
+	margin-right:5px;
+	color:#FFF;
+}
+.medal-icon:before{
+	content:'';
+	z-index:-1;
+	position:absolute;
+	width:50%;
+	background-color:#B22B32;
+	height:1em;
+	top:-0.4em;
+}
+
+.medal-icon[data-medal="Gold"]{
+	border-color:#FEC223;
+	background: linear-gradient(135deg, #E7B120 0%,#E7B120 50%,#FEC223 50%,#FEC223 100%);
+}
+.medal-icon[data-medal="Silver"]{
+	border-color:#9FA6AC;
+	background: linear-gradient(135deg, #91979D 0%,#91979D 50%,#9FA6AC 50%,#9FA6AC 100%);
+}
+.medal-icon[data-medal="Bronze"]{
+	border-color:#BA765F;
+	background: linear-gradient(135deg, #C0826D 0%,#C0826D 50%,#BA765F 50%,#BA765F 100%);
+}
+
+.course-align{
+  display:flex;
+	justify-content:center;
+}
