@@ -1,136 +1,256 @@
-<?php
-
+<?php 
 session_start();
-if (isset($_SESSION['SESSION_EMAIL'])) {
-    header("Location: welcome.php");
-    die();
-}
+$error = array();
 
+require "mail.php";
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
+	if(!$conn = mysqli_connect("127.0.0.1:3306", "root", " ", "cs_project_i")){
 
-//Load Composer's autoloader
-/*require '..vendor/autoload.php';*/
+		die("could not connect");
+	}
 
-include 'Config.php';
-$msg = "";
+	$mode = "enter_email";
+	if(isset($_GET['mode'])){
+		$mode = $_GET['mode'];
+	}
 
-if (isset($_POST['submit'])) {
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $code = mysqli_real_escape_string($conn, md5(rand()));
+	//something is posted
+	if(count($_POST) > 0){
 
-    if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tbl_users WHERE email='{$email}'")) > 0) {
-        $query = mysqli_query($conn, "UPDATE tbl_users SET code='{$code}' WHERE email='{$email}'");
+		switch ($mode) {
+			case 'enter_email':
+				// code...
+				$email = $_POST['email'];
+				//validate email
+				if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+					$error[] = "Please enter a valid email";
+				}elseif(!valid_email($email)){
+					$error[] = "That email was not found";
+				}else{
 
-        if ($query) {        
-            echo "<div style='display: none;'>";
-            //Create an instance; passing `true` enables exceptions
-            $mail = new PHPMailer(true);
+					$_SESSION['forgot']['email'] = $email;
+					send_email($email);
+					header("Location: forgot.php?mode=enter_code");
+					die;
+				}
+				break;
 
-            try {
-                //Server settings
-                $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-                $mail->isSMTP();                                            //Send using SMTP
-                $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-                $mail->SMTPAuth   = true;     
-                                                                             //Enable SMTP authentication
-                $mail->Username   = 'terryclare17@gmail.com';                     //SMTP username
-                $mail->Password   = 'Terryclare254';                               //SMTP password
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-                $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+			case 'enter_code':
+				// code...
+				$code = $_POST['code'];
+				$result = is_code_correct($code);
 
-                //Recipients
-                $mail->setFrom('terryclare17@gmail.com');
-                $mail->addAddress($email);
+				if($result == "the code is correct"){
 
-                //Content
-                $mail->isHTML(true);                                  //Set email format to HTML
-                $mail->Subject = 'Reset your Password';
-                $mail->Body    = 'Here is the verification link <b><a href="http://localhost/login/changepassword.php?reset='.$code.'">http://localhost/login/changepassword.php?reset='.$code.'</a></b>';
+					$_SESSION['forgot']['code'] = $code;
+					header("Location: forgot.php?mode=enter_password");
+					die;
+				}else{
+					$error[] = $result;
+				}
+				break;
 
-                $mail->send();
-                echo 'Message has been sent';
-            } catch (Exception $e) {
-                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-            }
-            echo "</div>";        
-            $msg = "<div class='alert alert-info'>We've send a verification link on your email address.</div>";
-        }
-    } else {
-        $msg = "<div class='alert alert-danger'>$email - This email address do not found.</div>";
-    }
-}
+			case 'enter_password':
+				// code...
+				$password = $_POST['password'];
+				$password2 = $_POST['password2'];
 
+				if($password !== $password2){
+					$error[] = "Passwords do not match";
+				}elseif(!isset($_SESSION['forgot']['email']) || !isset($_SESSION['forgot']['code'])){
+					header("Location: forgot.php");
+					die;
+				}else{
+					
+					save_password($password);
+					if(isset($_SESSION['forgot'])){
+						unset($_SESSION['forgot']);
+					}
+
+					header("Location: login.php");
+					die;
+				}
+				break;
+			
+			default:
+				// code...
+				break;
+		}
+	}
+
+	function send_email($email){
+		
+		global $conn  ;
+
+		$code = rand(10000,99999);
+		$email = addslashes($email);
+
+		$query = "insert into tbl_codes (email,code,expire) value ('$email','$code')";
+		mysqli_query($conn  ,$query);
+
+		//send email here
+		send_mail($email,'Password reset',"Your code is " . $code);
+	}
+	
+	function save_password($password){
+		
+		global $conn  ;
+
+		$password = password_hash($password, PASSWORD_DEFAULT);
+		$email = addslashes($_SESSION['forgot']['email']);
+
+		$query = "update tbl_users set password = '$password' where email = '$email' limit 1";
+		mysqli_query($conn  ,$query);
+
+	}
+	
+	function valid_email($email){
+		global $conn  ;
+
+		$email = addslashes($email);
+
+		$query = "select * from tbl_users where email = '$email' limit 1";		
+		$result = mysqli_query($conn  ,$query);
+		if($result){
+			if(mysqli_num_rows($result) > 0)
+			{
+				return true;
+ 			}
+		}
+
+		return false;
+
+	}
+
+	function is_code_correct($code){
+		global $conn  ;
+
+		$code = addslashes($code);
+		$email = addslashes($_SESSION['forgot']['email']);
+
+		$query = "select * from tbl_codes where code = '$code' && email = '$email' order by id desc limit 1";
+		$result = mysqli_query($conn  ,$query);
+		if($result){
+			if(mysqli_num_rows($result) > 0)
+			{
+				$row = mysqli_fetch_assoc($result);
+				if($row['expire'] > $expire){
+
+					return "the code is correct";
+				}
+			}else{
+				return "the code is incorrect";
+			}
+		}
+
+		return "the code is incorrect";
+	}
+
+	
 ?>
 
 <!DOCTYPE html>
-<html lang="zxx">
-
+<html>
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/0e4ad45b15.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="registerlogin/fonts/material-icon/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="registerlogin/css/style.css">
     <title>Forgot Password</title>
 </head>
-
 <body>
 
-    <!-- form section start -->
-    <section class="w3l-mockup-form">
-        <div class="container">
-            <!-- /form -->
-            <div class="workinghny-form-grid">
-                <div class="main-mockup">
-                    <div class="alert-close">
-                        <span class="fa fa-close"></span>
-                    </div>
-                    <div class="w3l_form align-self">
-                        <div class="left_grid_info">
-                            <img src="images/image3.svg" alt="">
-                        </div>
-                    </div>
-                    <div class="content-wthree">
-                          <h2>Forgot Password</h2>
-                      
-                        <?php echo $msg; ?>
-                        <form action="" method="post">
 
-                        <div>
-                            <input type="email" class="email" name="email" placeholder="Enter Your Email" required>
-                        </div>
+		<?php 
 
-                        <div class="form-group">
-                        
-                            <input class="form-submit" type="submit" name="Send Reset Link" value="Send Reset Link">
-                        </div>
-                          
-                        </form>
-                        <div class="social-icons">
-                            <p>Back to! <a href="index.php">Login</a>.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- //form -->
-        </div>
-    </section>
-    <!-- //form section start -->
+			switch ($mode) {
+				case 'enter_email':
+					// code...
+					?>
+						<form method="post" action="forgot.php?mode=enter_email"> 
+							<h1>Forgot Password</h1>
+							<h3>Enter your email below</h3>
+							<span style="font-size: 12px;color:red;">
+							<?php 
+								foreach ($error as $err) {
+									// code...
+									echo $err . "<br>";
+								}
+							?>
+							</span>
+							<input class="textbox" type="email" name="email" placeholder="Email"><br>
+							<br style="clear: both;">
+							<input type="submit" value="Next">
+							<br><br>
+							<div><a href="login.php">Login</a></div>
+						</form>
+					<?php				
+					break;
 
-    <script src="js/jquery.min.js"></script>
-    <script>
-        $(document).ready(function (c) {
-            $('.alert-close').on('click', function (c) {
-                $('.main-mockup').fadeOut('slow', function (c) {
-                    $('.main-mockup').remove();
-                });
-            });
-        });
-    </script>
+				case 'enter_code':
+					// code...
+					?>
+						<form method="post" action="forgot.php?mode=enter_code"> 
+							<h1>Forgot Password</h1>
+							<h3>Enter your the code sent to your email</h3>
+							<span style="font-size: 12px;color:red;">
+							<?php 
+								foreach ($error as $err) {
+									// code...
+									echo $err . "<br>";
+								}
+							?>
+							</span>
+
+							<input class="textbox" type="text" name="code" placeholder="12345"><br>
+							<br style="clear: both;">
+							<input type="submit" value="Next" style="float: right;">
+							<a href="forgot.php">
+								<input type="button" value="Start Over">
+							</a>
+							<br><br>
+							<div><a href="login.php">Login</a></div>
+						</form>
+					<?php
+					break;
+
+				case 'enter_password':
+					// code...
+					?>
+						<form method="post" action="forgot.php?mode=enter_password"> 
+							<h1>Forgot Password</h1>
+							<h3>Enter your new password</h3>
+							<span style="font-size: 12px;color:red;">
+							<?php 
+								foreach ($error as $err) {
+									// code...
+									echo $err . "<br>";
+								}
+							?>
+							</span>
+
+							<input class="textbox" type="text" name="password" placeholder="Password"><br>
+							<input class="textbox" type="text" name="password2" placeholder="Retype Password"><br>
+							<br style="clear: both;">
+							<input type="submit" value="Next" style="float: right;">
+							<a href="forgot.php">
+								<input type="button" value="Start Over">
+							</a>
+							<br><br>
+							<div><a href="login.php">Login</a></div>
+						</form>
+					<?php
+					break;
+				
+				default:
+					// code...
+					break;
+			}
+
+		?>
+
 
 </body>
-
 </html>

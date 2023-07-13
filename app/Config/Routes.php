@@ -4,6 +4,8 @@ namespace Config;
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 $routes->setAutoRoute(true);
+$route['default_controller'] = "welcome";
+$route['404_override'] = ''; 
 
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
@@ -61,7 +63,20 @@ $routes->post('getcontent', 'LevelController::getcontent');
 $routes->get('level_content/(:num)', 'LevelController::level_content/$1', ['as' => 'level_content']);
 
 $routes->get('dashboard', 'Admin\Dashboard::index', ['as' => 'dashboard']);
-$routes->get('create_account', 'Admin\CreateAccount::create_account', ['as' => 'create_account']);
+
+
+/*
+ * --------------------------------------------------------------------
+ * Additional Routing by Terry
+ * --------------------------------------------------------------------
+
+ */
+
+$routes->match(['get', 'post'], 'create_account', 'Admin\CreateAccount::create_account',['filter' => 'auth']);
+$routes->get('/admin/view_account', 'Home::viewaccount',['filter' => 'auth']);
+$routes->match(['get', 'post'], 'forgotpassword', 'ForgotPassword::ForgotPassword');
+        
+
 
 /*
  * --------------------------------------------------------------------
