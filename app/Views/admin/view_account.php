@@ -10,6 +10,15 @@
     <h1 class="h3 mb-0 text-gray-800">View Accounts</h1>
   </div>
 
+  <?= csrf_field(); ?>
+  <?php if (!empty(session()->getFlashdata('fail'))) : ?>
+    <div class="alert alert-danger"><?= session()->getFlashdata('fail'); ?></div>
+  <?php endif ?>
+
+  <?php if (!empty(session()->getFlashdata('success'))) : ?>
+    <div class="alert alert-success"><?= session()->getFlashdata('success'); ?></div>
+  <?php endif ?>
+
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -62,14 +71,14 @@
                 <td><?= $user['activation_date'] ?></td>
                 <td><?= $user['xp_points'] ?></td>
                 <td>
-                  <form action="<?= route_to('updategetId'); ?>" method="POST">
+                  <form action="<?= route_to('updateusergetId'); ?>" method="POST">
                     <button name="update_user" value="<?= $user['user_id'] ?>">
                       Edit
                     </button>
                   </form>
                 </td>
                 <td>
-                  <form action="<?= route_to('deletegetId'); ?>" method="POST">
+                  <form action="<?= route_to('deleteusergetId'); ?>" method="POST">
                     <button name="delete_user" value="<?= $user['user_id'] ?>">
                       Delete
                     </button>

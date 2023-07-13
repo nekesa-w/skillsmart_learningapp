@@ -33,4 +33,26 @@ class CourseModel extends Model
 
         return $query;
     }
+
+    function CourseDetailsbyId($course_id)
+    {
+
+        $db      = \Config\Database::connect();
+
+        $builder = $db->table('tbl_courses');
+        $builder->select('*');
+        $builder->where('tbl_courses.course_id', $course_id);
+        $query = $builder->get()->getResultArray();
+
+        return $query;
+    }
+
+    function DeleteCourse($course_id)
+    {
+        $db      = \Config\Database::connect();
+
+        $builder = $db->table('tbl_courses');
+        $builder->where('tbl_courses.course_id', $course_id);
+        $builder->delete();
+    }
 }

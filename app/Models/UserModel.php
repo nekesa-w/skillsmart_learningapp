@@ -35,4 +35,13 @@ class UserModel extends Model
 
         return $query;
     }
+
+    function DeleteUser($user_id)
+    {
+        $db      = \Config\Database::connect();
+
+        $builder = $db->table('tbl_users');
+        $builder->where('tbl_users.user_id', $user_id);
+        $builder->delete();
+    }
 }

@@ -121,7 +121,7 @@ class AccountController extends BaseController
         return view('admin/view_account', $data);
     }
 
-    function updategetId()
+    function updateusergetId()
     {
         $user_id = $this->request->getPost('update_user');
         return redirect()->to(base_url() . 'update_account/' . $user_id);
@@ -140,83 +140,56 @@ class AccountController extends BaseController
 
     public function admin_update_account()
     {
-        $validation = $this->validate([
-            'first_name' => [
-                'rules'  => 'required',
-                'errors' => [
-                    'required' => 'First name is required',
-                ],
-            ],
-            'last_name' => [
-                'rules'  => 'required',
-                'errors' => [
-                    'required' => 'Last name is required',
-                ],
-            ],
-            'dob' => [
-                'rules'  => 'required|validate_age',
-                'errors' => [
-                    'required' => 'Date of birth is required',
-                    'validate_age' => 'You must be at least 13 years to make an account',
-                ],
-            ],
-            'email' => [
-                'rules'  => 'required|valid_email|is_unique[tbl_users.email]',
-                'errors' => [
-                    'required' => 'Email is required',
-                    'valid_email' => 'Email is not valid',
-                    'is_unique' => 'Email already taken',
-                ],
-            ],
-            'password' => [
-                'rules'  => 'required|min_length[5]|max_length[30]',
-                'errors' => [
-                    'required' => 'Password is required.',
-                    'min_length' => 'Password must have at least 5 characters in length',
-                    'max_length' => 'Password must not have more than 30 characters in length',
-                ],
-            ],
-            'confirmpassword' => [
-                'rules'  => 'required|matches[password]',
-                'errors' => [
-                    'required' => 'Confirm password is required',
-                    'matches' => 'Confirm Password must match Password',
-                ],
-            ],
-        ]);
+        //Update user in database
+        $first_name = $this->request->getPost('first_name');
+        $last_name = $this->request->getPost('last_name');
+        $gender = $this->request->getPost('gender');
+        $user_id = $this->request->getPost('user_id');
 
-        if (!$validation) {
-            return view('admin/update_account/', ['validation' => $this->validator]);
+        $values = [
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'gender' => $gender
+        ];
+
+        $accountModel = new UserModel();
+        $updateuser = $accountModel->update($user_id, $values);
+
+        if ($updateuser) {
+            return  redirect()->to('view_account')->with('success', 'Account updated successfully');
         } else {
-
-            //Register user in database
-            $first_name = $this->request->getPost('first_name');
-            $last_name = $this->request->getPost('last_name');
-            $gender = $this->request->getPost('gender');
-            $dob = $this->request->getPost('dob');
-            $user_email = $this->request->getPost('email');
-
-            $values = [
-                'first_name' => $first_name,
-                'last_name' => $last_name,
-                'gender' => $gender,
-                'dob' => $dob,
-                'email' => $user_email
-            ];
-
-            $accountModel = new UserModel();
-            $query = $accountModel->insert($values);
+            return  redirect()->to('view_account')->with('fail', 'Something went wrong. Account was not updated. Please try again.');
         }
     }
 
-    function deletegetId()
+    function deleteusergetId()
     {
-        $user_id = $this->request->getPost('update_user');
+        $user_id = $this->request->getPost('delete_user');
         return redirect()->to(base_url() . 'delete_account/' . $user_id);
     }
 
     public function delete_account()
     {
-        return view('admin/delete_account');
+        $uri = current_url(true);
+        $user_id = $uri->getSegment(2);
+
+        $getuser = new UserModel();
+        $data['details'] = $getuser->UserDetailsbyId($user_id);
+
+        return view('admin/delete_account', $data);
+    }
+
+    public function admin_delete_account()
+    {
+        $user_id = $this->request->getPost('user_id');
+        $getuser = new UserModel();
+
+        $delete = $getuser->DeleteUser($user_id);
+
+        if ($delete) {
+            return  redirect()->to('view_account')->with('fail', 'Account not deleted.');
+        } else {
+            return  redirect()->to('view_account')->with('success', 'Account was deleted successfully.');
+        }
     }
 }

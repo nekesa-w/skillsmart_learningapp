@@ -27,18 +27,19 @@
                 <?php endif ?>
 
                 <?php foreach ($details as $detail) { ?>
+
+                    <p>User ID: <?= $detail['user_id'] ?></p>
                     <div class="form-group">
                         <label for="first_name"></label>
-                        <input type="text" name="first_name" id="first_name" value="<?= $detail['first_name'] ?>" />
+                        <input type="text" name="first_name" id="first_name" value="<?= $detail['first_name'] ?>" required />
                     </div>
                     <small class="text-danger"><?= isset($validation) ? display_error($validation, 'first_name') : '' ?></small>
 
                     <div class="form-group">
                         <label for="last_name"></label>
-                        <input type="text" name="last_name" id="last_name" value="<?= $detail['last_name'] ?>" />
+                        <input type="text" name="last_name" id="last_name" value="<?= $detail['last_name'] ?>" required />
                     </div>
                     <small class="text-danger"><?= isset($validation) ? display_error($validation, 'last_name') : '' ?></small>
-
 
                     <p>Gender: <?= $detail['gender'] ?></p>
                     <div class="form-group">
@@ -51,20 +52,10 @@
 
                     </div>
 
-                    <div class="form-group">
-                        <input type="date" name="dob" id="dob" value="<?= $detail['dob'] ?>" />
-                    </div>
-                    <small class="text-danger"><?= isset($validation) ? display_error($validation, 'dob') : '' ?></small>
-
-
-                    <div class="form-group">
-                        <label for="email"></label>
-                        <input type="email" name="email" id="email" value="<?= $detail['email'] ?>" />
-                    </div>
-                    <small class="text-danger"><?= isset($validation) ? display_error($validation, 'email') : '' ?></small>
-
                     <div class="form-group form-button">
-                        <input type="submit" name="signup" id="signup" class="form-submit" value="Create" />
+                        <button type="submit" name="user_id" id="user_id" class="form-submit" value="<?= $detail['user_id'] ?>">
+                            Update
+                        </button>
                     </div>
                 <?php } ?>
             </form>

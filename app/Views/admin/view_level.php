@@ -10,6 +10,15 @@
         <h1 class="h3 mb-0 text-gray-800">View Levels</h1>
     </div>
 
+    <?= csrf_field(); ?>
+    <?php if (!empty(session()->getFlashdata('fail'))) : ?>
+        <div class="alert alert-danger"><?= session()->getFlashdata('fail'); ?></div>
+    <?php endif ?>
+
+    <?php if (!empty(session()->getFlashdata('success'))) : ?>
+        <div class="alert alert-success"><?= session()->getFlashdata('success'); ?></div>
+    <?php endif ?>
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -50,14 +59,14 @@
                                 <td><?= $level['content'] ?></td>
                                 <td><?= $level['xp_requirement'] ?></td>
                                 <td>
-                                    <form action="<?= route_to('update_level'); ?>" method="POST">
+                                    <form action="<?= route_to('updatelevelgetId'); ?>" method="POST">
                                         <button name="update_level" value="<?= $level['level_id'] ?>">
                                             Edit
                                         </button>
                                     </form>
                                 </td>
                                 <td>
-                                    <form action="<?= route_to('delete_level'); ?>" method="POST">
+                                    <form action="<?= route_to('deletelevelgetId'); ?>" method="POST">
                                         <button name="delete_level" value="<?= $level['level_id'] ?>">
                                             Delete
                                         </button>

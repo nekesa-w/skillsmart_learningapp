@@ -10,6 +10,15 @@
         <h1 class="h3 mb-0 text-gray-800">View Courses</h1>
     </div>
 
+    <?= csrf_field(); ?>
+    <?php if (!empty(session()->getFlashdata('fail'))) : ?>
+        <div class="alert alert-danger"><?= session()->getFlashdata('fail'); ?></div>
+    <?php endif ?>
+
+    <?php if (!empty(session()->getFlashdata('success'))) : ?>
+        <div class="alert alert-success"><?= session()->getFlashdata('success'); ?></div>
+    <?php endif ?>
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -50,14 +59,14 @@
                                 <td><?= $course['desc'] ?></td>
                                 <td><?= $course['number_of_levels'] ?></td>
                                 <td>
-                                    <form action="<?= route_to('update_course'); ?>" method="POST">
+                                    <form action="<?= route_to('updatecoursegetId'); ?>" method="POST">
                                         <button name="update_course" value="<?= $course['course_id'] ?>">
                                             Edit
                                         </button>
                                     </form>
                                 </td>
                                 <td>
-                                    <form action="<?= route_to('delete_course'); ?>" method="POST">
+                                    <form action="<?= route_to('deletecoursegetId'); ?>" method="POST">
                                         <button name="delete_course" value="<?= $course['course_id'] ?>">
                                             Delete
                                         </button>

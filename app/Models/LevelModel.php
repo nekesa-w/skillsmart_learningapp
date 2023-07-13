@@ -136,4 +136,26 @@ class LevelModel extends Model
 
         return $query;
     }
+
+    function DeleteLevel($level_id)
+    {
+        $db      = \Config\Database::connect();
+
+        $builder = $db->table('tbl_levels');
+        $builder->where('tbl_levels.level_id', $level_id);
+        $builder->delete();
+    }
+
+
+    function LevelDetailsById($level_id)
+    {
+        $db      = \Config\Database::connect();
+
+        $builder = $db->table('tbl_levels');
+        $builder->select('*');
+        $builder->where('tbl_levels.level_id', $level_id);
+        $query = $builder->get()->getResultArray();
+
+        return $query;
+    }
 }

@@ -64,4 +64,81 @@ class LevelController extends BaseController
 
         return view('admin/view_level', $data);
     }
+
+    function updatelevelgetId()
+    {
+        $level_id = $this->request->getPost('update_level');
+        return redirect()->to(base_url() . 'update_level/' . $level_id);
+    }
+
+    public function update_level()
+    {
+        $uri = current_url(true);
+        $level_id = $uri->getSegment(2);
+
+        $level = new LevelModel();
+        $data['levels'] = $level->LevelContent($level_id);
+
+        $course = new CourseModel();
+        $data['courses'] = $course->CourseDetails();
+
+        return view('admin/update_level', $data);
+    }
+
+    public function admin_update_level()
+    {
+        //Update level in database
+        $course_id = $this->request->getPost('course_id');
+        $level_title = $this->request->getPost('level_title');
+        $content = $this->request->getPost('content');
+        $xp_requirement = $this->request->getPost('xp_requirement');
+        $level_id = $this->request->getPost('level_id');
+
+        $values = [
+            'course_id' => $course_id,
+            'level_title' => $level_title,
+            'xp_requirement' => $xp_requirement,
+            'content' => $content
+        ];
+
+        $levelModel = new LevelModel();
+        $updatelevel = $levelModel->update($level_id, $values);
+
+        if ($updatelevel) {
+            return  redirect()->to('view_level')->with('success', 'Level updated successfully');
+        } else {
+            return  redirect()->to('view_level')->with('fail', 'Something went wrong. Level was not updated. Please try again.');
+        }
+    }
+
+    function deletelevelgetId()
+    {
+        $level_id = $this->request->getPost('delete_level');
+        return redirect()->to(base_url() . 'delete_level/' . $level_id);
+    }
+
+    public function delete_level()
+    {
+        $uri = current_url(true);
+        $level_id = $uri->getSegment(2);
+
+        $getlevel = new LevelModel();
+        $data['levels'] = $getlevel->LevelDetailsById($level_id);
+
+        return view('admin/delete_level', $data);
+    }
+
+    public function admin_delete_level()
+    {
+        $level_id = $this->request->getPost('level_id');
+        $getlevel = new LevelModel();
+
+        $delete = $getlevel->DeleteLevel($level_id);
+
+        if ($delete) {
+            return  redirect()->to('view_level')->with('fail', 'Level not deleted.');
+        } else {
+            return  redirect()->to('view_level')->with('success', 'Level was deleted successfully.');
+        }
+    }
 }

@@ -86,8 +86,13 @@ $routes->post('admin_view_account', 'Admin\AccountController::admin_view_account
 $routes->post('admin_update_account', 'Admin\AccountController::admin_update_account', ['as' => 'admin_update_account']);
 $routes->post('admin_delete_account', 'Admin\AccountController::admin_delete_account', ['as' => 'admin_delete_account']);
 
-$routes->match(['get', 'post'], 'updategetId', 'Admin\AccountController::updategetId');
-$routes->match(['get', 'post'], 'deletegetId', 'Admin\AccountController::deletegetId');
+$routes->match(['get', 'post'], 'updateusergetId', 'Admin\AccountController::updateusergetId');
+$routes->match(['get', 'post'], 'deleteusergetId', 'Admin\AccountController::deleteusergetId');
+
+
+
+
+
 
 $routes->match(['get', 'post'], 'create_course', 'Admin\CourseController::create_course');
 $routes->match(['get', 'post'], 'view_course', 'Admin\CourseController::view_course');
@@ -99,6 +104,13 @@ $routes->post('admin_view_course', 'Admin\CourseController::admin_view_course', 
 $routes->post('admin_update_course', 'Admin\CourseController::admin_update_course', ['as' => 'admin_update_course']);
 $routes->post('admin_delete_course', 'Admin\CourseController::admin_delete_course', ['as' => 'admin_delete_course']);
 
+$routes->match(['get', 'post'], 'updatecoursegetId', 'Admin\CourseController::updatecoursegetId');
+$routes->match(['get', 'post'], 'deletecoursegetId', 'Admin\CourseController::deletecoursegetId');
+
+
+
+
+
 $routes->match(['get', 'post'], 'create_level', 'Admin\LevelController::create_level');
 $routes->match(['get', 'post'], 'view_level', 'Admin\LevelController::view_level');
 $routes->match(['get', 'post'], 'update_level/(:num)', 'Admin\LevelController::update_level/$1');
@@ -108,6 +120,9 @@ $routes->post('admin_create_level', 'Admin\LevelController::admin_create_level',
 $routes->post('admin_view_level', 'Admin\LevelController::admin_view_level', ['as' => 'admin_view_level']);
 $routes->post('admin_update_level', 'Admin\LevelController::admin_update_level', ['as' => 'admin_update_level']);
 $routes->post('admin_delete_level', 'Admin\LevelController::admin_delete_level', ['as' => 'admin_delete_level']);
+
+$routes->match(['get', 'post'], 'updatelevelgetId', 'Admin\LevelController::updatelevelgetId');
+$routes->match(['get', 'post'], 'deletelevelgetId', 'Admin\LevelController::deletelevelgetId');
 
 /*
  * --------------------------------------------------------------------

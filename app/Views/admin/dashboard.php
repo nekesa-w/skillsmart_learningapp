@@ -12,6 +12,15 @@
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
     </div>
 
+    <?= csrf_field(); ?>
+    <?php if (!empty(session()->getFlashdata('fail'))) : ?>
+        <div class="alert alert-danger"><?= session()->getFlashdata('fail'); ?></div>
+    <?php endif ?>
+
+    <?php if (!empty(session()->getFlashdata('success'))) : ?>
+        <div class="alert alert-success"><?= session()->getFlashdata('success'); ?></div>
+    <?php endif ?>
+
     <!-- Content Row -->
     <div class="row">
 
