@@ -88,11 +88,11 @@ class LevelModel extends Model
         return $query;
     }
 
-    function OngoingLevels($course_id, $user_id)
+    function OngoingLevels($course_id, $user_id, $currentcoursexp)
     {
         $db      = \Config\Database::connect();
 
-        $query = $db->table('tbl_levels')->where('tbl_levels.course_id', $course_id);
+        $query = $db->table('tbl_levels')->where('tbl_levels.course_id', $course_id)->where('tbl_levels.xp_requirement >', $currentcoursexp);
         $query->whereNotIn('level_id', function ($subquery) use ($user_id) {
             $subquery->select('level_id')->from('tbl_completed_levels');
             $subquery->join('tbl_users', 'tbl_users.user_id = tbl_completed_levels.user_id');
@@ -104,19 +104,17 @@ class LevelModel extends Model
         return $results;
     }
 
-    function CurrentLevel($course_id, $user_id)
+    function CurrentLevel($course_id, $user_id, $currentcoursexp)
     {
         $db      = \Config\Database::connect();
 
         $builder = $db->table('tbl_levels');
         $builder->select('*');
         $builder->where('tbl_levels.course_id', $course_id);
-        //$builder->join('tbl_students', 'tbl_students.course_id = tbl_levels.course_id');
-        //$builder->join('tbl_course_xp', 'tbl_course_xp.course_id = tbl_levels.course_id');
-        //$builder->where('tbl_levels.xp_requirement', 'tbl_course_xp.xp_points');
-
-        //$builder->where('tbl_students.user_id', $user_id);
-
+        $builder->join('tbl_course_xp', 'tbl_course_xp.course_id = tbl_levels.course_id');
+        $builder->join('tbl_users', 'tbl_users.user_id = tbl_course_xp.user_id');
+        $builder->where('tbl_users.user_id', $user_id);
+        $builder->where('tbl_levels.xp_requirement', $currentcoursexp);
 
         $query = $builder->get()->getResultArray();
 

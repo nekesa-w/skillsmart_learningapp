@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 use App\Libraries\Hash;
+use App\Models\CourseModel;
+use App\Models\CourseXPModel;
 use App\Models\StudentModel;
 
 class AuthController extends BaseController
@@ -31,6 +33,22 @@ class AuthController extends BaseController
             $temp_data['activation_date'] = date('Y-m-d');
             $activate_user = $user->update($check_user_link[0]['user_id'], $temp_data);
 
+            $course_list = new CourseModel();
+            $data = $course_list->CourseIdDetails();
+
+            foreach ($data as $row) {
+                foreach ($row as $course_id) {
+                    $user_new_xp = new CourseXPModel();
+                    $user_id = $check_user_link[0]['user_id'];
+
+                    $values = [
+                        'user_id' => $user_id,
+                        'course_id' => $course_id
+                    ];
+
+                    $query = $user_new_xp->insert($values);
+                }
+            }
             return  redirect()->to('login')->with('success', 'Account activated successfully. Please login.');
         } else {
             return  redirect()->to('login')->with('fail', 'Account not activated. Please activate account.');
@@ -111,6 +129,18 @@ class AuthController extends BaseController
 
             $userModel = new UserModel();
             $query = $userModel->insert($values);
+
+            $values = [
+                'first_name' => $first_name,
+                'last_name' => $last_name,
+                'gender' => $gender,
+                'dob' => $dob,
+                'email' => $user_email,
+                'password' => password_hash("$password", PASSWORD_DEFAULT),
+                'link' => $link
+            ];
+
+
             if (!$query) {
                 return  redirect()->to('register')->with('fail', 'Something went wrong. Please try again.');
             } else {

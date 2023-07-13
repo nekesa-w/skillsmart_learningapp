@@ -10001,3 +10001,40 @@ a.text-dark:hover, a.text-dark:focus {
   display:flex;
 	justify-content:center;
 }
+
+.sti_container {
+  position: relative;
+}
+
+.btn-locked {
+  margin-left: 20px;
+  position: relative;
+  display: inline-block;
+  padding: 40px;
+  background-color: #666666;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 25px;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
+}
+
+.btn-locked .btn-text {
+  max-width: 0;
+  display: inline-block;
+  -webkit-transition: color .25s 1.5s, max-width 2s;
+  transition: color .25s 1.5s, max-width 2s;
+  vertical-align: top;
+  white-space: nowrap;
+  overflow: hidden;
+  color: white;
+}
+
+.btn-locked:hover .btn-text {
+  max-width: 99999px;
+  color: white;
+}

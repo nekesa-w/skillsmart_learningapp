@@ -30,12 +30,16 @@ class LevelController extends BaseController
             $user_id = session()->get('user_id');
             $getlevels = new LevelModel();
 
+            $coursexp = new CourseXPModel();
+            $find_course_xp = $coursexp->where('course_id', $course_id)->where('user_id', $user_id)->findAll();
+            $currentcoursexp = $find_course_xp[0]['xp_points'];
+
             $data['levels'] = $getlevels->LevelDetails($course_id);
             $data['courses'] = $getlevels->CourseDetails($course_id);
             $data['progress'] = $getlevels->CompletedLevelsCount($course_id, $user_id);
             $data['completed'] = $getlevels->CompletedLevels($course_id, $user_id);
-            $data['ongoing'] = $getlevels->OngoingLevels($course_id, $user_id);
-            $data['current'] = $getlevels->CurrentLevel($course_id, $user_id);
+            $data['ongoing'] = $getlevels->OngoingLevels($course_id, $user_id, $currentcoursexp);
+            $data['current'] = $getlevels->CurrentLevel($course_id, $user_id, $currentcoursexp);
 
             if ($data['courses'][0]['number_of_levels'] != 0) {
                 $data['percent'] =   ($data['progress'] / $data['courses'][0]['number_of_levels']) * 100;
@@ -81,37 +85,42 @@ class LevelController extends BaseController
         $data = $getlevel->MarkComplete($level_id, $user_id);
 
         $course_id = ($data['0']['course_id']);
-        $xp_points = '10';
+        $xp_gained = '100';
 
         $userxp = new UserModel();
         $find_user_xp = $userxp->where('user_id', $user_id)->findAll();
 
         if (count($find_user_xp) > 0) {
-            $old_xp_point = $find_user_xp[0]['xp_points'];
 
-            $addcoursexp = new CourseXPModel();
-            $find_course_xp = $addcoursexp->where('course_id', $course_id)->findAll();
+            $coursexp = new CourseXPModel();
+            $find_course_xp = $coursexp->where('course_id', $course_id)->where('user_id', $user_id)->findAll();
+            $currentcoursexp = $find_course_xp[0]['xp_points'];
             $old_course_xp_point = $find_course_xp[0]['xp_points'];
-            $new_xp_points = $old_course_xp_point + $xp_points;
+            $new_course_xp_point = $old_course_xp_point + $xp_gained;
 
-            $temp_data['xp_points'] = $old_xp_point + $new_xp_points;
-            $updatecoursexp = $addcoursexp->update($find_course_xp[0]['course_id'], $temp_data);
+            $course_xp_id = $find_course_xp[0]['course_xp_id'];
+            $course_data['xp_points'] = $new_course_xp_point;
+            $updatecoursexp = $coursexp->update($course_xp_id, $course_data);
 
-            /*
-            $temp_data['xp_points'] = $old_xp_point + $xp_points;
-            $updatecoursexp = $userxp->update($find_user_xp[0]['user_id'], $temp_data);
+            $old_level_xp_point = $find_user_xp[0]['xp_points'];
+            $new_level_xp_point = $old_level_xp_point + $xp_gained;
+
+            $level_data['xp_points'] = $new_level_xp_point;
+            $updatelevelxp = $userxp->update($find_user_xp[0]['user_id'], $level_data);
 
             $values = [
                 'user_id' => $user_id,
                 'course_id' => $course_id,
                 'level_id' => $level_id,
-                'xp_points' => $new_xp_points
+                'xp_points' => $xp_gained
             ];
 
             $marklevelcomplete = new CompletedLevelModel();
             $query = $marklevelcomplete->insert($values);
-*/
-            //return redirect()->to('courses')->with('success', 'Success! Level marked complete!');
+
+            $newuserxp = session()->set('xp_points', $new_level_xp_point);
+
+            return redirect()->to('courses')->with('success', 'Success! Level marked complete!');
         } else {
             return  redirect()->to('courses')->with('fail', 'Something went wrong. Level not marked complete.');
         }

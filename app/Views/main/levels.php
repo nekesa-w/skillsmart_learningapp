@@ -86,7 +86,7 @@
 
             <?php } ?>
 
-            <h1 class=>Ongoing Levels</h1>
+            <h1 class=>Locked Levels</h1>
 
             <?php if (empty($ongoing)) { ?>
                 <h3 class="no-levels"> All Levels Completed!</h3>
@@ -98,9 +98,14 @@
 
                     <form action="<?= route_to('getcontent'); ?>" method="POST">
 
-                        <button class="btn btn-primary m-3 p-5" name="get_content">
-                            <?= $ong['level_title'] ?>
-                        </button>
+                        <div class="sti_container">
+                            <button class="btn-locked" disabled>
+                                <span class="btn-locked-icon"> <i class="fa-solid fa-lock" aria-hidden="true"></i> </span>
+                                <span class="btn-text">
+                                    Complete Current Level to Unlock <?= $ong['level_title'] ?><br>
+                                </span>
+                            </button>
+                        </div>
 
                     </form>
 
