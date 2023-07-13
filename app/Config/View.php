@@ -1,4 +1,5 @@
 <?php
+
 namespace Config;
 
 use CodeIgniter\Config\View as BaseView;
@@ -7,7 +8,6 @@ use CodeIgniter\View\ViewDecoratorInterface;
 class View extends BaseView
 {
     /**
-     * IF THIS APPEARS THIS IS THE DIFFERENCE
      * When false, the view method will clear the data between each
      * call. This keeps your data safe and ensures there is no accidental
      * leaking between calls, so you would need to explicitly pass the data

@@ -2,20 +2,23 @@
 
 font-family: 'Varela Round', sans-serif;
 
-green
+green: success messages
 #5fa55a
+
+red: fail messages
+#fa5457
 
 purple
 #5946B2
 
+light purple
+#EBEBEB
+
 blue
 #01b4bc
 
-yellow
-#f6d51f
+pink-purple
+#9F2B68
 
-orange
-#fa8925
-
-red
-#fa5457
+grey
+#666666
