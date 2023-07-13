@@ -73,8 +73,8 @@ $routes->get('dashboard', 'Admin\Dashboard::index', ['as' => 'dashboard']);
 
  */
 
-$routes->match(['get', 'post'], 'create_account', 'Admin\CreateAccount::create_account',['filter' => 'auth']);
-$routes->get('/admin/view_account', 'Home::viewaccount',['filter' => 'auth']);
+$routes->match(['get', 'post'], 'create_account', 'Admin\CreateAccount::create_account');
+$routes->get('/admin/view_account', 'Home::viewaccount');
 $routes->match(['get', 'post'], 'forgotpassword', 'ForgotPassword::ForgotPassword');
         
 
