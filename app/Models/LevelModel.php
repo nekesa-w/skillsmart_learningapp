@@ -158,4 +158,16 @@ class LevelModel extends Model
 
         return $query;
     }
+
+    function CountLevels()
+    {
+
+        $db      = \Config\Database::connect();
+
+        $builder = $db->table('tbl_levels');
+        $builder->select('*');
+        $query = $builder->countAllResults();
+
+        return $query;
+    }
 }

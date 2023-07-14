@@ -55,4 +55,17 @@ class CourseModel extends Model
         $builder->where('tbl_courses.course_id', $course_id);
         $builder->delete();
     }
+
+
+    function CountCourses()
+    {
+
+        $db      = \Config\Database::connect();
+
+        $builder = $db->table('tbl_courses');
+        $builder->select('*');
+        $query = $builder->countAllResults();
+
+        return $query;
+    }
 }

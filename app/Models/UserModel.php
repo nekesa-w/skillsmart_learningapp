@@ -44,4 +44,16 @@ class UserModel extends Model
         $builder->where('tbl_users.user_id', $user_id);
         $builder->delete();
     }
+
+    function CountUsers()
+    {
+
+        $db      = \Config\Database::connect();
+
+        $builder = $db->table('tbl_users');
+        $builder->select('*');
+        $query = $builder->countAllResults();
+
+        return $query;
+    }
 }

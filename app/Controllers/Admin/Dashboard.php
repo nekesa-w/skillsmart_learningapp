@@ -3,6 +3,9 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
+use App\Models\CourseModel;
+use App\Models\LevelModel;
+use App\Models\UserModel;
 
 class Dashboard extends BaseController
 {
@@ -10,11 +13,15 @@ class Dashboard extends BaseController
     {
         if (!session()->get('isLoggedIn')) {
             return redirect()->to('login');
-            if (!(session()->get('role' == 'admin'))) {
-                return view('courses');
-            }
         } else {
-            return view('admin/dashboard');
+            $courses = new CourseModel();
+            $users = new UserModel();
+            $levels = new LevelModel();
+
+            $data['levels'] = $levels->CountLevels();
+            $data['users'] = $users->CountUsers();
+            $data['courses'] = $courses->CountCourses();
+            return view('admin/dashboard', $data);
         }
     }
 }
