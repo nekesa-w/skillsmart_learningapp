@@ -65,6 +65,8 @@ $routes->post('getcontent', 'LevelController::getcontent');
 $routes->get('level_content/(:num)', 'LevelController::level_content/$1', ['as' => 'level_content']);
 
 
+$routes->post('markcomplete', 'LevelController::markcomplete');
+
 /*
  * --------------------------------------------------------------------
  * Admin Routes
