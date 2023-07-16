@@ -168,4 +168,18 @@ class LevelModel extends Model
 
         return $query;
     }
+
+    function CompletedLevelsUser($level_id, $user_id)
+    {
+        $db      = \Config\Database::connect();
+
+        $builder = $db->table('tbl_completed_levels');
+        $builder->select('*');
+        $builder->join('tbl_users', 'tbl_users.user_id = tbl_completed_levels.user_id');
+        $builder->where('tbl_users.user_id', $user_id);
+        $builder->where('tbl_completed_levels.level_id', $level_id);
+        $query = $builder->countAllResults();
+
+        return $query;
+    }
 }

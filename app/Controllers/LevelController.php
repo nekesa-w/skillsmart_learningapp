@@ -6,7 +6,6 @@ use App\Models\CompletedLevelModel;
 use App\Models\CourseXPModel;
 use App\Models\LevelModel;
 use App\Models\ParagraphModel;
-use App\Models\QuestionsModel;
 use App\Models\UserModel;
 
 class LevelController extends BaseController
@@ -55,12 +54,16 @@ class LevelController extends BaseController
 
     public function level_content()
     {
+        $user_id = session()->get('user_id');
+
         $uri = current_url(true);
         $level_id = $uri->getSegment(2);
         $page = $uri->getSegment(3);
 
         $levelModel = new LevelModel();
         $level_details = $levelModel->LevelContent($level_id);
+
+        $returnCompletedRows = $levelModel->CompletedLevelsUser($level_id, $user_id);
 
         $paragraphModel = new ParagraphModel();
 
@@ -70,7 +73,8 @@ class LevelController extends BaseController
             'currentPage' => $paragraphModel->pager->getCurrentPage('group1'),
             'totalPages'  => $paragraphModel->pager->getPageCount('group1'),
             'level_details' => $level_details,
-            'level_id' => $level_id
+            'level_id' => $level_id,
+            'returnCompletedRows' => $returnCompletedRows
         ];
 
         return view('main/level_content', $data);

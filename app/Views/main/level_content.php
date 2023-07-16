@@ -40,10 +40,12 @@
 
             <div class="col-3">
                 <?php if ($currentPage === $totalPages) : ?>
-                    <form action="<?= route_to('markcomplete'); ?>" method="POST">
-                        <input type="hidden" id="level_id" name="level_id" value="<?= $paragraph['level_id'] ?>">
-                        <button type="submit" class="btn btn-paragraph">Mark Level as Complete</button>
-                    </form>
+                    <?php if ($returnCompletedRows === 0) : ?>
+                        <form action="<?= route_to('markcomplete'); ?>" method="POST">
+                            <input type="hidden" id="level_id" name="level_id" value="<?= $paragraph['level_id'] ?>">
+                            <button type="submit" class="btn btn-paragraph">Mark Level as Complete</button>
+                        </form>
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
         </div>

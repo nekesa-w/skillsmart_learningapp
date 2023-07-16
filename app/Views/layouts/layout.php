@@ -54,8 +54,7 @@
 
                         <?php if ($session->complete_levels > 0) : ?>
                             <h4 class="completedlevel mt-4 mb-4">
-                                <i class="fa-solid fa-crown"></i> <?= $session->get('complete_levels') ?>
-                                LEVELS
+                                <i class="fa-solid fa-crown"></i> LEVEL <?= $session->get('complete_levels') ?>
                             </h4>
                         <?php endif ?>
                     </div>
