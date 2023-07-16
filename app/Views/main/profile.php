@@ -77,28 +77,29 @@
                     </div>
                 </div>
 
-                <div class="col-lg-5 mb-5" id="leaderboardrow">
-                    <div id="header">
-                        <h2>Leaderboard</h2>
-                    </div>
+                <div class="col-lg-5">
+                    <div class="row" id="leaderboardrow">
+                        <div id="header">
+                            <h2>Leaderboard</h2>
+                        </div>
 
-                    <div id="leaderboard">
+                        <div id="leaderboard">
 
-                        <table>
-                            <tr>
-                                <th>Your Rank</th>
-                                <th>Your Name</th>
-                                <th>Your XP Points</th>
-                            </tr>
-                            <tr>
-                                <td><?= $ranking ?></td>
-                                <?php foreach ($details as $detail) { ?>
-                                    <td><?= $detail['first_name'] ?> <?= $detail['last_name']; ?></td>
-                                    <td><?= $detail['xp_points']; ?></td>
-                                <?php } ?>
-                            </tr>
-                        </table>
-
+                            <table>
+                                <tr>
+                                    <th>Your Rank</th>
+                                    <th>Your Name</th>
+                                    <th>Your XP Points</th>
+                                </tr>
+                                <tr>
+                                    <td><?= $ranking ?></td>
+                                    <?php foreach ($details as $detail) { ?>
+                                        <td><?= $detail['first_name'] ?> <?= $detail['last_name']; ?></td>
+                                        <td><?= $detail['xp_points']; ?></td>
+                                    <?php } ?>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
