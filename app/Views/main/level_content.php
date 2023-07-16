@@ -10,80 +10,47 @@
 
             <?php foreach ($level_details as $detail) { ?>
                 <div class="col m-3">
-                    <h1><?= $detail['level_title'] ?></h1>
+                    <h1 class="level-heading"><?= $detail['level_title'] ?></h1>
                 </div>
 
             <?php } ?>
 
         </div>
 
+        <div class="row my-2">
 
-        <?php foreach ($questions as $question) { ?>
-            <div class="row my-2">
+            <?php foreach ($paragraphs as $paragraph) { ?>
 
-                <form action="">
-                    <div class="col question-page">
+                <p class="content-level"><?= $paragraph['content'] ?></p>
 
-                        <h2>Question: </h2>
-                        <h4><?= $question['question_title'] ?></h4>
-
-                        <div class="row">
-                            <div class="col radio-question">
-                                <input type="radio" id="option-1" name="<?= $question['question_id'] ?>" value="<?= $question['option_1'] ?>">
-                                <label for="option-1">1. <?= $question['option_1'] ?></label>
-                            </div>
-
-                            <div class="col radio-question">
-                                <input type="radio" id="option-2" name="<?= $question['question_id'] ?>" value="<?= $question['option_2'] ?>">
-                                <label for="option-2">2. <?= $question['option_2'] ?></label>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col radio-question">
-                                <input type="radio" id="option-3" name="<?= $question['question_id'] ?>" value="<?= $question['option_3'] ?>">
-                                <label for="option-3">3. <?= $question['option_3'] ?></label>
-                            </div>
-
-                            <div class="col radio-question">
-                                <input type="radio" id="option-4" name="<?= $question['question_id'] ?>" value="<?= $question['option_4'] ?>">
-                                <label for="option-4">4. <?= $question['option_4'] ?></label>
-                            </div>
-                        </div>
-
-                    </div>
-                </form>
-
-            </div>
-        <?php } ?>
-        <!-- Pagination -->
-        <div class="pagination justify-content-center mb-4">
-            <?php if (!empty($pager)) :
-                echo $pager->links('group1', 'bs_full');
-            endif ?>
-
-            <div class="btn-group pagination justify-content-center mb-4" role="group" aria-label="pager counts">
-                &nbsp;&nbsp;&nbsp;
-                <button type="button" class="btn btn-light"><?= 'Page ' . $currentPage . ' of ' . $totalPages; ?></button>
-            </div>
+            <?php } ?>
         </div>
 
-        <!--  
-        <form action="<?= route_to('markcomplete'); ?>" method="POST">
+        <div class="row justify-content-between">
+            <div class="col-5 pagination">
+                <?php if (!empty($pager)) :
+                    echo $pager->links('group1', 'bs_simple');
+                endif ?>
 
-            <div class="text-center">
-                <button class="btn btn-primary m-3 p-5" name="mark_complete" value="<?= $detail["level_id"] ?>">
-                    Mark Complete
-                </button>
+                <div class="btn-group pagination" role="group" aria-label="pager counts">
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-pager"><?= 'Page ' . $currentPage . ' of ' . $totalPages; ?></button>
+                </div>
             </div>
 
-        </form>
-        -->
+            <div class="col-3">
+                <?php if ($currentPage === $totalPages) : ?>
+                    <form action="<?= route_to('markcomplete'); ?>" method="POST">
+                        <input type="hidden" id="level_id" name="level_id" value="<?= $paragraph['level_id'] ?>">
+                        <button type="submit" class="btn btn-paragraph">Mark Level as Complete</button>
+                    </form>
+                <?php endif; ?>
+            </div>
+        </div>
 
     </div>
 </div>
 <!-- Level Content End -->
-
 
 
 <?= $this->endSection() ?>

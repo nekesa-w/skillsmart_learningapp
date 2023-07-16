@@ -49,12 +49,6 @@
                     <small class="text-danger"><?= isset($validation) ? display_error($validation, 'level_title') : '' ?></small>
 
                     <div class="form-group">
-                        <label for="content"></label>
-                        <input type="text" name="content" id="content" value="<?= $level['content'] ?>" required />
-                    </div>
-                    <small class="text-danger"><?= isset($validation) ? display_error($validation, 'content') : '' ?></small>
-
-                    <div class="form-group">
                         <label for="xp_requirement"></label>
                         <input type="number" name="xp_requirement" id="xp_requirement" value="<?= $level['xp_requirement'] ?>" required />
                     </div>

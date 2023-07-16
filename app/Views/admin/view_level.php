@@ -24,6 +24,7 @@
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">All Levels</h6>
         </div>
+
         <div class="card-body">
             <div class="table-responsive">
 
@@ -33,7 +34,6 @@
                             <th>Level ID</th>
                             <th>Course ID</th>
                             <th>Level Title</th>
-                            <th>Content</th>
                             <th>XP Requirement</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -44,7 +44,6 @@
                             <th>Level ID</th>
                             <th>Course ID</th>
                             <th>Level Title</th>
-                            <th>Content</th>
                             <th>XP Requirement</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -56,7 +55,6 @@
                                 <td><?= $level['level_id'] ?></td>
                                 <td><?= $level['course_id'] ?></td>
                                 <td><?= $level['level_title'] ?></td>
-                                <td><?= $level['content'] ?></td>
                                 <td><?= $level['xp_requirement'] ?></td>
                                 <td>
                                     <form action="<?= route_to('updatelevelgetId'); ?>" method="POST">

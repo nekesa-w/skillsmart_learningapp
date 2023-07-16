@@ -39,6 +39,8 @@
               <th>Status</th>
               <th>Activation Date</th>
               <th>XP Points</th>
+              <th>Last Login Date</th>
+              <th>Daily XP Points</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>
@@ -54,6 +56,8 @@
               <th>Status</th>
               <th>Activation Date</th>
               <th>XP Points</th>
+              <th>Last Login Date</th>
+              <th>Daily XP Points</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>
@@ -70,6 +74,8 @@
                 <td><?= $user['status'] ?></td>
                 <td><?= $user['activation_date'] ?></td>
                 <td><?= $user['xp_points'] ?></td>
+                <td><?= $user['last_login_date'] ?></td>
+                <td><?= $user['daily_xp_points'] ?></td>
                 <td>
                   <form action="<?= route_to('updateusergetId'); ?>" method="POST">
                     <button name="update_user" value="<?= $user['user_id'] ?>">

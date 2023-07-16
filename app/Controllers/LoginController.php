@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\DailyXPModel;
 use App\Models\UserModel;
 use DateTime;
 
@@ -67,10 +68,22 @@ class LoginController extends BaseController
 
                 if ($lastLoginDateString) {
                     $lastLoginDate = DateTime::createFromFormat('Y-m-d', $lastLoginDateString);
-
                     $interval = $lastLoginDate->diff($now);
 
                     if ($interval->days > 0) {
+
+                        $dailyxpuser = new DailyXPModel();
+
+                        $currentdailyxp = $userModel[0]['daily_xp_points'];
+
+                        $values = [
+                            'user_id' => $user_id,
+                            'date' => $now,
+                            'daily_xp' => $currentdailyxp
+                        ];
+
+                        $query = $dailyxpuser->insert($values);
+
                         $userModel->resetXpPoints($userModel['user_id']);
                     }
 

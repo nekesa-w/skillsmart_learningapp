@@ -5,11 +5,47 @@ namespace App\Controllers;
 use App\Models\CompletedLevelModel;
 use App\Models\CourseXPModel;
 use App\Models\LevelModel;
+use App\Models\ParagraphModel;
 use App\Models\QuestionsModel;
 use App\Models\UserModel;
 
-class QuestionController extends BaseController
+class LevelController extends BaseController
 {
+    function getlevels()
+    {
+        $course_id = $this->request->getPost('get_level');
+        return redirect()->to(base_url() . 'levels/' . $course_id);
+    }
+
+    public function levels($course_id)
+    {
+        $courseprogress = $this->request->getPost('courseprogress');
+
+        $uri = current_url(true);
+        $course_id = $uri->getSegment(2);
+
+        $user_id = session()->get('user_id');
+        $getlevels = new LevelModel();
+
+        $coursexp = new CourseXPModel();
+        $find_course_xp = $coursexp->where('course_id', $course_id)->where('user_id', $user_id)->findAll();
+        $currentcoursexp = $find_course_xp[0]['xp_points'];
+
+        $data['levels'] = $getlevels->LevelDetails($course_id);
+        $data['courses'] = $getlevels->CourseDetails($course_id);
+        $data['progress'] = $getlevels->CompletedLevelsCount($course_id, $user_id);
+        $data['completed'] = $getlevels->CompletedLevels($course_id, $user_id);
+        $data['ongoing'] = $getlevels->OngoingLevels($course_id, $user_id, $currentcoursexp);
+        $data['current'] = $getlevels->CurrentLevel($course_id, $user_id, $currentcoursexp);
+
+        if ($data['courses'][0]['number_of_levels'] != 0) {
+            $data['percent'] =   ($data['progress'] / $data['courses'][0]['number_of_levels']) * 100;
+            return view('main/levels', $data);
+        } else {
+            return view('main/levels', $data);
+        }
+    }
+
     function getcontent()
     {
         $page = 1;
@@ -26,13 +62,13 @@ class QuestionController extends BaseController
         $levelModel = new LevelModel();
         $level_details = $levelModel->LevelContent($level_id);
 
-        $questionsModel = new QuestionsModel();
+        $paragraphModel = new ParagraphModel();
 
         $data = [
-            'questions' => $questionsModel->where('level_id', $level_id)->paginate(1, 'group1'),
-            'pager' => $questionsModel->pager,
-            'currentPage' => $questionsModel->pager->getCurrentPage('group1'),
-            'totalPages'  => $questionsModel->pager->getPageCount('group1'),
+            'paragraphs' => $paragraphModel->where('level_id', $level_id)->paginate(1, 'group1'),
+            'pager' => $paragraphModel->pager,
+            'currentPage' => $paragraphModel->pager->getCurrentPage('group1'),
+            'totalPages'  => $paragraphModel->pager->getPageCount('group1'),
             'level_details' => $level_details,
             'level_id' => $level_id
         ];
@@ -42,7 +78,7 @@ class QuestionController extends BaseController
 
     function markcomplete()
     {
-        $level_id = $this->request->getPost('mark_complete');
+        $level_id = $this->request->getPost('level_id');
         $user_id = session()->get('user_id');
 
         $getlevel = new LevelModel();

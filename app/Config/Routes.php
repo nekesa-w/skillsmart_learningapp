@@ -63,12 +63,12 @@ $routes->post('passwordsave', 'LoginController::passwordsave', ['as' => 'passwor
 $routes->get("courses", "UserController::courses", ["filter" => "auth"]);
 $routes->get('profile', 'UserController::profile', ["filter" => "auth"]);
 
-$routes->post('getlevels', 'UserController::getlevels', ["filter" => "auth"]);
-$routes->get('levels/(:num)', 'UserController::levels/$1', ['as' => 'levels'], ["filter" => "auth"]);
+$routes->post('getlevels', 'LevelController::getlevels', ["filter" => "auth"]);
+$routes->get('levels/(:num)', 'LevelController::levels/$1', ['as' => 'levels'], ["filter" => "auth"]);
+$routes->post('getcontent', 'LevelController::getcontent', ["filter" => "auth"]);
+$routes->get('level_content/(:num)/(:any)', 'LevelController::level_content/$1/$2', ['as' => 'level_content'], ["filter" => "auth"]);
+$routes->post('markcomplete', 'LevelController::markcomplete', ["filter" => "auth"]);
 
-$routes->post('getcontent', 'QuestionController::getcontent', ["filter" => "auth"]);
-$routes->get('level_content/(:num)/(:any)', 'QuestionController::level_content/$1/$2', ['as' => 'level_content'], ["filter" => "auth"]);
-$routes->post('markcomplete', 'QuestionController::markcomplete', ["filter" => "auth"]);
 
 /*
  * --------------------------------------------------------------------
@@ -79,6 +79,7 @@ $routes->post('markcomplete', 'QuestionController::markcomplete', ["filter" => "
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
+// account
 $routes->get('dashboard', 'Admin\Dashboard::index', ['as' => 'dashboard'], ["filter" => "noauth"]);
 
 $routes->match(['get', 'post'], 'create_account', 'Admin\AccountController::create_account', ["filter" => "noauth"]);
@@ -94,6 +95,8 @@ $routes->post('admin_delete_account', 'Admin\AccountController::admin_delete_acc
 $routes->match(['get', 'post'], 'updateusergetId', 'Admin\AccountController::updateusergetId', ["filter" => "noauth"]);
 $routes->match(['get', 'post'], 'deleteusergetId', 'Admin\AccountController::deleteusergetId', ["filter" => "noauth"]);
 
+
+// course
 $routes->match(['get', 'post'], 'create_course', 'Admin\CourseController::create_course', ["filter" => "noauth"]);
 $routes->match(['get', 'post'], 'view_course', 'Admin\CourseController::view_course', ["filter" => "noauth"]);
 $routes->match(['get', 'post'], 'update_course/(:num)', 'Admin\CourseController::update_course/$1', ["filter" => "noauth"]);
@@ -107,6 +110,8 @@ $routes->post('admin_delete_course', 'Admin\CourseController::admin_delete_cours
 $routes->match(['get', 'post'], 'updatecoursegetId', 'Admin\CourseController::updatecoursegetId', ["filter" => "noauth"]);
 $routes->match(['get', 'post'], 'deletecoursegetId', 'Admin\CourseController::deletecoursegetId', ["filter" => "noauth"]);
 
+
+// level 
 $routes->match(['get', 'post'], 'create_level', 'Admin\LevelController::create_level', ["filter" => "noauth"]);
 $routes->match(['get', 'post'], 'view_level', 'Admin\LevelController::view_level', ["filter" => "noauth"]);
 $routes->match(['get', 'post'], 'update_level/(:num)', 'Admin\LevelController::update_level/$1', ["filter" => "noauth"]);
@@ -120,6 +125,50 @@ $routes->post('admin_delete_level', 'Admin\LevelController::admin_delete_level',
 $routes->match(['get', 'post'], 'updatelevelgetId', 'Admin\LevelController::updatelevelgetId', ["filter" => "noauth"]);
 $routes->match(['get', 'post'], 'deletelevelgetId', 'Admin\LevelController::deletelevelgetId', ["filter" => "noauth"]);
 
+
+// paragraph
+$routes->match(['get', 'post'], 'create_paragraph', 'Admin\ParagraphController::create_paragraph', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'view_paragraph', 'Admin\ParagraphController::view_paragraph', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'update_paragraph/(:num)', 'Admin\ParagraphController::update_paragraph/$1', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'delete_paragraph/(:num)', 'Admin\ParagraphController::delete_paragraph/$1', ["filter" => "noauth"]);
+
+$routes->post('admin_create_paragraph', 'Admin\ParagraphController::admin_create_paragraph', ['as' => 'admin_create_paragraph'], ["filter" => "noauth"]);
+$routes->post('admin_view_paragraph', 'Admin\ParagraphController::admin_view_paragraph', ['as' => 'admin_view_paragraph'], ["filter" => "noauth"]);
+$routes->post('admin_update_paragraph', 'Admin\ParagraphController::admin_update_paragraph', ['as' => 'admin_update_paragraph'], ["filter" => "noauth"]);
+$routes->post('admin_delete_paragraph', 'Admin\ParagraphController::admin_delete_paragraph', ['as' => 'admin_delete_paragraph'], ["filter" => "noauth"]);
+
+$routes->match(['get', 'post'], 'updateparagraphgetId', 'Admin\ParagraphController::updateparagraphgetId', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'deleteparagraphgetId', 'Admin\ParagraphController::deleteparagraphgetId', ["filter" => "noauth"]);
+
+
+// quizzes
+$routes->match(['get', 'post'], 'create_quiz', 'Admin\QuizController::create_quiz', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'view_quiz', 'Admin\QuizController::view_quiz', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'update_quiz/(:num)', 'Admin\QuizController::update_quiz/$1', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'delete_quiz/(:num)', 'Admin\QuizController::delete_quiz/$1', ["filter" => "noauth"]);
+
+$routes->post('admin_create_quiz', 'Admin\QuizController::admin_create_quiz', ['as' => 'admin_create_quiz'], ["filter" => "noauth"]);
+$routes->post('admin_view_quiz', 'Admin\QuizController::admin_view_quiz', ['as' => 'admin_view_quiz'], ["filter" => "noauth"]);
+$routes->post('admin_update_quiz', 'Admin\QuizController::admin_update_quiz', ['as' => 'admin_update_quiz'], ["filter" => "noauth"]);
+$routes->post('admin_delete_quiz', 'Admin\QuizController::admin_delete_quiz', ['as' => 'admin_delete_quiz'], ["filter" => "noauth"]);
+
+$routes->match(['get', 'post'], 'updatequizgetId', 'Admin\QuizController::updatequizgetId', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'deletequizgetId', 'Admin\QuizController::deletequizgetId', ["filter" => "noauth"]);
+
+
+// questions
+$routes->match(['get', 'post'], 'create_question', 'Admin\QuestionController::create_question', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'view_question', 'Admin\QuestionController::view_question', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'update_question/(:num)', 'Admin\QuestionController::update_question/$1', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'delete_question/(:num)', 'Admin\QuestionController::delete_question/$1', ["filter" => "noauth"]);
+
+$routes->post('admin_create_question', 'Admin\QuestionController::admin_create_question', ['as' => 'admin_create_question'], ["filter" => "noauth"]);
+$routes->post('admin_view_question', 'Admin\QuestionController::admin_view_question', ['as' => 'admin_view_question'], ["filter" => "noauth"]);
+$routes->post('admin_update_question', 'Admin\QuestionController::admin_update_question', ['as' => 'admin_update_question'], ["filter" => "noauth"]);
+$routes->post('admin_delete_question', 'Admin\QuestionController::admin_delete_question', ['as' => 'admin_delete_question'], ["filter" => "noauth"]);
+
+$routes->match(['get', 'post'], 'updatequestiongetId', 'Admin\QuestionController::updatequestiongetId', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'deletequestiongetId', 'Admin\QuestionController::deleteparagraphgetId', ["filter" => "noauth"]);
 
 /*
  * --------------------------------------------------------------------

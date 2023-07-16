@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Admin Dashboard</title>
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/0e4ad45b15.js" crossorigin="anonymous"></script>
@@ -103,6 +103,54 @@
                 </div>
             </li>
 
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Paragraphs</span>
+                </a>
+                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?= base_url('create_paragraph') ?>">Create Paragraph</a>
+                        <a class="collapse-item" href="<?= base_url('view_paragraph') ?>">View Paragraph</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Quizzes</span>
+                </a>
+                <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?= base_url('create_quiz') ?>">Create Quiz</a>
+                        <a class="collapse-item" href="<?= base_url('view_quiz') ?>">View Quiz</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Questions</span>
+                </a>
+                <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?= base_url('create_question') ?>">Create Question</a>
+                        <a class="collapse-item" href="<?= base_url('view_question') ?>">View Question</a>
+                    </div>
+                </div>
+            </li>
+
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -159,7 +207,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Your Website 2023</span>
                     </div>
                 </div>
             </footer>

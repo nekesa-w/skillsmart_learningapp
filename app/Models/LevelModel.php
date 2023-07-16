@@ -9,7 +9,7 @@ class LevelModel extends Model
 {
     protected $table = 'tbl_levels';
     protected $primaryKey = 'level_id';
-    protected $allowedFields = ['course_id', 'level_title', 'xp_requirement', 'content'];
+    protected $allowedFields = ['course_id', 'level_title', 'xp_requirement'];
 
     function AllLevelDetails()
     {
@@ -21,7 +21,6 @@ class LevelModel extends Model
 
         return $query;
     }
-
 
     function LevelContent($level_id)
     {
@@ -48,7 +47,6 @@ class LevelModel extends Model
 
         return $query;
     }
-
 
     function LevelDetails($course_id)
     {

@@ -14,9 +14,16 @@ class LevelController extends BaseController
         helper(['url', 'form']);
     }
 
+    public function create_level()
+    {
+        $course = new CourseModel();
+        $data['courses'] = $course->CourseDetails();
+
+        return view('admin/create_level', $data);
+    }
+
     public function admin_create_level()
     {
-        //Register user in database
         $string_course_id = $this->request->getPost('course_id');
         $level_title = $this->request->getPost('level_title');
         $content = $this->request->getPost('content');
@@ -47,14 +54,6 @@ class LevelController extends BaseController
         } else {
             return  redirect()->to('view_level')->with('success', 'Level created successfully');
         }
-    }
-
-    public function create_level()
-    {
-        $course = new CourseModel();
-        $data['courses'] = $course->CourseDetails();
-
-        return view('admin/create_level', $data);
     }
 
     public function view_level()

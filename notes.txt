@@ -27,9 +27,3 @@ yellow
 
 orange
 #FA9746
-
-
-
-
-
-
