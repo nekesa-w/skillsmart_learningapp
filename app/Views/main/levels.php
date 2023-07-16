@@ -97,14 +97,12 @@
 
                 <?php foreach ($ongoing as $ong) { ?>
                     <div class="icon-button">
-                        <form action="<?= route_to('getcontent'); ?>" method="POST">
 
-                            <button class="btn btn-locked" disabled>
-                                <i class="fa-solid fa-lock"></i>
-                                Complete Current Level to Unlock <?= $ong['level_title'] ?>
-                            </button>
+                        <button class="btn btn-locked" disabled>
+                            <i class="fa-solid fa-lock"></i>
+                            Complete Current Level to Unlock <?= $ong['level_title'] ?>
+                        </button>
 
-                        </form>
                     </div>
                 <?php } ?>
 
@@ -122,7 +120,7 @@
                     <div class="icon-button">
                         <form action="<?= route_to('getcontent'); ?>" method="POST">
 
-                            <button class="btn btn-completed" name="mark_complete" value="<?= $complete["level_id"] ?>">
+                            <button class="btn btn-completed" name="get_content" value="<?= $complete["level_id"] ?>">
                                 <i class="fa-solid fa-crown"></i>
                                 <?= $complete["level_title"] ?>
                             </button>

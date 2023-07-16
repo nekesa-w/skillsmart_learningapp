@@ -8,7 +8,7 @@ class UserModel extends Model
 {
     protected $table = 'tbl_users';
     protected $primaryKey = 'user_id';
-    protected $allowedFields = ['first_name', 'last_name', 'gender', 'dob', 'email', 'password', 'role', 'status', 'link', 'activation_date', 'xp_points'];
+    protected $allowedFields = ['first_name', 'last_name', 'gender', 'dob', 'email', 'password', 'role', 'status', 'link', 'activation_date', 'xp_points', 'last_login_date', 'daily_xp_points'];
 
     function UserDetails()
     {
@@ -25,7 +25,6 @@ class UserModel extends Model
 
     function UserDetailsbyId($user_id)
     {
-
         $db      = \Config\Database::connect();
 
         $builder = $db->table('tbl_users');
@@ -106,5 +105,52 @@ class UserModel extends Model
         $query = $builder->countAllResults();
 
         return $query;
+    }
+
+    function LastLogin($user_id)
+    {
+
+        $db      = \Config\Database::connect();
+
+        $builder = $db->table('tbl_users');
+        $builder->select('last_login_date');
+        $builder->where('tbl_users.user_id', $user_id);
+        $query = $builder->get()->getResultArray();
+
+        return $query;
+    }
+
+    function DailyXP($user_id)
+    {
+
+        $db      = \Config\Database::connect();
+
+        $builder = $db->table('tbl_users');
+        $builder->select('daily_xp_points');
+        $builder->where('tbl_users.user_id', $user_id);
+        $query = $builder->get()->getResultArray();
+
+        return $query;
+    }
+
+    public function updateXpPoints($user_id, $xp_gained)
+    {
+        $this->set('daily_xp_points', $xp_gained)
+            ->where('user_id', $user_id)
+            ->update();
+    }
+
+    public function resetXpPoints($user_id)
+    {
+        $this->set('daily_xp_points', 0)
+            ->where('user_id', $user_id)
+            ->update();
+    }
+
+    public function updateLastLoginDate($user_id, $lastLoginDate)
+    {
+        $this->set('last_login_date', $lastLoginDate)
+            ->where('user_id', $user_id)
+            ->update();
     }
 }

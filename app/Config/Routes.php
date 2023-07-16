@@ -55,19 +55,20 @@ $routes->post('save', 'RegisterController::save', ['as' => 'save']);
 $routes->match(['get', 'post'], 'LoginController/loginAuth', 'LoginController::loginAuth');
 $routes->get('login', 'LoginController::index');
 $routes->get('logout', 'LoginController::logout');
-
+$routes->get('forgotpassword', 'LoginController::forgotpassword');
+$routes->match(['get', 'post'], 'LoginController/forgotpasswordAuth', 'LoginController::forgotpasswordAuth');
+$routes->get('newpassword/(:any)', 'LoginController::newpassword/$1');
+$routes->post('passwordsave', 'LoginController::passwordsave', ['as' => 'passwordsave']);
 
 $routes->get("courses", "UserController::courses", ["filter" => "auth"]);
 $routes->get('profile', 'UserController::profile', ["filter" => "auth"]);
 
 $routes->post('getlevels', 'UserController::getlevels', ["filter" => "auth"]);
 $routes->get('levels/(:num)', 'UserController::levels/$1', ['as' => 'levels'], ["filter" => "auth"]);
-$routes->post('getcontent', 'UserController::getcontent', ["filter" => "auth"]);
-$routes->get('level_content/(:num)', 'UserController::level_content/$1', ['as' => 'level_content'], ["filter" => "auth"]);
 
-$routes->post('markcomplete', 'UserController::markcomplete', ["filter" => "auth"]);
-
-
+$routes->post('getcontent', 'QuestionController::getcontent', ["filter" => "auth"]);
+$routes->get('level_content/(:num)/(:any)', 'QuestionController::level_content/$1/$2', ['as' => 'level_content'], ["filter" => "auth"]);
+$routes->post('markcomplete', 'QuestionController::markcomplete', ["filter" => "auth"]);
 
 /*
  * --------------------------------------------------------------------

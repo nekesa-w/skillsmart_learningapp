@@ -10130,6 +10130,83 @@ td {
   color: #5774B8;
 }
 
-#progress-text{
+#progress-text, #quest-complete{
   color: #99D44A;
+}
+
+.radio-question [type="radio"] {
+	display: none;
+}
+
+.radio-question label {
+  width: 100%;
+	padding: 20px 60px;
+  font-size: 20px;
+  cursor: pointer;
+	min-width: 250px;
+	white-space: nowrap;
+	position: relative;
+	transition: 0.4s ease-in-out 0s;
+  text-align: center;
+  color: #666666;
+  border: 2px solid #c5c5c5;
+  box-shadow: 5px 5px #c5c5c5;
+  -moz-box-shadow: 5px 5px #c5c5c5;
+  -webkit-box-shadow: 5px 5px #c5c5c5;
+  -o-box-shadow: 5px 5px #c5c5c5;
+  -ms-box-shadow: 5px 5px #c5c5c5;
+  border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+}
+
+.radio-question label:after,
+.radio-question label:before {
+	content: "";
+	position: absolute;
+	border-radius: 50%;
+}
+
+.radio-question label:after {
+	height: 20px;
+	width: 20px;
+	border: 2px solid #c5c5c5;
+	left: 20px;
+	top: calc(50% - 12px);
+}
+
+.radio-question label:before {
+	background: #72a928;
+	height: 20px;
+	width: 20px;
+	left: 20px;
+	top: calc(50% - 12px);
+	transform: scale(5);
+	opacity: 0;
+	visibility: hidden;
+	transition: 0.4s ease-in-out 0s;
+}
+
+.radio-question [type="radio"]:checked ~ label {
+  background: #99D44A;
+  color: #fff;
+  border: 2px solid #72a928;
+  box-shadow: 5px 5px #72a928;
+  -moz-box-shadow: 5px 5px #72a928;
+  -webkit-box-shadow: 5px 5px #72a928;
+  -o-box-shadow: 5px 5px #72a928;
+  -ms-box-shadow: 5px 5px #72a928;
+  border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+}
+
+.radio-question [type="radio"]:checked ~ label::before {
+	opacity: 1;
+	visibility: visible;
+	transform: scale(1);
 }

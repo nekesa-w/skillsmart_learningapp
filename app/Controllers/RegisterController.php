@@ -128,17 +128,6 @@ class RegisterController extends BaseController
             $userModel = new UserModel();
             $query = $userModel->insert($values);
 
-            $values = [
-                'first_name' => $first_name,
-                'last_name' => $last_name,
-                'gender' => $gender,
-                'dob' => $dob,
-                'email' => $user_email,
-                'password' => password_hash("$password", PASSWORD_DEFAULT),
-                'link' => $link
-            ];
-
-
             if (!$query) {
                 return  redirect()->to('register')->with('fail', 'Something went wrong. Please try again.');
             } else {
