@@ -3,12 +3,10 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
-use App\Libraries\Hash;
 use App\Models\CourseModel;
 use App\Models\CourseXPModel;
-use App\Models\StudentModel;
 
-class AuthController extends BaseController
+class RegisterController extends BaseController
 {
 
     public function __construct()

@@ -48,24 +48,26 @@ $routes->get('/', 'MainController::index');
 $routes->get('index', 'MainController::index', ['as' => 'index']);
 $routes->get('about_us', 'MainController::about_us', ['as' => 'about_us']);
 
-$routes->get('register', 'AuthController::register', ['as' => 'register']);
-$routes->get('activate/(:any)', 'AuthController::activate/$1');
-$routes->post('save', 'AuthController::save', ['as' => 'save']);
+$routes->get('register', 'RegisterController::register', ['as' => 'register']);
+$routes->get('activate/(:any)', 'RegisterController::activate/$1');
+$routes->post('save', 'RegisterController::save', ['as' => 'save']);
 
 $routes->match(['get', 'post'], 'LoginController/loginAuth', 'LoginController::loginAuth');
 $routes->get('login', 'LoginController::index');
 $routes->get('logout', 'LoginController::logout');
 
-$routes->get('profile', 'MainController::profile', ['as' => 'profile']);
 
-$routes->get('courses', 'MainController::courses', ['as' => 'courses']);
-$routes->post('getlevels', 'LevelController::getlevels');
-$routes->get('levels/(:num)', 'LevelController::levels/$1', ['as' => 'levels']);
-$routes->post('getcontent', 'LevelController::getcontent');
-$routes->get('level_content/(:num)', 'LevelController::level_content/$1', ['as' => 'level_content']);
+$routes->get("courses", "UserController::courses", ["filter" => "auth"]);
+$routes->get('profile', 'UserController::profile', ["filter" => "auth"]);
+
+$routes->post('getlevels', 'UserController::getlevels', ["filter" => "auth"]);
+$routes->get('levels/(:num)', 'UserController::levels/$1', ['as' => 'levels'], ["filter" => "auth"]);
+$routes->post('getcontent', 'UserController::getcontent', ["filter" => "auth"]);
+$routes->get('level_content/(:num)', 'UserController::level_content/$1', ['as' => 'level_content'], ["filter" => "auth"]);
+
+$routes->post('markcomplete', 'UserController::markcomplete', ["filter" => "auth"]);
 
 
-$routes->post('markcomplete', 'LevelController::markcomplete');
 
 /*
  * --------------------------------------------------------------------
@@ -76,55 +78,47 @@ $routes->post('markcomplete', 'LevelController::markcomplete');
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
-$routes->get('dashboard', 'Admin\Dashboard::index', ['as' => 'dashboard']);
+$routes->get('dashboard', 'Admin\Dashboard::index', ['as' => 'dashboard'], ["filter" => "noauth"]);
 
-$routes->match(['get', 'post'], 'create_account', 'Admin\AccountController::create_account');
-$routes->match(['get', 'post'], 'view_account', 'Admin\AccountController::view_account');
-$routes->match(['get', 'post'], 'update_account/(:num)', 'Admin\AccountController::update_account/$1');
-$routes->match(['get', 'post'], 'delete_account/(:num)', 'Admin\AccountController::delete_account/$1');
+$routes->match(['get', 'post'], 'create_account', 'Admin\AccountController::create_account', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'view_account', 'Admin\AccountController::view_account', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'update_account/(:num)', 'Admin\AccountController::update_account/$1', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'delete_account/(:num)', 'Admin\AccountController::delete_account/$1', ["filter" => "noauth"]);
 
-$routes->post('admin_create_account', 'Admin\AccountController::admin_create_account', ['as' => 'admin_create_account']);
-$routes->post('admin_view_account', 'Admin\AccountController::admin_view_account', ['as' => 'admin_view_account']);
-$routes->post('admin_update_account', 'Admin\AccountController::admin_update_account', ['as' => 'admin_update_account']);
-$routes->post('admin_delete_account', 'Admin\AccountController::admin_delete_account', ['as' => 'admin_delete_account']);
+$routes->post('admin_create_account', 'Admin\AccountController::admin_create_account', ['as' => 'admin_create_account'], ["filter" => "noauth"]);
+$routes->post('admin_view_account', 'Admin\AccountController::admin_view_account', ['as' => 'admin_view_account'], ["filter" => "noauth"]);
+$routes->post('admin_update_account', 'Admin\AccountController::admin_update_account', ['as' => 'admin_update_account'], ["filter" => "noauth"]);
+$routes->post('admin_delete_account', 'Admin\AccountController::admin_delete_account', ['as' => 'admin_delete_account'], ["filter" => "noauth"]);
 
-$routes->match(['get', 'post'], 'updateusergetId', 'Admin\AccountController::updateusergetId');
-$routes->match(['get', 'post'], 'deleteusergetId', 'Admin\AccountController::deleteusergetId');
+$routes->match(['get', 'post'], 'updateusergetId', 'Admin\AccountController::updateusergetId', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'deleteusergetId', 'Admin\AccountController::deleteusergetId', ["filter" => "noauth"]);
 
+$routes->match(['get', 'post'], 'create_course', 'Admin\CourseController::create_course', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'view_course', 'Admin\CourseController::view_course', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'update_course/(:num)', 'Admin\CourseController::update_course/$1', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'delete_course/(:num)', 'Admin\CourseController::delete_course/$1', ["filter" => "noauth"]);
 
+$routes->post('admin_create_course', 'Admin\CourseController::admin_create_course', ['as' => 'admin_create_course'], ["filter" => "noauth"]);
+$routes->post('admin_view_course', 'Admin\CourseController::admin_view_course', ['as' => 'admin_view_course'], ["filter" => "noauth"]);
+$routes->post('admin_update_course', 'Admin\CourseController::admin_update_course', ['as' => 'admin_update_course'], ["filter" => "noauth"]);
+$routes->post('admin_delete_course', 'Admin\CourseController::admin_delete_course', ['as' => 'admin_delete_course'], ["filter" => "noauth"]);
 
+$routes->match(['get', 'post'], 'updatecoursegetId', 'Admin\CourseController::updatecoursegetId', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'deletecoursegetId', 'Admin\CourseController::deletecoursegetId', ["filter" => "noauth"]);
 
+$routes->match(['get', 'post'], 'create_level', 'Admin\LevelController::create_level', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'view_level', 'Admin\LevelController::view_level', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'update_level/(:num)', 'Admin\LevelController::update_level/$1', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'delete_level/(:num)', 'Admin\LevelController::delete_level/$1', ["filter" => "noauth"]);
 
+$routes->post('admin_create_level', 'Admin\LevelController::admin_create_level', ['as' => 'admin_create_level'], ["filter" => "noauth"]);
+$routes->post('admin_view_level', 'Admin\LevelController::admin_view_level', ['as' => 'admin_view_level'], ["filter" => "noauth"]);
+$routes->post('admin_update_level', 'Admin\LevelController::admin_update_level', ['as' => 'admin_update_level'], ["filter" => "noauth"]);
+$routes->post('admin_delete_level', 'Admin\LevelController::admin_delete_level', ['as' => 'admin_delete_level'], ["filter" => "noauth"]);
 
-$routes->match(['get', 'post'], 'create_course', 'Admin\CourseController::create_course');
-$routes->match(['get', 'post'], 'view_course', 'Admin\CourseController::view_course');
-$routes->match(['get', 'post'], 'update_course/(:num)', 'Admin\CourseController::update_course/$1');
-$routes->match(['get', 'post'], 'delete_course/(:num)', 'Admin\CourseController::delete_course/$1');
+$routes->match(['get', 'post'], 'updatelevelgetId', 'Admin\LevelController::updatelevelgetId', ["filter" => "noauth"]);
+$routes->match(['get', 'post'], 'deletelevelgetId', 'Admin\LevelController::deletelevelgetId', ["filter" => "noauth"]);
 
-$routes->post('admin_create_course', 'Admin\CourseController::admin_create_course', ['as' => 'admin_create_course']);
-$routes->post('admin_view_course', 'Admin\CourseController::admin_view_course', ['as' => 'admin_view_course']);
-$routes->post('admin_update_course', 'Admin\CourseController::admin_update_course', ['as' => 'admin_update_course']);
-$routes->post('admin_delete_course', 'Admin\CourseController::admin_delete_course', ['as' => 'admin_delete_course']);
-
-$routes->match(['get', 'post'], 'updatecoursegetId', 'Admin\CourseController::updatecoursegetId');
-$routes->match(['get', 'post'], 'deletecoursegetId', 'Admin\CourseController::deletecoursegetId');
-
-
-
-
-
-$routes->match(['get', 'post'], 'create_level', 'Admin\LevelController::create_level');
-$routes->match(['get', 'post'], 'view_level', 'Admin\LevelController::view_level');
-$routes->match(['get', 'post'], 'update_level/(:num)', 'Admin\LevelController::update_level/$1');
-$routes->match(['get', 'post'], 'delete_level/(:num)', 'Admin\LevelController::delete_level/$1');
-
-$routes->post('admin_create_level', 'Admin\LevelController::admin_create_level', ['as' => 'admin_create_level']);
-$routes->post('admin_view_level', 'Admin\LevelController::admin_view_level', ['as' => 'admin_view_level']);
-$routes->post('admin_update_level', 'Admin\LevelController::admin_update_level', ['as' => 'admin_update_level']);
-$routes->post('admin_delete_level', 'Admin\LevelController::admin_delete_level', ['as' => 'admin_delete_level']);
-
-$routes->match(['get', 'post'], 'updatelevelgetId', 'Admin\LevelController::updatelevelgetId');
-$routes->match(['get', 'post'], 'deletelevelgetId', 'Admin\LevelController::deletelevelgetId');
 
 /*
  * --------------------------------------------------------------------

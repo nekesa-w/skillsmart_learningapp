@@ -73,15 +73,16 @@
             <?php foreach ($current as $cur) { ?>
 
                 <div class="row my-3">
+                    <div class="icon-button">
+                        <form action="<?= route_to('getcontent'); ?>" method="POST">
 
-                    <form action="<?= route_to('getcontent'); ?>" method="POST">
+                            <button class="btn btn-current" name="get_content" value="<?= $cur['level_id'] ?>">
+                                <i class="fa-solid fa-star"></i>
+                                <?= $cur['level_title'] ?>
+                            </button>
 
-                        <button class="btn btn-primary m-3 p-5" name="get_content" value="<?= $cur['level_id'] ?>">
-                            <?= $cur['level_title'] ?>
-                        </button>
-
-                    </form>
-
+                        </form>
+                    </div>
                 </div>
 
             <?php } ?>
@@ -95,20 +96,16 @@
             <div class="row my-3">
 
                 <?php foreach ($ongoing as $ong) { ?>
+                    <div class="icon-button">
+                        <form action="<?= route_to('getcontent'); ?>" method="POST">
 
-                    <form action="<?= route_to('getcontent'); ?>" method="POST">
-
-                        <div class="sti_container">
-                            <button class="btn-locked" disabled>
-                                <span class="btn-locked-icon"> <i class="fa-solid fa-lock" aria-hidden="true"></i> </span>
-                                <span class="btn-text">
-                                    Complete Current Level to Unlock <?= $ong['level_title'] ?><br>
-                                </span>
+                            <button class="btn btn-locked" disabled>
+                                <i class="fa-solid fa-lock"></i>
+                                Complete Current Level to Unlock <?= $ong['level_title'] ?>
                             </button>
-                        </div>
 
-                    </form>
-
+                        </form>
+                    </div>
                 <?php } ?>
 
             </div>
@@ -122,15 +119,16 @@
             <div class="row my-3">
 
                 <?php foreach ($completed as $complete) { ?>
+                    <div class="icon-button">
+                        <form action="<?= route_to('getcontent'); ?>" method="POST">
 
-                    <form action="<?= route_to('getcontent'); ?>" method="POST">
+                            <button class="btn btn-completed" name="mark_complete" value="<?= $complete["level_id"] ?>">
+                                <i class="fa-solid fa-crown"></i>
+                                <?= $complete["level_title"] ?>
+                            </button>
 
-                        <button class="btn btn-completed m-3 p-5" name="mark_complete" value="<?= $complete["level_id"] ?>">
-                            <?= $complete["level_title"] ?>
-                        </button>
-
-                    </form>
-
+                        </form>
+                    </div>
                 <?php } ?>
 
             </div>
@@ -162,22 +160,6 @@
 
     // Example usage: Update the progress bar with a value of 50%
     updateProgressBar(progressValue);
-
-    $.ajax({
-        url: '<?php echo base_url("LevelController/levels"); ?>',
-        method: 'POST',
-        data: {
-            courseprogress: progressValue
-        },
-        success: function(response) {
-            // Handle the response from the controller method
-            console.log(response);
-        },
-        error: function(xhr, status, error) {
-            // Handle the error if the request fails
-            console.error(xhr.responseText);
-        }
-    });
 </script>
 
 <?= $this->endSection() ?>

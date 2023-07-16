@@ -57,7 +57,7 @@ class CourseController extends BaseController
             if (!$query) {
                 return  redirect()->to('create_course')->with('fail', 'Something went wrong. Course was not created. Please try again.');
             } else {
-                return  redirect()->to('create_course')->with('success', 'Course created successfully');
+                return  redirect()->to('view_course')->with('success', 'Course created successfully');
             }
         }
     }

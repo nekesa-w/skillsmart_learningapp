@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row">
             <?php foreach ($details as $detail) { ?>
-                <div class="col-lg-4 mb-5">
+                <div class="col-lg mb-5">
                     <h2 class="mb-4">Your Details</h2>
                     <div class="d-flex">
                         <i class="fa-solid fa-user"></i>
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 mb-5">
+                <div class="col-lg mb-5">
                     <h2 class="mb-4">Your Points</h2>
                     <div class="d-flex">
                         <i class="fa-solid fa-star"></i>
@@ -77,19 +77,35 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 mb-5">
-                    <h2 class="mb-4">Your Earned Badges</h2>
-
-                    <div class="medal-container">
-                        <div class="medal">
-                            <div class="medal-icon" data-medal="Gold"><span>Self-Awareness</span></div>
-                        </div>
+                <div class="col-lg-5 mb-5" id="leaderboardrow">
+                    <div id="header">
+                        <h2>Leaderboard</h2>
                     </div>
 
+                    <div id="leaderboard">
+
+                        <table>
+                            <tr>
+                                <th>Your Rank</th>
+                                <th>Your Name</th>
+                                <th>Your XP Points</th>
+                            </tr>
+                            <tr>
+                                <td><?= $ranking ?></td>
+                                <?php foreach ($details as $detail) { ?>
+                                    <td><?= $detail['first_name'] ?> <?= $detail['last_name']; ?></td>
+                                    <td><?= $detail['xp_points']; ?></td>
+                                <?php } ?>
+                            </tr>
+                        </table>
+
+                    </div>
                 </div>
-            <?php } ?>
+
         </div>
+    <?php } ?>
     </div>
+</div>
 </div>
 <!-- Contact End -->
 

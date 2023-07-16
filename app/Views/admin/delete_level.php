@@ -29,7 +29,8 @@
                 <?php foreach ($levels as $level) { ?>
 
                     <p>Level ID: <?= $level['level_id'] ?></p>
-                    <p>Couse ID: <?= $level['course_id'] ?></p>
+                    <input type="hidden" name="course_id" id="course_id" value="<?= $level['course_id'] ?>">
+                    <p> Course ID: <?= $level['course_id'] ?></p>
                     <p>Level Title: <?= $level['level_title'] ?></p>
                     <p>Level Content: <?= $level['content'] ?></p>
                     <p>Level XP Requirement: <?= $level['xp_requirement'] ?></p>

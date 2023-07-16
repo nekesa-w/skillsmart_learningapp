@@ -8,8 +8,12 @@ class LoginController extends BaseController
 {
     public function index()
     {
-        helper(['form']);
-        return view('auth/login');
+        if (session()->get('isLoggedIn')) {
+            return redirect()->to('courses');
+        } else {
+            helper(['form']);
+            return view('auth/login');
+        }
     }
 
     public function loginAuth()
@@ -30,6 +34,8 @@ class LoginController extends BaseController
 
             if ($authenticatePassword) {
 
+
+
                 $ses_data = [
                     'user_id' => $data['user_id'],
                     'first_name' => $data['first_name'],
@@ -40,15 +46,21 @@ class LoginController extends BaseController
                     'email' => $data['email'],
                     'activation_date' => $data['activation_date'],
                     'xp_points' => $data['xp_points'],
-                    'isLoggedIn' => TRUE
+                    'isLoggedIn' => TRUE,
+                    'complete_levels' => 0
                 ];
 
                 $session->set($ses_data);
 
-                if ($ses_data['role'] == 'admin') {
+                $user_id = session()->get('user_id');
+                $completedlevels = $userModel->CompletedLevelsUserCount($user_id);
+
+                session()->set('complete_levels', $completedlevels);
+
+                if ($ses_data['role'] == "admin") {
                     return redirect()->to('dashboard');
-                } elseif ($ses_data['role'] == 'user') {
-                    return redirect()->to('index');
+                } elseif ($ses_data['role'] == "user") {
+                    return redirect()->to('courses');
                 }
             } else {
                 return  redirect()->to('login')->with('fail', 'Incorrect password.');

@@ -45,7 +45,7 @@ class LevelController extends BaseController
         if (!$query) {
             return  redirect()->to('create_level')->with('fail', 'Something went wrong. Level was not created. Please try again.');
         } else {
-            return  redirect()->to('create_level')->with('success', 'Level created successfully');
+            return  redirect()->to('view_level')->with('success', 'Level created successfully');
         }
     }
 
@@ -130,10 +130,19 @@ class LevelController extends BaseController
 
     public function admin_delete_level()
     {
+        $course_id = $this->request->getPost('course_id');
         $level_id = $this->request->getPost('level_id');
-        $getlevel = new LevelModel();
 
+        $getlevel = new LevelModel();
         $delete = $getlevel->DeleteLevel($level_id);
+
+        $coursemodel = new CourseModel();
+        $find_course = $coursemodel->where('course_id', $course_id)->findAll();
+        $number_of_levels = $find_course[0]['number_of_levels'];
+        $newnumber_of_levels = $number_of_levels - 1;
+        $course_data['number_of_levels'] = $newnumber_of_levels;
+
+        $updatenumber_of_levels = $coursemodel->update($course_id, $course_data);
 
         if ($delete) {
             return  redirect()->to('view_level')->with('fail', 'Level not deleted.');

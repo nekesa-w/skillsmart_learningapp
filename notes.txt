@@ -1,24 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
-
-font-family: 'Varela Round', sans-serif;
-
 green: success messages
 #5fa55a
 
 red: fail messages
 #fa5457
 
-purple
-#5946B2
-
-light purple
-#EBEBEB
-
-blue
-#01b4bc
-
-pink-purple
-#9F2B68
-
-grey
+grey: font
 #666666
+
+grey: border
+#c5c5c5
+
+dark purple
+#362a6c
+
+blue: main colour
+#5774B8
+
+light blue
+#2EB7B6
+
+green
+#99D44A
+
+yellow
+#F0D834
+
+orange
+#FA9746
+
+
+
+
+
+

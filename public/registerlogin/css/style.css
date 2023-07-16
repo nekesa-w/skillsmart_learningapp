@@ -79,7 +79,7 @@ figure {
 p {
   margin-bottom: 0px;
   font-size: 20px;
-  color: #000;
+  color: #666666;
 }
 
 h2 {
@@ -87,7 +87,7 @@ h2 {
   margin: 0;
   padding: 0;
   font-weight: bold;
-  color: #01b4bc;
+  color: #5774B8;
   font-family: 'Varela Round', sans-serif;
   font-size: 36px;
 }
@@ -104,7 +104,7 @@ h2 {
 body {
   font-size: 20px;
   line-height: 2;
-  color: #000;
+  color: #666666;
   background: #f8f8f8;
   font-weight: 400;
   font-family: 'Varela Round', sans-serif;
@@ -113,25 +113,25 @@ body {
 }
 
 a:link {
-  color: #01b4bc;
+  color: #5774B8;
   background-color: transparent;
   text-decoration: none;
 }
 
 a:visited {
-  color: #01b4bc;
+  color: #5774B8;
   background-color: transparent;
   text-decoration: none;
 }
 
 a:hover {
-  color: #5946B2;
+  color: #2EB7B6;
   background-color: transparent;
   text-decoration: none;
 }
 
 a:active {
-  color: #01b4bc;
+  color: #5774B8;
   background-color: transparent;
   text-decoration: none;
 }
@@ -140,12 +140,12 @@ a:active {
   width: 900px;
   background: #fff;
   margin: 0 auto;
-  border: 2px solid #01b4bc;
-  box-shadow: 15px 15px #01b4bc;
-  -moz-box-shadow: 15px 15px #01b4bc;
-  -webkit-box-shadow: 15px 15px #01b4bc;
-  -o-box-shadow: 15px 15px #01b4bc;
-  -ms-box-shadow: 15px 15px #01b4bc;
+  border: 2px solid #5774B8;
+  box-shadow: 15px 15px #5774B8;
+  -moz-box-shadow: 15px 15px #5774B8;
+  -webkit-box-shadow: 15px 15px #5774B8;
+  -o-box-shadow: 15px 15px #5774B8;
+  -ms-box-shadow: 15px 15px #5774B8;
   border-radius: 20px;
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -188,7 +188,7 @@ figure {
 
 .form-submit {
   display: inline-block;
-  background: #5946B2;
+  background: #2EB7B6;
   color: #fff;
   border-bottom: none;
   width: auto;
@@ -249,7 +249,7 @@ input::-webkit-input-placeholder {
 }
 
 input::-moz-placeholder {
-  color: #000;
+  color: #666666;
 }
 
 input:-ms-input-placeholder {
@@ -335,12 +335,12 @@ label {
   margin-bottom: 50px;
   width: 150px;
   text-align: center;
-  border: 2px solid #01b4bc;
-  box-shadow: 15px 15px #01b4bc;
-  -moz-box-shadow: 15px 15px #01b4bc;
-  -webkit-box-shadow: 15px 15px #01b4bc;
-  -o-box-shadow: 15px 15px #01b4bc;
-  -ms-box-shadow: 15px 15px #01b4bc;
+  border: 2px solid #5774B8;
+  box-shadow: 15px 15px #5774B8;
+  -moz-box-shadow: 15px 15px #5774B8;
+  -webkit-box-shadow: 15px 15px #5774B8;
+  -o-box-shadow: 15px 15px #5774B8;
+  -ms-box-shadow: 15px 15px #5774B8;
   border-radius: 20px;
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;

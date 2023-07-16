@@ -29,33 +29,45 @@
 
 <body>
     <!-- Navbar Start -->
-    <div class="container-fluid bg-light position-relative shadow">
+    <div class="container-fluid bg-light position-relative shadow-sm">
         <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5">
             <a href="<?= base_url('index'); ?>" class="navbar-brand font-weight-bold text-secondary" style="font-size: 50px">
-                <span class="text-primary"><i class="fa-solid fa-crosshairs"></i> skillsmart</span>
+                <span class="text-navbar"><i class="fa-solid fa-crosshairs"></i> skillsmart</span>
             </a>
+
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-around" id="navbarCollapse">
+
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <?php $session = session(); ?>
                 <?php if ($session->isLoggedIn == TRUE) : ?>
 
                     <div class="navbar-nav font-weight-bold py-0">
                         <a href="<?= base_url('courses'); ?>" class="nav-item nav-link"> <i class="fa-solid fa-book"></i> COURSES </a>
-                    </div>
-
-                    <div class="navbar-nav font-weight-bold py-0">
-                        <h3 class="mt-4"><?= $session->get('xp_points') ?> XP </h3>
                         <a href="<?= base_url('profile'); ?>" class="nav-item nav-link"> <i class="fa-solid fa-user"></i> PROFILE </a>
+
+                        <h4 class="xppoints mt-4 mb-4 mr-2">
+                            <i class="fa-regular fa-gem"></i> <?= $session->get('xp_points') ?>
+                            XP
+                        </h4>
+
+                        <?php if ($session->complete_levels > 0) : ?>
+                            <h4 class="completedlevel mt-4 mb-4">
+                                <i class="fa-solid fa-crown"></i> <?= $session->get('complete_levels') ?>
+                                LEVELS
+                            </h4>
+                        <?php endif ?>
                     </div>
 
-                    <a href="<?= base_url('logout'); ?>" class="btn btn-primary px-4">Logout</a>
+                    <a href="<?= base_url('logout'); ?>" class="btn btn-primary px-4 mt-4 mb-4">Logout</a>
+
+
                 <?php else : ?>
 
-                    <div class="navbar-nav font-weight-bold mx-auto py-0">
-                        <a href="<?= base_url('index'); ?>" class="nav-item nav-link"> <i class="fa-solid fa-house"></i> HOME </a>
-                        <a href="<?= base_url('about_us'); ?>" class="nav-item nav-link"> <i class="fa-solid fa-address-card"></i> ABOUT US </a>
+                    <div class="navbar-nav font-weight-bold py-0">
+                        <a href="<?= base_url('index'); ?>" class="nav-item nav-link"><i class="fa-solid fa-house"></i> HOME </a>
+                        <a href="<?= base_url('about_us'); ?>" class="nav-item nav-link"><i class="fa-solid fa-address-card"></i> ABOUT US </a>
                     </div>
                     <a href="<?= base_url('login'); ?>" class="btn btn-primary px-4">Login</a>
 
@@ -76,15 +88,18 @@
 
                     <span class="text-footer"><i class="fa-solid fa-crosshairs"></i> skillsmart</span>
                 </a>
+
                 <p class="text-footer">
                     Unlock your potential, level up your life. Join the journey towards personal growth and success. Start now!
                 </p>
+
                 <div class="d-flex justify-content-start mt-4">
                     <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-outline-primary rounded-circle text-ctn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
+
             <div class="col-lg-4 col-md-6 mb-5">
                 <h3 class="text-primary mb-4">Get In Touch</h3>
                 <div class="d-flex">
@@ -117,7 +132,7 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid pt-5" style="border-top: 1px solid rgba(23, 162, 184, 0.2) ;">
+        <div class="container-fluid pt-5" style="border-top: 1px solid white ;">
             <p class="m-0 text-center text-footer">
                 &copy;
                 <a class="text-primary font-weight-bold" href="<?= base_url('about_us'); ?>">SkillSmart</a>.
@@ -125,7 +140,7 @@
                 Designed by
                 <a class="text-primary font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
                 <br />Distributed By:
-                <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                <a href="https://themewagon.com" style="color: white;" target="_blank">ThemeWagon</a>
             </p>
         </div>
     </div>

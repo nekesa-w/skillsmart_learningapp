@@ -103,7 +103,7 @@ class AccountController extends BaseController
 
                 $email->printDebugger(['headers']);
 
-                return  redirect()->to('create_account')->with('success', 'Account created successfully');
+                return  redirect()->to('view_account')->with('success', 'Account created successfully');
             }
         }
     }
