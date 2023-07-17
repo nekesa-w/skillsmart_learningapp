@@ -7,6 +7,7 @@ use App\Models\CompletedLevelModel;
 use App\Models\CourseXPModel;
 use App\Models\LevelModel;
 use App\Models\QuestionModel;
+use App\Models\QuizModel;
 use App\Models\UserModel;
 
 class LevelController extends BaseController
@@ -37,6 +38,10 @@ class LevelController extends BaseController
         $data['completed'] = $getlevels->CompletedLevels($course_id, $user_id);
         $data['ongoing'] = $getlevels->OngoingLevels($course_id, $user_id, $currentcoursexp);
         $data['current'] = $getlevels->CurrentLevel($course_id, $user_id, $currentcoursexp);
+
+        $isquizcomplete = new QuizModel();
+        $data['quizcompleted'] = $isquizcomplete->QuizComplete($course_id);
+        $data['details'] = $isquizcomplete->QuizDetails($course_id);
 
         if ($data['courses'][0]['number_of_levels'] != 0) {
             $data['percent'] =   ($data['progress'] / $data['courses'][0]['number_of_levels']) * 100;

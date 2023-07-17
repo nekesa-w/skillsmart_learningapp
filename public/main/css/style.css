@@ -11070,29 +11070,59 @@ a.text-dark:focus {
 
 .round-6 {
 	background-color: #2EB7B6;
+	border-radius: 70%;
+	text-align: center;
 	color: #fff;
-	border: none;
 	padding: 5px;
-	font-size: 30px;
-	height: 130px;
-	width: 130px;
-	box-shadow: 0 3px 6px #2EB7B6;
+	height: 150px;
+	width: 150px;
 	cursor: pointer;
 	transition: all 0.2s ease;
+	position: relative;
+	transition: 0.5s;
+	border: 2px solid #248e8d;
+	box-shadow: 5px 5px #248e8d;
+	-moz-box-shadow: 5px 5px #248e8d;
+	-webkit-box-shadow: 5px 5px #248e8d;
+	-o-box-shadow: 5px 5px #248e8d;
+	-ms-box-shadow: 5px 5px #248e8d;
+}
+
+.ribbon {
+	width: 170px;
+	font-size: 20px;
+	padding: 10px;
+	position: absolute;
+	z-index: 2;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	border-radius: 10px;
+	background-color: #F0D834;
+	color: #fff;
+	border: 2px solid #ebaa11;
+	box-shadow: 5px 5px #ebaa11;
+	-moz-box-shadow: 5px 5px #ebaa11;
+	-webkit-box-shadow: 5px 5px #ebaa11;
+	-o-box-shadow: 5px 5px #ebaa11;
+	-ms-box-shadow: 5px 5px #ebaa11;
 }
 
 .round-6:hover {
-	background-color: #fff;
-	color: #2EB7B6;
+	transform: scale(1.1);
 }
 
-.round-6:active {
-	box-shadow: 0 2px 4px #2EB7B6;
-	transform: translateY(2px);
-}
-
-.round-6 {
-	border-radius: 70%;
+.round-6 .fa-crosshairs {
+	position: absolute;
+	z-index: 3;
+	top: 20%;
+	left: 90%;
+	transform: translate(-50%, -50%);
+	font-size: 50px;
+	color: #5774B8;
+	-webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-color: #3a5189;
 }
 
 .progress-bar {
@@ -11375,7 +11405,6 @@ td {
 	font-size: 20px;
 	cursor: pointer;
 	min-width: 250px;
-	white-space: nowrap;
 	position: relative;
 	transition: 0.4s ease-in-out 0s;
 	text-align: center;
@@ -11499,4 +11528,8 @@ td {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.completed {
+	color: #99D44A;
 }

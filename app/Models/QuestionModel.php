@@ -43,6 +43,20 @@ class QuestionModel extends Model
             ->where('tbl_courses.course_id', $course_id);
     }
 
+    function QuestionAnswers($course_id)
+    {
+        $db      = \Config\Database::connect();
+
+        $builder = $db->table('tbl_questions');
+        $builder->select('*');
+        $builder->join('tbl_levels', 'tbl_levels.level_id = tbl_questions.level_id');
+        $builder->join('tbl_courses', 'tbl_courses.course_id = tbl_levels.course_id');
+        $builder->where('tbl_courses.course_id', $course_id);
+        $query = $builder->get()->getResultArray();
+
+        return $query;
+    }
+
     function QuestionContentByLevel($level_id)
     {
         $db      = \Config\Database::connect();

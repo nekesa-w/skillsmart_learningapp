@@ -2,11 +2,12 @@
 
 namespace App\Controllers;
 
-use App\Models\AnswersModel;
 use App\Models\CompletedLevelModel;
 use App\Models\CourseXPModel;
 use App\Models\LevelModel;
 use App\Models\QuestionModel;
+use App\Models\QuizAnswersModel;
+use App\Models\QuizModel;
 use App\Models\UserModel;
 
 class ChallengeController extends BaseController
@@ -70,7 +71,22 @@ class ChallengeController extends BaseController
     function markchallengecomplete()
     {
         $level_id = $this->request->getPost('level_id');
+        $course_id = $this->request->getPost('course_id');
         $user_id = session()->get('user_id');
+
+        $questionModel = new QuestionModel();
+        $totalquestions = $questionModel->CountQuestionContentByCourse($course_id);
+        $numCorrectAnswers = session()->get('numCorrectAnswers');
+
+        $percentage = ($numCorrectAnswers / $totalquestions) * 100;
+
+        $quizAnswersModel = new QuizModel();
+        $quizAnswerData = [
+            'user_id' => $user_id,
+            'course_id' => $course_id,
+            'percentage' => $percentage
+        ];
+        $quizAnswersModel->insert($quizAnswerData);
 
         $allSessions = session()->get();
 
@@ -88,25 +104,12 @@ class ChallengeController extends BaseController
 
         session()->remove('numCorrectAnswers');
 
-        $getlevel = new LevelModel();
-        $data = $getlevel->MarkComplete($level_id, $user_id);
-
-        $course_id = ($data['0']['course_id']);
-        $xp_gained = '100';
+        $xp_gained = '200';
 
         $userxp = new UserModel();
         $find_user_xp = $userxp->where('user_id', $user_id)->findAll();
 
         if (count($find_user_xp) > 0) {
-
-            $coursexp = new CourseXPModel();
-            $find_course_xp = $coursexp->where('course_id', $course_id)->where('user_id', $user_id)->findAll();
-            $old_course_xp_point = $find_course_xp[0]['xp_points'];
-            $new_course_xp_point = $old_course_xp_point + $xp_gained;
-
-            $course_xp_id = $find_course_xp[0]['course_xp_id'];
-            $course_data['xp_points'] = $new_course_xp_point;
-            $updatecoursexp = $coursexp->update($course_xp_id, $course_data);
 
             $old_level_xp_point = $find_user_xp[0]['xp_points'];
             $new_level_xp_point = $old_level_xp_point + $xp_gained;
@@ -131,17 +134,11 @@ class ChallengeController extends BaseController
                 'xp_points' => $xp_gained
             ];
 
-            $marklevelcomplete = new CompletedLevelModel();
-            $query = $marklevelcomplete->insert($values);
-
             $newuserxp = session()->set('xp_points', $new_level_xp_point);
 
-            $completedlevels = $userxp->CompletedLevelsUserCount($user_id);
-            session()->set('complete_levels', $completedlevels);
-
-            return redirect()->to('courses')->with('success', 'Success! Level marked complete!');
+            return redirect()->to('courses')->with('success', 'Success! Challenge complete! You have gained 200 XP');
         } else {
-            return  redirect()->to('courses')->with('fail', 'Something went wrong. Level not marked complete.');
+            return  redirect()->to('courses')->with('fail', 'Something went wrong. Challange not marked complete.');
         }
     }
 }

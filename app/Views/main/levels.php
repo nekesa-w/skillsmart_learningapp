@@ -2,8 +2,6 @@
 
 <?= $this->section('content') ?>
 
-
-
 <!-- Levels Start -->
 <div class="container-fluid pt-5">
     <div class="container">
@@ -24,30 +22,59 @@
 
         <?php else : ?>
 
-            <div class="row my-5" id="course-row">
+            <div class="row my-4 align-items-center" id="course-row">
                 <?php foreach ($courses as $course) { ?>
 
-                    <div class="col">
-                        <h1 class="m-5"><?= $course['course_title'] ?></h1>
+                    <div class="col-lg-5 parent">
+                        <p class="section-title m-3 px-5">
+                            <span class="px-2">Course </span>
+                        </p>
+                        <h1><?= $course['course_title'] ?></h1>
                     </div>
 
                     <?php if ($percent == 100) : ?>
 
-                        <div class="col my-5">
-                            <div class="progress-bar">
-                                <div class="progress"></div>
+                        <?php if ($quizcompleted == 1) : ?>
+                            <div class="col parent">
+                                <p class="section-title m-3 px-5">
+                                    <span class="px-2">Levels </span>
+                                </p>
+                                <div class="progress-bar">
+                                    <div class="progress"></div>
+                                </div>
+                                <h3 id="progress-text"></h3>
                             </div>
-                            <h3 id="progress-text"></h3>
-                        </div>
 
-                        <div class="col parent">
-                            <form action="<?= route_to('getchallenge'); ?>" method="POST">
-                                <button class="round-6 m-3" name="getchallenge" value="<?= $course['course_id'] ?>">
-                                    Challenge
-                                </button>
-                            </form>
-                        </div>
+                            <?php foreach ($details as $detail) { ?>
+                                <div class="col parent">
+                                    <button class="round-6 m-3" disabled>
+                                        <i class="fa-solid fa-crosshairs"></i>
+                                        <span class="ribbon">Score: <?= $detail['percentage'] ?>%</span>
+                                    </button>
+                                    <h4 class="completed">Challenge <br> Completed!</h4>
+                                </div>
+                            <?php } ?>
 
+                        <?php else : ?>
+                            <div class="col parent">
+                                <p class="section-title m-3 px-5">
+                                    <span class="px-2">Levels </span>
+                                </p>
+                                <div class="progress-bar">
+                                    <div class="progress"></div>
+                                </div>
+                                <h3 id="progress-text"></h3>
+                            </div>
+
+                            <div class="col parent">
+                                <form action="<?= route_to('getchallenge'); ?>" method="POST">
+                                    <button class="round-6 m-3" name="getchallenge" value="<?= $course['course_id'] ?>">
+                                        <i class="fa-solid fa-crosshairs"></i>
+                                        <span class="ribbon">Go to Challenge</span>
+                                    </button>
+                                </form>
+                            </div>
+                        <?php endif ?>
                     <?php else : ?>
 
                         <div class="col m-5">

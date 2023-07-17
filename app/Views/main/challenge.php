@@ -2,7 +2,7 @@
 
 <?= $this->section('content') ?>
 
-<!-- Level Content Start -->
+<!-- Challenge Content Start -->
 <div class="container-fluid pt-5">
     <div class="container">
 
@@ -10,20 +10,22 @@
 
             <?php foreach ($questions as $question) { ?>
                 <div class="col m-3">
-                    <h1 class="level-heading"><?= $question['course_title'] ?></h1>
+                    <h1 class="level-heading">Challenge: <?= $question['course_title'] ?></h1>
                 </div>
 
             <?php } ?>
 
         </div>
 
-        <div class="row my-2">
-            <p class="content-level">Get ready to boost your life skills! Dive into our interactive quiz and learn while having fun. Every correct answer brings you closer to mastery!</p>
+        <div class="row content-level">
+            <p>Get ready to boost your life skills! Dive into our interactive quiz and learn while having fun. Every correct answer brings you closer to mastery!</p>
+            <p>Complete Challenge with over 80% to earn a badge</p>
         </div>
 
-        <div class="row my-2">
 
+        <div class="row my-2">
             <?php foreach ($questions as $question) { ?>
+
                 <div class="col mb-3">
 
                     <div class="row justify-content-center">
@@ -32,16 +34,12 @@
                         <?php
                         $isCorrect = session()->get('isCorrect' . $question['question_id']);
                         if ($isCorrect !== null) {
-                            if ($isCorrect) {
-                                echo '<h3 class="correct-answer">Your answer is correct!</h3>';
-                            } else {
-                                echo '<h3 class="incorrect-answer">Your answer is incorrect.</h3>';
-                            }
+                            echo '<h3 class="correct-answer">Your answer is saved!</h3>';
                         }
                         ?>
                     </div>
 
-                    <form action="<?= route_to('submitanswer', $question['question_id']); ?>" method="post">
+                    <form action="<?= route_to('submitchallengeanswer', $question['question_id']); ?>" method="post">
 
                         <input type="hidden" id="correct_answer" name="correctanswer<?= $question['question_id'] ?>" value="<?= $question['correct_answer'] ?>">
 
@@ -66,20 +64,15 @@
                         </div>
 
                         <div class="row mt-3">
-                            <button type="submit" class="btn btn-paragraph">Check Answer</button>
+                            <button type="submit" class="btn btn-paragraph">Save Answer</button>
                         </div>
 
                     </form>
+
                 </div>
 
             <?php } ?>
-
         </div>
-
-        <?php
-        $numCorrectAnswers = session()->get('numCorrectAnswers');
-        $isAllCorrect = ($numCorrectAnswers === $countquestions);
-        ?>
 
         <div class="row">
             <div class="col pagination pagebutton">
@@ -97,25 +90,20 @@
                 <?php foreach ($questions as $question) { ?>
 
                     <?php if ($currentPage === $totalPages) : ?>
-                        <?php if ($returnCompletedRows === 0) : ?>
-                            <form action="<?= route_to('markcomplete'); ?>" method="POST">
-                                <input type="hidden" id="level_id" name="level_id" value="<?= $question['level_id'] ?>">
-                                <?php if ($isAllCorrect) : ?>
-                                    <button type="submit" class="btn btn-paragraph">Mark Level as Complete</button>
-                                <?php else : ?>
-                                    <button type="submit" class="btn btn-locked" disabled>Correct Your Answers to Mark Level as Complete</button>
-                                <?php endif; ?>
-                            </form>
-                        <?php endif; ?>
+                        <form action="<?= route_to('markchallengecomplete'); ?>" method="POST">
+                            <input type="hidden" id="level_id" name="level_id" value="<?= $question['level_id'] ?>">
+                            <input type="hidden" id="course_id" name="course_id" value="<?= $question['course_id'] ?>">
+                            <button type="submit" class="btn btn-paragraph">Finish Challenge</button>
+                        </form>
                     <?php endif; ?>
-
                 <?php } ?>
             </div>
+
         </div>
 
     </div>
 </div>
-<!-- Level Content End -->
 
+<!-- Challenge Content End -->
 
 <?= $this->endSection() ?>
