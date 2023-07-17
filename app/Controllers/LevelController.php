@@ -114,9 +114,21 @@ class LevelController extends BaseController
         $level_id = $this->request->getPost('level_id');
         $user_id = session()->get('user_id');
 
-        $removesavedanswers = session()->remove('selectedAnswer');
-        $removecorrectanswers = session()->remove('isCorrect');
-        $removenumcorrectanswers = session()->remove('numCorrectAnswers');
+        $allSessions = session()->get();
+
+        foreach ($allSessions as $sessionName => $sessionValue) {
+            if (strpos($sessionName, 'selectedAnswer') === 0) {
+                session()->remove($sessionName);
+            }
+        }
+
+        foreach ($allSessions as $sessionName => $sessionValue) {
+            if (strpos($sessionName, 'isCorrect') === 0) {
+                session()->remove($sessionName);
+            }
+        }
+
+        session()->remove('numCorrectAnswers');
 
         $getlevel = new LevelModel();
         $data = $getlevel->MarkComplete($level_id, $user_id);

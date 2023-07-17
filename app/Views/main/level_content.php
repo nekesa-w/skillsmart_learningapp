@@ -108,7 +108,7 @@
                                 <?php if ($isAllCorrect) : ?>
                                     <button type="submit" class="btn btn-paragraph">Mark Level as Complete</button>
                                 <?php else : ?>
-                                    <button type="submit" class="btn btn-locked" disabled>Correct Your Answers to Mark Level as Complete</button>
+                                    <button type="submit" class="btn btn-locked" disabled>Correct All Answers to Mark Level as Complete</button>
                                 <?php endif; ?>
                             </form>
                         <?php endif; ?>
