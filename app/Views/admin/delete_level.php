@@ -32,7 +32,6 @@
                     <input type="hidden" name="course_id" id="course_id" value="<?= $level['course_id'] ?>">
                     <p> Course ID: <?= $level['course_id'] ?></p>
                     <p>Level Title: <?= $level['level_title'] ?></p>
-                    <p>Level Content: <?= $level['content'] ?></p>
                     <p>Level XP Requirement: <?= $level['xp_requirement'] ?></p>
 
                     <p>Are you sure you want to delete this level?</p>

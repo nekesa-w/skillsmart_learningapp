@@ -79,6 +79,7 @@
 
     <?= $this->renderSection('content') ?>
 
+
     <!-- Footer Start -->
     <div class="container-fluid bg-secondary text-white mt-5 py-5 px-sm-3 px-md-5">
         <div class="row pt-5">

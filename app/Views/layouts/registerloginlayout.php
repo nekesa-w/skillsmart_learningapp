@@ -8,7 +8,7 @@
     <script src="https://kit.fontawesome.com/0e4ad45b15.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo base_url('registerlogin/fonts/material-icon/css/material-design-iconic-font.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('registerlogin/css/style.css'); ?>">
-    <title>New Password</title>
+    <title>Skillsmart</title>
 </head>
 
 

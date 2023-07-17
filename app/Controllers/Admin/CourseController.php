@@ -13,6 +13,11 @@ class CourseController extends BaseController
         helper(['url', 'form']);
     }
 
+    public function create_course()
+    {
+        return view('admin/create_course');
+    }
+
     public function admin_create_course()
     {
         $validation = $this->validate([
@@ -60,12 +65,6 @@ class CourseController extends BaseController
                 return  redirect()->to('view_course')->with('success', 'Course created successfully');
             }
         }
-    }
-
-    public function create_course()
-    {
-
-        return view('admin/create_course');
     }
 
     public function view_course()

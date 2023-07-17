@@ -9,78 +9,36 @@ use App\Models\LevelModel;
 use App\Models\QuestionModel;
 use App\Models\UserModel;
 
-class LevelController extends BaseController
+class ChallengeController extends BaseController
 {
-    function getlevels()
+    function getchallenge()
     {
-        $course_id = $this->request->getPost('get_level');
-        return redirect()->to(base_url() . 'levels/' . $course_id);
+        $page = 1;
+        $course_id = $this->request->getPost('getchallenge');
+
+        return redirect()->to(base_url() . 'challenge/' . $course_id . '/' . $page);
     }
 
-    public function levels($course_id)
+    public function challenge()
     {
-        $courseprogress = $this->request->getPost('courseprogress');
+        $user_id = session()->get('user_id');
 
         $uri = current_url(true);
         $course_id = $uri->getSegment(2);
-
-        $user_id = session()->get('user_id');
-        $getlevels = new LevelModel();
-
-        $coursexp = new CourseXPModel();
-        $find_course_xp = $coursexp->where('course_id', $course_id)->where('user_id', $user_id)->findAll();
-        $currentcoursexp = $find_course_xp[0]['xp_points'];
-
-        $data['levels'] = $getlevels->LevelDetails($course_id);
-        $data['courses'] = $getlevels->CourseDetails($course_id);
-        $data['progress'] = $getlevels->CompletedLevelsCount($course_id, $user_id);
-        $data['completed'] = $getlevels->CompletedLevels($course_id, $user_id);
-        $data['ongoing'] = $getlevels->OngoingLevels($course_id, $user_id, $currentcoursexp);
-        $data['current'] = $getlevels->CurrentLevel($course_id, $user_id, $currentcoursexp);
-
-        if ($data['courses'][0]['number_of_levels'] != 0) {
-            $data['percent'] =   ($data['progress'] / $data['courses'][0]['number_of_levels']) * 100;
-            return view('main/levels', $data);
-        } else {
-            return view('main/levels', $data);
-        }
-    }
-
-    function getcontent()
-    {
-        $page = 1;
-        $level_id = $this->request->getPost('get_content');
-        return redirect()->to(base_url() . 'level_content/' . $level_id . '/' . $page);
-    }
-
-    public function level_content()
-    {
-        $user_id = session()->get('user_id');
-
-        $uri = current_url(true);
-        $level_id = $uri->getSegment(2);
         $page = $uri->getSegment(3);
 
-        $levelModel = new LevelModel();
-        $level_details = $levelModel->LevelContent($level_id);
-
-        $returnCompletedRows = $levelModel->CompletedLevelsUser($level_id, $user_id);
-
         $questionModel = new QuestionModel();
-        $countquestions = $questionModel->where('level_id', $level_id)->countAllResults();
+        $countquestions = $questionModel->CountQuestionContentByCourse($course_id);
 
         $data = [
-            'questions' => $questionModel->where('level_id', $level_id)->paginate(1, 'group1'),
+            'questions' => $questionModel->QuestionContentByCourse($course_id)->paginate(1, 'group1'),
             'pager' => $questionModel->pager,
             'currentPage' => $questionModel->pager->getCurrentPage('group1'),
             'totalPages'  => $questionModel->pager->getPageCount('group1'),
-            'level_details' => $level_details,
-            'level_id' => $level_id,
-            'returnCompletedRows' => $returnCompletedRows,
             'countquestions' => $countquestions
         ];
 
-        return view('main/level_content', $data);
+        return view('main/challenge', $data);
     }
 
     public function submitanswer($question_id)

@@ -7,7 +7,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Delete Paragraph</h1>
+        <h1 class="h3 mb-0 text-gray-800">Delete Question</h1>
     </div>
 
     <!-- Content Row -->
@@ -15,7 +15,7 @@
 
         <div class="signup-form">
 
-            <form action="<?= route_to('admin_delete_paragraph'); ?>" method="POST" class="register-form" id="register-form">
+            <form action="<?= route_to('admin_delete_question'); ?>" method="POST" class="register-form" id="register-form">
 
                 <?= csrf_field(); ?>
                 <?php if (!empty(session()->getFlashdata('fail'))) : ?>
@@ -26,15 +26,18 @@
                     <div class="alert alert-success"><?= session()->getFlashdata('success'); ?></div>
                 <?php endif ?>
 
-                <?php foreach ($paragraphs as $paragraph) { ?>
+                <?php foreach ($questions as $question) { ?>
 
-                    <p>Paragraph ID: <?= $paragraph['paragraph_id'] ?></p>
-                    <p>Level ID: <?= $paragraph['level_id'] ?></p>
-                    <p>Paragraph Content: <?= $paragraph['content'] ?></p>
+                    <p>Question ID: <?= $question['question_id'] ?></p>
+                    <input type="hidden" name="level_id" id="level_id" value="<?= $question['level_id'] ?>">
+                    <p>Level ID: <?= $question['level_id'] ?></p>
+                    <p>Question Title: <?= $question['question_title'] ?></p>
+                    <p>Question Paragraph: <?= $question['paragraph'] ?></p>
+                    <p>Question Correct Answer: <?= $question['correct_answer'] ?></p>
 
-                    <p>Are you sure you want to delete this paragraph?</p>
+                    <p>Are you sure you want to delete this question?</p>
                     <div class="form-group form-button">
-                        <button type="submit" name="paragraph_id" id="paragraph_id" class="form-submit" value="<?= $paragraph['paragraph_id'] ?>">
+                        <button type="submit" name="question_id" id="question_id" class="form-submit" value="<?= $question['question_id'] ?>">
                             Delete
                         </button>
                     </div>

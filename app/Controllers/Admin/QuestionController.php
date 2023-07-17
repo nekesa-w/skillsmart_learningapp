@@ -3,6 +3,8 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
+use App\Models\QuestionModel;
+use App\Models\LevelModel;
 
 class QuestionController extends BaseController
 {
@@ -12,29 +14,40 @@ class QuestionController extends BaseController
         helper(['url', 'form']);
     }
 
+    public function create_question()
+    {
+        $levels = new LevelModel();
+        $data['levels'] = $levels->AllLevelDetails();
+
+        return view('admin/create_question', $data);
+    }
+
     public function admin_create_question()
     {
-        //Register user in database
         $string_level_id = $this->request->getPost('level_id');
-        $content = $this->request->getPost('content');
+        $paragraph = $this->request->getPost('paragraph');
+        $question_title = $this->request->getPost('question_title');
+        $correct_answer = $this->request->getPost('correct_answer');
+        $option_1 = $this->request->getPost('option_1');
+        $option_2 = $this->request->getPost('option_2');
+        $option_3 = $this->request->getPost('option_3');
+        $option_4 = $this->request->getPost('option_4');
 
         $level_id = (int)$string_level_id;
 
         $values = [
             'level_id' => $level_id,
-            'content' => $content,
+            'paragraph' => $paragraph,
+            'question_title' => $question_title,
+            'correct_answer' => $correct_answer,
+            'option_1' => $option_1,
+            'option_2' => $option_2,
+            'option_3' => $option_3,
+            'option_4' => $option_4
         ];
 
         $questionModel = new QuestionModel();
         $query = $questionModel->insert($values);
-
-        $coursemodel = new CourseModel();
-        $find_course = $coursemodel->where('course_id', $course_id)->findAll();
-        $number_of_questions = $find_course[0]['number_of_questions'];
-        $newnumber_of_questions = $number_of_questions + 1;
-        $course_data['number_of_questions'] = $newnumber_of_questions;
-
-        $updatenumber_of_questions = $coursemodel->update($course_id, $course_data);
 
         if (!$query) {
             return  redirect()->to('create_question')->with('fail', 'Something went wrong. Question was not created. Please try again.');
@@ -43,18 +56,10 @@ class QuestionController extends BaseController
         }
     }
 
-    public function create_question()
-    {
-        $question = new QuestionModel();
-        $data['questions'] = $question->AllQuestionDetails();
-
-        return view('admin/create_question', $data);
-    }
-
     public function view_question()
     {
         $question = new QuestionModel();
-        $data['question'] = $question->AllQuestionDetails();
+        $data['questions'] = $question->AllQuestionDetails();
 
         return view('admin/view_question', $data);
     }
@@ -73,25 +78,33 @@ class QuestionController extends BaseController
         $question = new QuestionModel();
         $data['questions'] = $question->QuestionContent($question_id);
 
-        $question = new QuestionModel();
-        $data['questions'] = $question->AllQuestionDetails();
+        $levels = new LevelModel();
+        $data['levels'] = $levels->AllLevelDetails();
 
         return view('admin/update_question', $data);
     }
 
     public function admin_update_question()
     {
-        $course_id = $this->request->getPost('course_id');
-        $question_title = $this->request->getPost('question_title');
-        $content = $this->request->getPost('content');
-        $xp_requirement = $this->request->getPost('xp_requirement');
         $question_id = $this->request->getPost('question_id');
+        $level_id = $this->request->getPost('level_id');
+        $paragraph = $this->request->getPost('paragraph');
+        $question_title = $this->request->getPost('question_title');
+        $correct_answer = $this->request->getPost('correct_answer');
+        $option_1 = $this->request->getPost('option_1');
+        $option_2 = $this->request->getPost('option_2');
+        $option_3 = $this->request->getPost('option_3');
+        $option_4 = $this->request->getPost('option_4');
 
         $values = [
-            'course_id' => $course_id,
+            'level_id' => $level_id,
+            'paragraph' => $paragraph,
             'question_title' => $question_title,
-            'xp_requirement' => $xp_requirement,
-            'content' => $content
+            'correct_answer' => $correct_answer,
+            'option_1' => $option_1,
+            'option_2' => $option_2,
+            'option_3' => $option_3,
+            'option_4' => $option_4
         ];
 
         $questionModel = new QuestionModel();
@@ -123,19 +136,10 @@ class QuestionController extends BaseController
 
     public function admin_delete_question()
     {
-        $course_id = $this->request->getPost('course_id');
         $question_id = $this->request->getPost('question_id');
 
         $getquestion = new QuestionModel();
         $delete = $getquestion->DeleteQuestion($question_id);
-
-        $coursemodel = new CourseModel();
-        $find_course = $coursemodel->where('course_id', $course_id)->findAll();
-        $number_of_questions = $find_course[0]['number_of_questions'];
-        $newnumber_of_questions = $number_of_questions - 1;
-        $course_data['number_of_questions'] = $newnumber_of_questions;
-
-        $updatenumber_of_questions = $coursemodel->update($course_id, $course_data);
 
         if ($delete) {
             return  redirect()->to('view_question')->with('fail', 'Question not deleted.');

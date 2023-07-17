@@ -13,6 +13,11 @@ class AccountController extends BaseController
         helper(['url', 'form']);
     }
 
+    public function create_account()
+    {
+        return view('admin/create_account');
+    }
+
     public function admin_create_account()
     {
         $validation = $this->validate([
@@ -106,11 +111,6 @@ class AccountController extends BaseController
                 return  redirect()->to('view_account')->with('success', 'Account created successfully');
             }
         }
-    }
-
-    public function create_account()
-    {
-        return view('admin/create_account');
     }
 
     public function view_account()

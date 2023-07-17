@@ -22,6 +22,20 @@ class LevelModel extends Model
         return $query;
     }
 
+    function GetLevelbyCourse($course_id)
+    {
+        $db      = \Config\Database::connect();
+
+        $builder = $db->table('tbl_levels');
+        $builder->select('tbl_levels.level_id');
+        $builder->join('tbl_courses', 'tbl_courses.course_id = tbl_levels.course_id');
+        $builder->where('tbl_courses.course_id', $course_id);
+        $query = $builder->get()->getResultArray();
+
+        return $query;
+    }
+
+
     function LevelContent($level_id)
     {
         $db      = \Config\Database::connect();

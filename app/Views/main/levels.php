@@ -41,9 +41,9 @@
                         </div>
 
                         <div class="col parent">
-                            <form action="<?= route_to('getlevels'); ?>" method="POST">
-                                <button class="round-6 m-3" name="get_level" value="<?= $course['course_id'] ?>" disabled>
-                                    Quiz
+                            <form action="<?= route_to('getchallenge'); ?>" method="POST">
+                                <button class="round-6 m-3" name="getchallenge" value="<?= $course['course_id'] ?>">
+                                    Challenge
                                 </button>
                             </form>
                         </div>

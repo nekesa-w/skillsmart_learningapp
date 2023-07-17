@@ -8,9 +8,9 @@
 
         <div class="row my-5" id="course-row">
 
-            <?php foreach ($level_details as $detail) { ?>
+            <?php foreach ($questions as $question) { ?>
                 <div class="col m-3">
-                    <h1 class="level-heading"><?= $detail['level_title'] ?></h1>
+                    <h1 class="level-heading"><?= $question['course_title'] ?></h1>
                 </div>
 
             <?php } ?>
@@ -18,12 +18,7 @@
         </div>
 
         <div class="row my-2">
-
-            <?php foreach ($questions as $question) { ?>
-
-                <p class="content-level"><?= $question['paragraph'] ?></p>
-
-            <?php } ?>
+            <p class="content-level">Get ready to boost your life skills! Dive into our interactive quiz and learn while having fun. Every correct answer brings you closer to mastery!</p>
         </div>
 
         <div class="row my-2">
