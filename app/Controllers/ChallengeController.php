@@ -56,27 +56,26 @@ class ChallengeController extends BaseController
         $isCorrect = ($new_selectedAnswer === $new_correctAnswer);
         session()->set('isCorrect' . $question_id, $isCorrect);
 
-        $numCorrectAnswers = session()->get('numCorrectAnswers');
-        if ($isCorrect) {
-            $numCorrectAnswers++;
-        } else {
-            $numCorrectAnswers--;
-        }
-
-        session()->set('numCorrectAnswers', $numCorrectAnswers);
-
         return redirect()->back();
     }
 
     function markchallengecomplete()
     {
+        $totalPages = $this->request->getPost('totalPages');
         $level_id = $this->request->getPost('level_id');
         $course_id = $this->request->getPost('course_id');
         $user_id = session()->get('user_id');
 
-        $questionModel = new QuestionModel();
-        $totalquestions = $questionModel->CountQuestionContentByCourse($course_id);
-        $numCorrectAnswers = session()->get('numCorrectAnswers');
+        $sessionData = session()->get();
+
+        // Filter the session data to only include the 'isCorrect' keys
+        $isCorrectValues = array_filter($sessionData, function ($key) {
+            return strpos($key, 'isCorrect') === 0;
+        }, ARRAY_FILTER_USE_KEY);
+
+        // Count the number of 'bool(true)' values in the filtered array
+        $numCorrectAnswers = count(array_filter($isCorrectValues));
+        $totalquestions = $totalPages;
 
         $percentage = ($numCorrectAnswers / $totalquestions) * 100;
 

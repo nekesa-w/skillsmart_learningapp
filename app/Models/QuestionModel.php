@@ -103,4 +103,16 @@ class QuestionModel extends Model
         $builder->where('tbl_questions.question_id', $question_id);
         $builder->delete();
     }
+
+    function CountQuestions()
+    {
+
+        $db      = \Config\Database::connect();
+
+        $builder = $db->table('tbl_questions');
+        $builder->select('*');
+        $query = $builder->countAllResults();
+
+        return $query;
+    }
 }

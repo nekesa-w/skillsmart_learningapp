@@ -11,6 +11,9 @@
 
     <title>Admin Dashboard</title>
 
+    <!-- Page level plugins -->
+    <script src="<?php echo base_url('admin/vendor/chart.js/Chart.min.js'); ?>"></script>
+
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/0e4ad45b15.js" crossorigin="anonymous"></script>
 
@@ -171,6 +174,7 @@
 
 
 
+
             </div>
             <!-- End of Main Content -->
 
@@ -224,12 +228,6 @@
     <!-- Custom scripts for all pages-->
     <script src="<?php echo base_url('admin/js/sb-admin-2.min.js'); ?>"></script>
 
-    <!-- Page level plugins -->
-    <script src="<?php echo base_url('admin/vendor/chart.js/Chart.min.js'); ?>"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="<?php echo base_url('admin/js/demo/chart-area-demo.js'); ?>"></script>
-    <script src="<?php echo base_url('admin/js/demo/chart-pie-demo.js'); ?>"></script>
 
 </body>
 

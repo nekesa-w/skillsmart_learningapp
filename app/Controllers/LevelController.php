@@ -40,8 +40,8 @@ class LevelController extends BaseController
         $data['current'] = $getlevels->CurrentLevel($course_id, $user_id, $currentcoursexp);
 
         $isquizcomplete = new QuizModel();
-        $data['quizcompleted'] = $isquizcomplete->QuizComplete($course_id);
-        $data['details'] = $isquizcomplete->QuizDetails($course_id);
+        $data['quizcompleted'] = $isquizcomplete->QuizComplete($course_id, $user_id);
+        $data['details'] = $isquizcomplete->QuizDetails($course_id, $user_id);
 
         if ($data['courses'][0]['number_of_levels'] != 0) {
             $data['percent'] =   ($data['progress'] / $data['courses'][0]['number_of_levels']) * 100;

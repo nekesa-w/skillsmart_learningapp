@@ -70,7 +70,6 @@
                     </form>
 
                 </div>
-
             <?php } ?>
         </div>
 
@@ -91,6 +90,7 @@
 
                     <?php if ($currentPage === $totalPages) : ?>
                         <form action="<?= route_to('markchallengecomplete'); ?>" method="POST">
+                            <input type="hidden" id="totalPages" name="totalPages" value="<?= $totalPages ?>">
                             <input type="hidden" id="level_id" name="level_id" value="<?= $question['level_id'] ?>">
                             <input type="hidden" id="course_id" name="course_id" value="<?= $question['course_id'] ?>">
                             <button type="submit" class="btn btn-paragraph">Finish Challenge</button>
