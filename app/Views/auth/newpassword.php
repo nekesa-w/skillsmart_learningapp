@@ -1,59 +1,62 @@
-<?php require_once "controllerUserData.php"; ?>
+<?= $this->extend('layouts/registerloginlayout') ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<?= $this->section('content') ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="registerlogin/fonts/material-icon/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" href="registerlogin/css/style.css">
-    <title>Create New Password</title>
-</head>
+<div class="main">
 
-<body>
+    <!-- Sign in  Form -->
     <div class="container">
-        <div class="row">
-            <div class="col-md-4 offset-md-4 form">
-                <form method="POST" autocomplete="off">
-                    <h2 class="text-center">New Password</h2>
-                    <?php
-                    if (isset($_SESSION['info'])) {
-                    ?>
-                        <div class="alert alert-success text-center">
-                            <?php echo $_SESSION['info']; ?>
-                        </div>
-                    <?php
-                    }
-                    ?>
-                    <?php
-                    if (count($errors) > 0) {
-                    ?>
-                        <div class="alert alert-danger text-center">
-                            <?php
-                            foreach ($errors as $showerror) {
-                                echo $showerror;
-                            }
-                            ?>
-                        </div>
-                    <?php
-                    }
-                    ?>
+        <div class="signup-content">
+
+            <div class="signin-image">
+                <div class="back-to-home">
+                    <a href="<?= base_url('index') ?>">Back to Home</a>
+                </div>
+
+                <figure><img src="<?php echo base_url('registerlogin/images/signin-image.jpg'); ?>" alt="sign up image"></figure>
+                <a href="<?= route_to('login'); ?>" class="signup-image-link">Back to login</a>
+            </div>
+
+            <div class="signup-form">
+                <h2 class="form-title">Create New Password</h2>
+
+                <form action="<?= route_to('passwordsave'); ?>" method="POST" class="register-form" id="login-form">
+
+                    <?= csrf_field(); ?>
+                    <?php if (!empty(session()->getFlashdata('fail'))) : ?>
+                        <div class="alert alert-danger"><?= session()->getFlashdata('fail'); ?></div>
+                    <?php endif ?>
+
+                    <?php if (!empty(session()->getFlashdata('success'))) : ?>
+                        <div class="alert alert-success"><?= session()->getFlashdata('success'); ?></div>
+                    <?php endif ?>
+
                     <div class="form-group">
-                        <input class="form-control" type="password" name="password" placeholder="Create new password" required>
+                        <label for="email"><i class="zmdi zmdi-email"></i></label>
+                        <input type="email" name="email" id="email" placeholder="Email" value="<?= set_value('email') ?>" />
                     </div>
+                    <small class="text-danger"><?= isset($validation) ? display_error($validation, 'email') : '' ?></small>
+
                     <div class="form-group">
-                        <input class="form-control" type="password" name="cpassword" placeholder="Confirm your password" required>
+                        <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                        <input type="password" name="password" id="password" placeholder="New Password" value="<?= set_value('password') ?>" />
                     </div>
+                    <small class="text-danger"><?= isset($validation) ? display_error($validation, 'password') : '' ?></small>
+
                     <div class="form-group">
-                        <input class="form-control button" type="submit" name="changepassword" value="Change">
+                        <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                        <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" value="<?= set_value('confirmpassword') ?>" />
+                    </div>
+                    <small class="text-danger"><?= isset($validation) ? display_error($validation, 'confirmpassword') : '' ?></small>
+
+                    <div class="form-group">
+                        <input class="form-submit" type="submit" name="login" value="Change Password">
                     </div>
                 </form>
+
             </div>
         </div>
     </div>
+</div>
 
-</body>
-
-</html>
+<?= $this->endSection() ?>

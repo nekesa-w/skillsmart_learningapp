@@ -1,32 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
-
-font-family: 'Varela Round', sans-serif;
-
-green
+green: success messages
 #5fa55a
 
-purple
-#5946B2
-
-blue
-#01b4bc
-
-yellow
-#f6d51f
-
-orange
-#fa8925
-
-red
+red: fail messages
 #fa5457
 
-<div class="form-group">
+grey: font
+#666666
 
-								<input class="form-gender" type="radio" name="gender" id="male" value="<?= set_value('male') ?>">
-								<label class=" label-gender" for="male">Male</label>
+grey: border
+#c5c5c5
 
-								<input class="form-gender" type="radio" name="gender" id="female" value="<?= set_value('female') ?>">
-								<label class="label-gender" for="female">Female</label>
+dark purple
+#362a6c
 
-							</div>
-							<span class="text-danger"><?= isset($validation) ? display_error($validation, 'gender') : '' ?></span>
+blue: main colour
+#5774B8
+
+light blue
+#2EB7B6
+
+green
+#99D44A
+
+yellow
+#F0D834
+
+orange
+#FA9746
