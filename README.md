@@ -13,7 +13,7 @@ To install Skills Smart on your computer or laptop, follow these steps:
 
 1. **Clone Repository:**
    ```
-   git clone [repository_url]
+   git clone https://github.com/nekesa-w/skillsmart.git
    ```
 
 2. **Database Configuration:**
