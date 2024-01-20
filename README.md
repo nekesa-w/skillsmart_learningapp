@@ -3,10 +3,13 @@
 Skills Smart is a web application designed to provide an engaging and gamified approach to life skills training. This application incorporates various game elements, including a points system, leveling system, and progress bars, to make the learning experience both enjoyable and effective.
 
 ## Website
-![Screenshot (361)](https://github.com/nekesa-w/skillsmart/assets/111288471/1649ea39-3a95-4fc3-a061-05f384025512)
-![Screenshot (358)](https://github.com/nekesa-w/skillsmart/assets/111288471/8fba8bfe-4fb2-486d-9da3-0d2bdb475a9c)
-![Screenshot (359)](https://github.com/nekesa-w/skillsmart/assets/111288471/65551f2e-08c5-4eb0-9afd-77b320d5d684)
-![Screenshot (360)](https://github.com/nekesa-w/skillsmart/assets/111288471/357b9fcb-0893-4714-a0ad-fd5f96611b9d)
+![Screenshot (358)](https://github.com/nekesa-w/skillsmart/assets/111288471/c80b4dbe-ff74-4821-ba40-326365cceae6)
+
+![Screenshot (359)](https://github.com/nekesa-w/skillsmart/assets/111288471/da350d88-3e95-4058-a618-8584fe6bac9d)
+
+![Screenshot (360)](https://github.com/nekesa-w/skillsmart/assets/111288471/c58617a1-39ad-414e-bec2-df7e4a908e1a)
+
+![Screenshot (361)](https://github.com/nekesa-w/skillsmart/assets/111288471/732184d6-98ca-40cd-921a-aac56ea6a4a3)
 
 ## Features
 - **Points System:** Earn points as you complete different modules and activities within the app. Track your progress and compete with others to stay motivated.
