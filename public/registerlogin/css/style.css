@@ -1,10 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
+body {
+  font-size: 20px;
+  line-height: 2;
+  color: #666666;
+  background: #f8f8f8;
+  font-weight: 400;
+  font-family: 'Varela Round', sans-serif;
+  padding: 0;
+  margin: 0;
+  background-image: url("../images/bg-blur.jpg");
+  background-size: cover;
+  background-position: center;
+  box-sizing: border-box;
+}
+
 /* @extend display-flex; */
 display-flex,
 .display-flex,
 .display-flex-center,
-.signup-content {
+.auth-content {
   display: flex;
   display: -webkit-flex;
 }
@@ -68,7 +83,7 @@ input[type=radio] {
 }
 
 img {
-  max-width: 100%;
+  max-width: 300px;
   height: auto;
 }
 
@@ -88,28 +103,7 @@ h2 {
   padding: 0;
   font-weight: bold;
   color: #5774B8;
-  font-family: 'Varela Round', sans-serif;
   font-size: 36px;
-}
-
-.main {
-  background: #fff;
-  padding: 100px 0;
-}
-
-.clear {
-  clear: both;
-}
-
-body {
-  font-size: 20px;
-  line-height: 2;
-  color: #666666;
-  background: #f8f8f8;
-  font-weight: 400;
-  font-family: 'Varela Round', sans-serif;
-  padding: 0;
-  margin: 0;
 }
 
 a:link {
@@ -136,10 +130,42 @@ a:active {
   text-decoration: none;
 }
 
+main {
+  width: 100%;
+  height: 100%;
+}
+
 .container {
-  width: 900px;
+  width: 70%;
+  margin: 50px auto;
   background: #fff;
-  margin: 0 auto;
+  text-align: center;
+  box-shadow: 15px 15px #5774B8;
+  -moz-box-shadow: 15px 15px #5774B8;
+  -webkit-box-shadow: 15px 15px #5774B8;
+  -o-box-shadow: 15px 15px #5774B8;
+  -ms-box-shadow: 15px 15px #5774B8;
+  border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.auth-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.back-to-home {
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 50px;
+  width: 150px;
+  text-align: center;
   border: 2px solid #5774B8;
   box-shadow: 15px 15px #5774B8;
   -moz-box-shadow: 15px 15px #5774B8;
@@ -151,30 +177,13 @@ a:active {
   -webkit-border-radius: 20px;
   -o-border-radius: 20px;
   -ms-border-radius: 20px;
-
 }
 
-.signup {
-  width: 900px;
-  margin: auto;
-  margin-bottom: 50px;
-}
-
-.signup-content {
-  padding: 75px 0;
-}
-
-.signup-form,
+.auth-form,
 .signup-image,
 .signin-image {
-  width: 50%;
-  overflow: hidden;
-  text-align: center;
-}
-
-.signup-image {
-  margin: 0 55px;
-  text-align: center;
+  overflow: auto;
+  margin: 0 20px;
 }
 
 .form-title {
@@ -183,7 +192,6 @@ a:active {
 
 figure {
   margin-bottom: 50px;
-  text-align: center;
 }
 
 .form-submit {
@@ -206,22 +214,6 @@ figure {
   background: #fa5457;
 }
 
-#signin {
-  width: 900px;
-  margin: auto;
-  margin-bottom: 50px;
-}
-
-.signup-form {
-  margin-left: 75px;
-  margin-right: 75px;
-  padding-left: 34px;
-}
-
-.register-form {
-  width: 100%;
-}
-
 .form-group {
   position: relative;
   margin-bottom: 25px;
@@ -231,7 +223,6 @@ figure {
 .form-group:last-child {
   margin-bottom: 0px;
 }
-
 
 input {
   width: 100%;
@@ -303,12 +294,6 @@ label {
   padding: 10px;
 }
 
-.signin-image {
-  margin-left: 110px;
-  margin-right: 20px;
-  margin-top: 10px;
-}
-
 .text-danger {
   color: #fa5457;
 }
@@ -329,25 +314,6 @@ label {
   border-radius: 10px;
 }
 
-.back-to-home{
-  padding: 10px;
-  margin: auto;
-  margin-bottom: 50px;
-  width: 150px;
-  text-align: center;
-  border: 2px solid #5774B8;
-  box-shadow: 15px 15px #5774B8;
-  -moz-box-shadow: 15px 15px #5774B8;
-  -webkit-box-shadow: 15px 15px #5774B8;
-  -o-box-shadow: 15px 15px #5774B8;
-  -ms-box-shadow: 15px 15px #5774B8;
-  border-radius: 20px;
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -o-border-radius: 20px;
-  -ms-border-radius: 20px;
-}
-
 @media screen and (max-width: 1200px) {
   .container {
     max-width: 100%;
@@ -362,7 +328,7 @@ label {
 
 @media screen and (max-width: 768px) {
 
-  .signup-content {
+  .auth-content {
     flex-direction: column;
     -moz-flex-direction: column;
     -webkit-flex-direction: column;
@@ -375,14 +341,15 @@ label {
     -ms-justify-content: center;
   }
 
-  .signup-form {
+  .auth-form {
     margin-left: 0px;
     margin-right: 0px;
     padding-left: 0px;
     padding: 0 30px;
   }
 
-  .signin-image {
+  .signin-image,
+  .signup-image {
     margin-left: 0px;
     margin-right: 0px;
     margin-top: 50px;
@@ -393,7 +360,7 @@ label {
     -ms-order: 2;
   }
 
-  .signup-form,
+  .auth-form,
   .signup-image,
   .signin-image {
     width: auto;
@@ -408,5 +375,3 @@ label {
     text-align: center;
   }
 }
-
-/*# sourceMappingURL=style.css.map */

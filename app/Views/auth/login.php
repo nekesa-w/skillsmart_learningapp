@@ -2,11 +2,11 @@
 
 <?= $this->section('content') ?>
 
-<div class="main">
+<main>
 
     <!-- Sign in  Form -->
     <div class="container">
-        <div class="signup-content">
+        <div class="auth-content">
 
             <div class="signin-image">
                 <div class="back-to-home">
@@ -17,7 +17,7 @@
                 <a href="<?= route_to('register'); ?>" class="signup-image-link">Create an account</a>
             </div>
 
-            <div class="signup-form">
+            <div class="auth-form">
 
                 <?= csrf_field(); ?>
                 <?php if (!empty(session()->getFlashdata('fail'))) : ?>
@@ -30,7 +30,7 @@
 
                 <h2 class="form-title">Login to Account</h2>
 
-                <form action="<?php echo base_url(); ?>LoginController/loginAuth" method="POST" class="register-form" id="login-form">
+                <form action="<?php echo base_url(); ?>LoginController/loginAuth" method="POST" class="auth-form" id="login-form">
                     <div class="form-group">
                         <label for="email"><i class="zmdi zmdi-account material-icons-name"></i></label>
                         <input type="text" name="email" id="email" placeholder="Email" value="<?= set_value('email') ?>" required />
@@ -51,6 +51,7 @@
             </div>
         </div>
     </div>
-</div>
+
+</main>
 
 <?= $this->endSection() ?>

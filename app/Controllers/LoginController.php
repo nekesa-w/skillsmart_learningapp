@@ -74,17 +74,19 @@ class LoginController extends BaseController
 
                         $dailyxpuser = new DailyXPModel();
 
-                        $currentdailyxp = $userModel[0]['daily_xp_points'];
+                        $currentdailyxp = $userModel->daily_xp_points;
+
+                        $nowString = $now->format('Y-m-d');
 
                         $values = [
                             'user_id' => $user_id,
-                            'date' => $now,
+                            'date' => $nowString,
                             'daily_xp' => $currentdailyxp
                         ];
 
                         $query = $dailyxpuser->insert($values);
 
-                        $userModel->resetXpPoints($userModel['user_id']);
+                        $userModel->resetXpPoints($userModel->user_id);
                     }
 
                     $userModel->updateLastLoginDate($user_id, $now->format('Y-m-d'));

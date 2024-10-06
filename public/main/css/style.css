@@ -1,11 +1,3 @@
-/******* Bootstrap Theming ********/
-/*!
- * Bootstrap v4.5.3 (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
-
 *,
 *::before,
 *::after {
@@ -2735,7 +2727,6 @@ fieldset:disabled a.btn {
 .btn-secondary:hover {
 	color: #5774B8;
 	background-color: #fff;
-	border: 5px solid #5774B8;
 }
 
 .btn-secondary:focus,
@@ -10892,7 +10883,6 @@ a.text-dark:focus {
 	}
 }
 
-/********** Custom CSS ************/
 .section-title {
 	position: relative;
 	display: inline-block;

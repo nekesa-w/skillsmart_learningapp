@@ -2,15 +2,15 @@
 
 <?= $this->section('content') ?>
 
-<div class="main">
+<main>
 
 	<!-- Sign up form -->
 	<div class="container">
-		<div class="signup-content">
-			<div class="signup-form">
+		<div class="auth-content">
+			<div class="auth-form">
 				<h2 class="form-title">Create an Account</h2>
 
-				<form action="<?= route_to('save'); ?>" method="POST" class="register-form" id="register-form">
+				<form action="<?= route_to('save'); ?>" method="POST" class="auth-form" id="register-form">
 
 					<?= csrf_field(); ?>
 					<?php if (!empty(session()->getFlashdata('fail'))) : ?>
@@ -86,6 +86,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+
+</main>
 
 <?= $this->endSection() ?>

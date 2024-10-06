@@ -134,13 +134,7 @@
         </div>
         <div class="container-fluid pt-5" style="border-top: 1px solid white ;">
             <p class="m-0 text-center text-footer">
-                &copy;
-                <a class="text-primary font-weight-bold" href="<?= base_url('about_us'); ?>">SkillSmart</a>.
-                All Rights Reserved.
-                Designed by
-                <a class="text-primary font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
-                <br />Distributed By:
-                <a href="https://themewagon.com" style="color: white;" target="_blank">ThemeWagon</a>
+                <a class="text-primary font-weight-bold" href="<?= base_url('about_us'); ?>">&copy; Skillsmart 2023</a>
             </p>
         </div>
     </div>
