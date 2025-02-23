@@ -6,23 +6,23 @@ SkillsSmart is a web application designed to provide an engaging and gamified ap
 **Home**
 
 The main dashboard of SkillSmart, offering an overview of available courses, user progress, and personalized learning recommendations.
-![Home](https://github.com/nekesa-w/skillsmart/assets/111288471/c80b4dbe-ff74-4821-ba40-326365cceae6)
+![Home](/public/main/img/home.png)
 
 
 **Home (Alternative View)**
 
 Another view of the SkillSmart homepage, highlighting featured courses and quick access to skill development resources.
-![Home2](https://github.com/nekesa-w/skillsmart/assets/111288471/da350d88-3e95-4058-a618-8584fe6bac9d)
+![Home2](/public/main/img/home2.png)
 
 **Skills Dashboard**
 
 A dedicated section displaying skill categories, progress tracking, and personalized recommendations for learners.
-![SkillsHome](https://github.com/nekesa-w/skillsmart/assets/111288471/c58617a1-39ad-414e-bec2-df7e4a908e1a)
+![SkillsHome](/public/main/img/skills.png)
 
 **Courses**
 
 A detailed view of available courses, allowing users to browse, enroll, and track their learning journey.
-![Courses](https://github.com/nekesa-w/skillsmart/assets/111288471/732184d6-98ca-40cd-921a-aac56ea6a4a3)
+![Courses](/public/main/img/courses.png)
 
 ## Features
 - **Points System:** Earn points as you complete different modules and activities within the app. Track your progress and compete with others to stay motivated.
