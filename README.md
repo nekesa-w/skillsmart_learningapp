@@ -1,8 +1,6 @@
-# SkillsSmart - Gamified Life Skills Training App
+## SkillsSmart - Gamified Life Skills Training App
 
 SkillsSmart is a web application designed to provide an engaging and gamified approach to life skills training. This application incorporates various game elements, including a points system, leveling system, and progress bars, to make the learning experience both enjoyable and effective.
-
---
 
 ## Images
 **Home**
@@ -26,14 +24,10 @@ A dedicated section displaying skill categories, progress tracking, and personal
 A detailed view of available courses, allowing users to browse, enroll, and track their learning journey.
 ![Courses](https://github.com/nekesa-w/skillsmart/assets/111288471/732184d6-98ca-40cd-921a-aac56ea6a4a3)
 
---
-
 ## Features
 - **Points System:** Earn points as you complete different modules and activities within the app. Track your progress and compete with others to stay motivated.
 - **Leveling System:** Progress through different levels as you accumulate points. Each level represents a milestone in your life skills journey.
 - **Progress Bars:** Visualize your progress with intuitive progress bars. Watch as you move closer to mastering various life skills.
-
---
 
 ## Installation
 
@@ -64,8 +58,6 @@ To install SkillsSmart on your computer or laptop, follow these steps:
 6. **Access Skills Smart:**
    - Open your web browser and navigate to the URL where the application is hosted.
 
---
-
 ## Usage
 
 1. **User Registration:**
@@ -83,8 +75,6 @@ To install SkillsSmart on your computer or laptop, follow these steps:
 4. **Compete with Others:**
    - Engage in friendly competition with other users.
    - View leaderboards to see where you stand among your peers.
-
---
 
 ## License
 
