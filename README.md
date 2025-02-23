@@ -1,4 +1,4 @@
-# SkillsSmart - Gamified Life Skills Training Web App (CS Project I by Nicole & Terry)
+# SkillsSmart - Gamified Life Skills Training App
 
 SkillsSmart is a web application designed to provide an engaging and gamified approach to life skills training. This application incorporates various game elements, including a points system, leveling system, and progress bars, to make the learning experience both enjoyable and effective.
 
@@ -22,7 +22,7 @@ To install SkillsSmart on your computer or laptop, follow these steps:
 
 1. **Clone Repository:**
    ```
-   git clone https://github.com/nekesa-w/skillsmart.git
+   git clone https://github.com/nekesa-w/skillsmart_learningapp.git
    ```
 
 2. **Database Configuration:**
