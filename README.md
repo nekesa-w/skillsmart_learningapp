@@ -2,19 +2,38 @@
 
 SkillsSmart is a web application designed to provide an engaging and gamified approach to life skills training. This application incorporates various game elements, including a points system, leveling system, and progress bars, to make the learning experience both enjoyable and effective.
 
-## Website
-![Screenshot (358)](https://github.com/nekesa-w/skillsmart/assets/111288471/c80b4dbe-ff74-4821-ba40-326365cceae6)
+--
 
-![Screenshot (359)](https://github.com/nekesa-w/skillsmart/assets/111288471/da350d88-3e95-4058-a618-8584fe6bac9d)
+## Images
+**Home**
 
-![Screenshot (360)](https://github.com/nekesa-w/skillsmart/assets/111288471/c58617a1-39ad-414e-bec2-df7e4a908e1a)
+The main dashboard of SkillSmart, offering an overview of available courses, user progress, and personalized learning recommendations.
+![Home](https://github.com/nekesa-w/skillsmart/assets/111288471/c80b4dbe-ff74-4821-ba40-326365cceae6)
 
-![Screenshot (361)](https://github.com/nekesa-w/skillsmart/assets/111288471/732184d6-98ca-40cd-921a-aac56ea6a4a3)
+
+**Home (Alternative View)**
+
+Another view of the SkillSmart homepage, highlighting featured courses and quick access to skill development resources.
+![Home2](https://github.com/nekesa-w/skillsmart/assets/111288471/da350d88-3e95-4058-a618-8584fe6bac9d)
+
+**Skills Dashboard**
+
+A dedicated section displaying skill categories, progress tracking, and personalized recommendations for learners.
+![SkillsHome](https://github.com/nekesa-w/skillsmart/assets/111288471/c58617a1-39ad-414e-bec2-df7e4a908e1a)
+
+**Courses**
+
+A detailed view of available courses, allowing users to browse, enroll, and track their learning journey.
+![Courses](https://github.com/nekesa-w/skillsmart/assets/111288471/732184d6-98ca-40cd-921a-aac56ea6a4a3)
+
+--
 
 ## Features
 - **Points System:** Earn points as you complete different modules and activities within the app. Track your progress and compete with others to stay motivated.
 - **Leveling System:** Progress through different levels as you accumulate points. Each level represents a milestone in your life skills journey.
 - **Progress Bars:** Visualize your progress with intuitive progress bars. Watch as you move closer to mastering various life skills.
+
+--
 
 ## Installation
 
@@ -26,9 +45,9 @@ To install SkillsSmart on your computer or laptop, follow these steps:
    ```
 
 2. **Database Configuration:**
-   - Create a new database on your server.
+   - Create a new database called `skillsmart`.
    - Import the provided SQL file (`skills_smart.sql`) into your newly created database.
-   - Configure the database settings in the `application/config/database.php` file.
+   - Configure the database settings in the `app/config/database.php` file.
 
 3. **Web Server Configuration:**
    - Ensure that your web server (e.g., Apache, Nginx) is configured to serve the application.
@@ -44,6 +63,8 @@ To install SkillsSmart on your computer or laptop, follow these steps:
 
 6. **Access Skills Smart:**
    - Open your web browser and navigate to the URL where the application is hosted.
+
+--
 
 ## Usage
 
@@ -62,6 +83,8 @@ To install SkillsSmart on your computer or laptop, follow these steps:
 4. **Compete with Others:**
    - Engage in friendly competition with other users.
    - View leaderboards to see where you stand among your peers.
+
+--
 
 ## License
 
