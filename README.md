@@ -6,22 +6,26 @@ SkillsSmart is a web application designed to provide an engaging and gamified ap
 **Home**
 
 The main dashboard of SkillSmart, offering an overview of available courses, user progress, and personalized learning recommendations.
+
 ![Home](/public/main/img/home.png)
 
 
 **Home (Alternative View)**
 
 Another view of the SkillSmart homepage, highlighting featured courses and quick access to skill development resources.
+
 ![Home2](/public/main/img/home2.png)
 
 **Skills Dashboard**
 
 A dedicated section displaying skill categories, progress tracking, and personalized recommendations for learners.
+
 ![SkillsHome](/public/main/img/skills.png)
 
 **Courses**
 
 A detailed view of available courses, allowing users to browse, enroll, and track their learning journey.
+
 ![Courses](/public/main/img/courses.png)
 
 ## Features
